@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -240,7 +240,7 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "983dbb33910ca07e",
+  "active": "252fbbc867752f6a",
   "lastOpenFiles": [
     "Tutoriales/4. Transformaciones Vectoriales.md",
     "productoVect.png",

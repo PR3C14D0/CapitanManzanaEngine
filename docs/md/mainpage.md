@@ -1,7 +1,7 @@
 @mainpage Motor OpenGL
-# Mi Motor Gráfico C++
+# Motor Gráfico C++
 
-¡Bienvenido a la documentación oficial del proyecto! Este motor está construido usando **C++**, **OpenGL**, **GLFW** y **GLAD**.
+Este proyecto es para aprender sobre openGL para la asignatura de informatica grafica de la UCM. Este motor está construido usando **C++**, **OpenGL**, **GLFW** y **GLAD**.
 
 ## Capítulos
 Aquí se muestra una lista de apuntes de OpenGL que he ido haciendo
