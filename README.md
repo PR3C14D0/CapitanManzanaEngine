@@ -4,11 +4,10 @@ Este proyecto es para aprender sobre openGL para la asignatura de informatica gr
 
 ## Capítulos
 Aquí se muestra una lista de apuntes de OpenGL que he ido haciendo
-* [1. Inicializar Dependencias](@ref init_Dep)
-* [2. Pasos de Renderizado](@ref pasos_render)
-* [3. Shaders](@ref shaders)
-* [4. Transformaciones Vectoriales](@ref transf)
-
+* [1. Inicializar Dependencias](docs/md/Tutoriales/1.-Inicialización-de-Dependencias.md)
+* [2. Pasos de Renderizado](docs/md/Tutoriales/2.-Pasos-de-Renderizado.md)
+* [3. Shaders](docs/md/Tutoriales/3.-Shaders.md)
+* [4. Transformaciones Vectoriales](docs/md/Tutoriales/4.-Transformaciones-Vectoriales.md)
 
 ---
 *Nota: Recuerda guardar este archivo con codificación UTF-8 para que las tildes se vean bien.*\n
