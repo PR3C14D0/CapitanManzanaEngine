@@ -1,0 +1,39 @@
+\doxysection{integer.\+inl}
+\hypertarget{gtc_2integer_8inl_source}{}\label{gtc_2integer_8inl_source}\index{C:/Users/manza/Desktop/UNIVERSIDAD/IG/Intro OpenGL/libs/glm/include/glm/gtc/integer.inl@{C:/Users/manza/Desktop/UNIVERSIDAD/IG/Intro OpenGL/libs/glm/include/glm/gtc/integer.inl}}
+\doxymbox{\hyperlink{gtc_2integer_8inl}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespaceglm}{glm}}\{}
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespaceglm_1_1detail}{detail}}}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q,\ \textcolor{keywordtype}{bool}\ Aligned>}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structglm_1_1detail_1_1compute__log2}{compute\_log2}}<L,\ T,\ Q,\ false,\ Aligned>}
+\DoxyCodeLine{00008\ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \doxymbox{\hyperlink{structglm_1_1detail_1_1compute__log2_3_01_l_00_01_t_00_01_q_00_01false_00_01_aligned_01_4_a1c3b576e699987fb8329144e53dde71a}{call}}(\doxymbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \doxymbox{\hyperlink{glad_8h_a14cfbe2fc2234f5504618905b69d1e06}{v}})}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Equivalent\ to\ return\ findMSB(vec);\ but\ save\ one\ function\ call\ in\ ASM\ with\ VC}}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ findMSB(vec);}}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structglm_1_1vec}{vec<L,\ T,\ Q>}}(\doxymbox{\hyperlink{structglm_1_1detail_1_1compute__find_m_s_b__vec}{detail::compute\_findMSB\_vec}}<L,\ T,\ Q,\ \textcolor{keyword}{sizeof}(T)\ *\ 8>\doxymbox{\hyperlink{structglm_1_1detail_1_1compute__log2_3_01_l_00_01_t_00_01_q_00_01false_00_01_aligned_01_4_a1c3b576e699987fb8329144e53dde71a}{::call}}(\doxymbox{\hyperlink{glad_8h_a14cfbe2fc2234f5504618905b69d1e06}{v}}));}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00015\ \ \ \ \ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#\ \ \ if\ GLM\_HAS\_BITSCAN\_WINDOWS}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q,\ \textcolor{keywordtype}{bool}\ Aligned>}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }compute\_log2<4,\ int,\ Q,\ false,\ Aligned>}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structglm_1_1vec}{vec<4,\ int,\ Q>}}\ \doxymbox{\hyperlink{structglm_1_1detail_1_1compute__log2_a6764283ce6db36e96a1342b8c4bf6808}{call}}(\doxymbox{\hyperlink{structglm_1_1vec}{vec<4,\ int,\ Q>}}\ \textcolor{keyword}{const}\&\ \doxymbox{\hyperlink{glad_8h_a14cfbe2fc2234f5504618905b69d1e06}{v}})}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structglm_1_1vec}{vec<4,\ int,\ Q>}}\ Result;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_BitScanReverse(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*\textcolor{keyword}{>}(\&Result.x),\ \doxymbox{\hyperlink{glad_8h_a14cfbe2fc2234f5504618905b69d1e06}{v}}.x);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_BitScanReverse(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*\textcolor{keyword}{>}(\&Result.y),\ \doxymbox{\hyperlink{glad_8h_a14cfbe2fc2234f5504618905b69d1e06}{v}}.y);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_BitScanReverse(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*\textcolor{keyword}{>}(\&Result.z),\ \doxymbox{\hyperlink{glad_8h_a14cfbe2fc2234f5504618905b69d1e06}{v}}.z);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_BitScanReverse(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*\textcolor{keyword}{>}(\&Result.w),\ \doxymbox{\hyperlink{glad_8h_a14cfbe2fc2234f5504618905b69d1e06}{v}}.w);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#\ \ \ endif}\textcolor{comment}{//GLM\_HAS\_BITSCAN\_WINDOWS}}
+\DoxyCodeLine{00032\ \}\textcolor{comment}{//namespace\ detail}}
+\DoxyCodeLine{00033\ \}\textcolor{comment}{//namespace\ glm}}
+
+\end{DoxyCode}

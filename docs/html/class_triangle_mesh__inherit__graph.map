@@ -1,0 +1,5 @@
+<map id="TriangleMesh" name="TriangleMesh">
+<area shape="rect" id="Node000001" title="Genera el mesh de un triangulo." alt="" coords="5,80,105,107"/>
+<area shape="rect" id="Node000002" href="$class_mesh.html" title="Clase abstracta que sirve como padre para crear todo tipo de mallas distintas." alt="" coords="28,5,82,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,46,58,80,52,79,53,50"/>
+</map>

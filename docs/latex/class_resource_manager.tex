@@ -1,0 +1,57 @@
+\doxysection{Referencia de la clase Resource\+Manager}
+\hypertarget{class_resource_manager}{}\label{class_resource_manager}\index{ResourceManager@{ResourceManager}}
+
+
+Se encarga de la gesiton de recursos del proyecto, desde shaders hasta imagenes. Utiliza el patron Singleton y se puede acceder a su instancia con rscr\+M().  
+
+
+
+
+{\ttfamily \+\#include $<$Resource\+Manager.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_resource_manager_a5375fe2800c5c179ca94bbf529f6afce}{get\+Shader}} (std::\+string key)
+\begin{DoxyCompactList}\small\item\em Busca en los recursos el shader pedido mediante la key, que es el nombre del archivo sin la extensi�n. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{class_resource_manager_a48ba5a08de8f25e684e9ca00a1855cf7}{get\+All\+Shaders}} ()
+\begin{DoxyCompactList}\small\item\em Busca todos los shaders cargados y los almacena en un vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Se encarga de la gesiton de recursos del proyecto, desde shaders hasta imagenes. Utiliza el patron Singleton y se puede acceder a su instancia con rscr\+M(). 
+
+\label{doc-func-members}
+\Hypertarget{class_resource_manager_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_resource_manager_a48ba5a08de8f25e684e9ca00a1855cf7}\index{ResourceManager@{ResourceManager}!getAllShaders@{getAllShaders}}
+\index{getAllShaders@{getAllShaders}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getAllShaders()}{getAllShaders()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a48ba5a08de8f25e684e9ca00a1855cf7} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*} $>$ Resource\+Manager::\+get\+All\+Shaders (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Busca todos los shaders cargados y los almacena en un vector. 
+
+\begin{DoxyReturn}{Devuelve}
+Un vector de shaders 
+\end{DoxyReturn}
+\Hypertarget{class_resource_manager_a5375fe2800c5c179ca94bbf529f6afce}\index{ResourceManager@{ResourceManager}!getShader@{getShader}}
+\index{getShader@{getShader}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getShader()}{getShader()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a5375fe2800c5c179ca94bbf529f6afce} 
+\doxymbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*} Resource\+Manager::\+get\+Shader (\begin{DoxyParamCaption}\item[{std::\+string}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Busca en los recursos el shader pedido mediante la key, que es el nombre del archivo sin la extensi�n. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & La clave del shader \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Devuelve un puntero inteligente al shader 
+\end{DoxyReturn}

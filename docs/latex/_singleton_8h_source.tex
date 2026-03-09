@@ -1,0 +1,104 @@
+\doxysection{Singleton.\+h}
+\hypertarget{_singleton_8h_source}{}\label{_singleton_8h_source}\index{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/utils/Singleton.h@{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/utils/Singleton.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ This\ file\ is\ part\ of\ the\ course\ TPV2@UCM\ -\/\ Samir\ Genaim}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ This\ is\ an\ attempt\ to\ have\ a\ single\ Singleton\ class\ that\ can\ be\ used}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ via\ inheritance\ to\ make\ some\ other\ class\ Singleton.\ It\ is\ just\ to\ avoid}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ copying\ the\ Singleton\ declarations\ each\ time.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ >>>\ Requirements:}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ A\ class\ T\ that\ inherits\ this\ class\ must\ have}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ \ -\/\ a\ private\ default\ constructor}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \ -\/\ a\ private\ method\ to\ initialize\ the\ object}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ \ -\/\ a\ (private)\ destructor}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ -\/\ Must\ be\ "{}friend"{}\ of\ Singleton<T>}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ >>>\ Usage:}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ class\ A\ :\ public\ Singleton<A>\ \{}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ \ \ \ friend\ Singleton<A>;\ //\ this\ way\ Singleton\ can\ call\ the\ constructor\ of\ A}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ private:\ //\ constructors\ are\ private}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ \ \ \ A()\ \{}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ \ \ \ \ \ //....}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *\ \ \ \ \}}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ \ \ \ bool\ init(...)}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ \ \ \ virtual\ \string~A()\ \{}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ \ \ \ \}}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *\ public:}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ \ \ \ //\ the\ rest\ of\ the\ functionality}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ *\ >>>\ Other\ comments}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ *\ This\ is\ a\ revised\ version,\ done\ in\ the\ academic\ 2024-\/25\ academic\ year,}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ *\ incorporating\ comments\ of\ Pedro\ Pablo\ Goméz\ Martín.}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }Singleton\ \{}
+\DoxyCodeLine{00048\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00049\ \ \ \ \ Singleton()\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ Cannot\ copy\ objects\ of\ this\ type}}
+\DoxyCodeLine{00055\ \ \ \ \ Singleton<T>\&\ operator=(\textcolor{keyword}{const}\ Singleton<T>\&\ o)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00056\ \ \ \ \ Singleton(\textcolor{keyword}{const}\ Singleton<T>\&\ o)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~Singleton()\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ Initialization\ of\ the\ Singleton\ object.\ Should\ be\ called\ at}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ the\ beginning\ of\ the\ class.}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Targs>}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ Init(Targs\ \&\&...args)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ assert(!\_instance);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ T*\ tmp\ =\ \textcolor{keyword}{new}\ T();}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tmp-\/>init(std::forward<Targs>(args)...))\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \_instance\ =\ tmp;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ all\ OK}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ Something\ went\ wrong}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ tmp;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ T*\ Instance()\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ assert(\_instance\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_instance;}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ HasInstance()\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_instance\ !=\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Release()\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ assert(\_instance);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \_instance;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \_instance\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{static}\ T*\ \_instance;}
+\DoxyCodeLine{00095\ \};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>\ T*\ Singleton<T>::\_instance\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00098\ }
+
+\end{DoxyCode}

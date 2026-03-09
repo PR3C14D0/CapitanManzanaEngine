@@ -1,0 +1,12 @@
+\doxysection{logger.\+h}
+\hypertarget{logger_8h_source}{}\label{logger_8h_source}\index{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/utils/logger.h@{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/utils/logger.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ LOG\_INFO(x)\ \ std::cout\ <<\ "{}[INFO]\ "{}\ <<\ x\ <<\ std::endl}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ LOG\_WARN(x)\ \ std::cout\ <<\ "{}\(\backslash\)033[33m[WARN]\ "{}\ <<\ x\ <<\ "{}\(\backslash\)033[0m\ ("{}\ <<\ \_\_FILE\_\_\ <<\ "{}:"{}\ <<\ \_\_LINE\_\_\ <<\ "{})"{}\ <<\ std::endl}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ LOG\_ERROR(x)\ std::cerr\ <<\ "{}\(\backslash\)033[31m[ERROR]\ "{}\ <<\ x\ <<\ "{}\(\backslash\)033[0m\ ("{}\ <<\ \_\_FILE\_\_\ <<\ "{}:"{}\ <<\ \_\_LINE\_\_\ <<\ "{})"{}\ <<\ std::endl}}
+
+\end{DoxyCode}

@@ -1,0 +1,69 @@
+\doxysection{Referencia de la clase Shader}
+\hypertarget{class_shader}{}\label{class_shader}\index{Shader@{Shader}}
+
+
+Clase que representa un shader de Open\+GL. Se encarga de cargar, compilar y gestionar los shaders en la aplicación.  
+
+
+
+
+{\ttfamily \+\#include $<$Shader.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_shader_a05dbf99269cecc292a0e07e3cadb6285}{Shader}} (\doxymbox{\hyperlink{struct_shader_creation_data}{Shader\+Creation\+Data}} ctx)
+\begin{DoxyCompactList}\small\item\em Constructor que carga el shader desde un archivo. El shader se compila y se prepara para su uso. \end{DoxyCompactList}\item 
+\Hypertarget{class_shader_a08345855be88781faf704487119af9a8}\label{class_shader_a08345855be88781faf704487119af9a8} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Shader} ()
+\begin{DoxyCompactList}\small\item\em Destruye el shader y libera los recursos asociados. \end{DoxyCompactList}\item 
+\Hypertarget{class_shader_a3c7896754f0e1fca8bde860cfef63832}\label{class_shader_a3c7896754f0e1fca8bde860cfef63832} 
+void {\bfseries use} () const
+\begin{DoxyCompactList}\small\item\em Activa el shader para su uso en la aplicación. Esto hace que el shader sea el programa de shader activo en Open\+GL. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_shader_adbd6b3ab91bf9a4991a4778935936703}{set\+Uniform}} (const std::\+string \&name, float value)
+\begin{DoxyCompactList}\small\item\em Establece un valor a una variable uniform del shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase que representa un shader de Open\+GL. Se encarga de cargar, compilar y gestionar los shaders en la aplicación. 
+
+\label{doc-constructors}
+\Hypertarget{class_shader_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_shader_a05dbf99269cecc292a0e07e3cadb6285}\index{Shader@{Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{Shader()}{Shader()}}
+{\footnotesize\ttfamily \label{class_shader_a05dbf99269cecc292a0e07e3cadb6285} 
+Shader::\+\+Shader (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_shader_creation_data}{Shader\+Creation\+Data}}}]{ctx}{}\end{DoxyParamCaption})}
+
+
+
+Constructor que carga el shader desde un archivo. El shader se compila y se prepara para su uso. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ctx} & Contexto para la cración de los shaders \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_shader_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_shader_adbd6b3ab91bf9a4991a4778935936703}\index{Shader@{Shader}!setUniform@{setUniform}}
+\index{setUniform@{setUniform}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}}
+{\footnotesize\ttfamily \label{class_shader_adbd6b3ab91bf9a4991a4778935936703} 
+void Shader::\+set\+Uniform (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{float}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Establece un valor a una variable uniform del shader. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em name} & Nombre de la variable \\
+\hline
+{\em value} & Valor de la variable \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,48 @@
+\doxysection{Mesh.\+h}
+\hypertarget{_mesh_8h_source}{}\label{_mesh_8h_source}\index{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/core/Mesh.h@{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/core/Mesh.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <glm/vec3.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <glm/vec4.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <glm/gtc/type\_ptr.hpp>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_shader}{Shader}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_mesh_ae6b6c56f0ebfa2f6b2b10d25a835c865}{Mesh}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00015\ \ \ \ \ \doxymbox{\hyperlink{class_shader}{Shader}}*\ \_shader\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ std::vector<glm::vec3>\ \_vertices;}
+\DoxyCodeLine{00018\ \ \ \ \ std::vector<glm::vec4>\ \_vColor;}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<glm::uvec3>\ \_indices;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ GLuint\ mPrimitive\ =\ GL\_TRIANGLES;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ GLuint\ \_VAO\ =\ 0;\ \ \ \ \textcolor{comment}{//\ Vertex\ Array\ Object}}
+\DoxyCodeLine{00024\ \ \ \ \ GLuint\ \_VBO\ =\ 0;\ \ \ \ \textcolor{comment}{//\ Vertex\ Buffer\ Object}}
+\DoxyCodeLine{00025\ \ \ \ \ GLuint\ \_CBO\ =\ 0;\ \ \ \ \textcolor{comment}{//\ Color\ Buffer\ Object}}
+\DoxyCodeLine{00026\ \ \ \ \ GLuint\ \_EBO\ =\ 0;\ \ \ \ \textcolor{comment}{//\ Element\ Bueffer\ Object}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ glm::mat4\ \_model\ =\ glm::mat4(1.0f);\ \textcolor{comment}{//\ La\ matriz\ de\ modelado\ del\ mesh,\ que\ guarda\ su\ posición rotacion\ y\ escala\ en\ el\ mundo}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \doxymbox{\hyperlink{class_mesh_ae6b6c56f0ebfa2f6b2b10d25a835c865}{Mesh}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_mesh_ae6b6c56f0ebfa2f6b2b10d25a835c865}{\string~Mesh}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_mesh_ad4f13685da9c32553c088ea2b654a8f7}{generateMesh}}()\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_mesh_a5d48dbf74dbec4854ebd9eaf291e7d51}{render}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_mesh_ae2ff02b81d1d2db3b25f0e8126f54a90}{setShader}}(\doxymbox{\hyperlink{class_shader}{Shader}}*\ \doxymbox{\hyperlink{class_mesh_a923341025dfc51c14392b703b15dcd58}{shader}})\ \{\ \_shader\ =\ \doxymbox{\hyperlink{class_mesh_a923341025dfc51c14392b703b15dcd58}{shader}};\ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_mesh_a76f3c728c420cd652a001dd3ec8d99c0}{setModelMatrix}}(glm::mat4\ model)\ \{\ \_model\ =\ model;\ \}}
+\DoxyCodeLine{00047\ \ \ \ \ glm::mat4\ \doxymbox{\hyperlink{class_mesh_a5c1958cafa8bf30ebc590880bf11e125}{modelMatrix}}()\ \{\ \textcolor{keywordflow}{return}\ \_model;\ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \doxymbox{\hyperlink{class_shader}{Shader}}*\ \doxymbox{\hyperlink{class_mesh_a923341025dfc51c14392b703b15dcd58}{shader}}()\ \{\ \textcolor{keywordflow}{return}\ \_shader;\ \}}
+\DoxyCodeLine{00051\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ initBuffers();}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+
+\end{DoxyCode}

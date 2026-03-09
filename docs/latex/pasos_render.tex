@@ -1,0 +1,276 @@
+\chapter{2.\+Pasos de Renderizado }
+\hypertarget{pasos_render}{}\label{pasos_render}\index{2.Pasos de Renderizado@{2.Pasos de Renderizado}}
+En esta página se explican los pasos a seguir para el renderizado de un triangulo.\hypertarget{pasos_render_autotoc_md6}{}\doxysection{\texorpdfstring{2.\+1 Estructura de las Etapas}{2.\+1 Estructura de las Etapas}}\label{pasos_render_autotoc_md6}
+Las etapas marcadas en {\bfseries{negrita}} son donde se pueden inyectar shaders para modificar el render.
+
+
+\begin{DoxyEnumerate}
+\item Vertex Input
+\item {\bfseries{Vertex \doxylink{class_shader}{Shader}}}
+\item Shape Assembly
+\item {\bfseries{Geometry \doxylink{class_shader}{Shader}}}
+\item Rasterization
+\item {\bfseries{Fragment \doxylink{class_shader}{Shader}}}
+\item Test and Blending
+\end{DoxyEnumerate}
+
+La GPU para renderizar necesita si o si un {\bfseries{Vertex \doxylink{class_shader}{Shader}}} y un {\bfseries{Fragment \doxylink{class_shader}{Shader}}}, el {\bfseries{Geometry \doxylink{class_shader}{Shader}}} es opcional.\hypertarget{pasos_render_autotoc_md7}{}\doxysection{\texorpdfstring{2.\+2 Vertex Input}{2.\+2 Vertex Input}}\label{pasos_render_autotoc_md7}
+De momento se pasa un array de vértices. Cada vértice tiene 3 coordenadas x, y, z. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{float}\ vertices[]\ =\ \{\ }
+\DoxyCodeLine{\ \ \ \ -\/0.5f,\ -\/0.5f,\ 0.0f,\ \textcolor{comment}{//\ Inferior\ izq}}
+\DoxyCodeLine{\ \ \ \ 0.5f,\ -\/0.5f,\ 0.0f,\ \ \textcolor{comment}{//\ Inferior\ der}}
+\DoxyCodeLine{\ \ \ \ 0.0f,\ 0.5f,\ 0.0f\ \ \ \ \textcolor{comment}{//\ Punta}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ Para renderizar, las coordenadas tienen que estar en el sistema NDC, que son puntos entre -\/1.\+0 y 1.\+0, todo lo que esté fuera no se ve.\hypertarget{pasos_render_autotoc_md8}{}\doxysubsection{\texorpdfstring{VBO}{VBO}}\label{pasos_render_autotoc_md8}
+La memoria se controla mediante el {\bfseries{Vertex Buffer Objects (VBO)}} que guarda una gran cantidad de vértices en la GPU.
+
+Asique hay que crear un objecto de open\+GL 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ VBO;\ \textcolor{comment}{//\ Se\ puede\ usar\ tambien\ GLuint}}
+\DoxyCodeLine{glGenBuffers(1,\ \&VBO);}
+
+\end{DoxyCode}
+ VBO se guarda el id de donde se almacena en memoria de la GPU es buffer
+
+Hay que especificar el tipo de buffer, en este caso es {\bfseries{GL\+\_\+\+ARRAY\+\_\+\+BUFFER}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{glBindBuffer(GL\_ARRAY\_BUFFER,\ VBO);}
+
+\end{DoxyCode}
+
+
+Ahora hay que introducir la información al buffer 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{glBufferData(GL\_ARRAY\_BUFFER,\ \textcolor{keyword}{sizeof}(vertices),\ vertices,\ GL\_STATIC\_DRAW);}
+
+\end{DoxyCode}
+ Los parámetros son:\+
+\begin{DoxyEnumerate}
+\item {\bfseries{GL\+\_\+\+ARRAY\+\_\+\+BUFFER:\+}} el tipo de objeto (target).
+\item {\bfseries{sizeof(vertices):\+}} el tamaño de los datos (lo que ocupa el vector de vertices).
+\item {\bfseries{vertices:\+}} la información.
+\item {\bfseries{GL\+\_\+\+STATIC\+\_\+\+DRAW:\+}} esto indica a la GPU como manejar la información
+\begin{DoxyEnumerate}
+\item {\bfseries{GL\+\_\+\+STREAM\+\_\+\+DRAW}}:\+ se setea 1 vez y se usa poco por la GPU
+\item {\bfseries{GL\+\_\+\+STATIC\+\_\+\+DRAW:\+}} se setea 1 vez y se usa mucho
+\item {\bfseries{GL\+\_\+\+DYNAMIC\+\_\+\+DRAW:\+}} la información cambia mucho y se usa mucho
+\end{DoxyEnumerate}
+\end{DoxyEnumerate}\hypertarget{pasos_render_autotoc_md9}{}\doxysection{\texorpdfstring{2.\+3 Vertex Shader}{2.\+3 Vertex Shader}}\label{pasos_render_autotoc_md9}
+Este indica a la GPU que hacer con los vértices que se pasan del paso anterior (que hacer con los vértices del VBO). Aquí un pequeño ejemplo que no los modifica solo los transmite al siguiente paso. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#version\ 330\ core}}
+\DoxyCodeLine{layout\ (location\ =\ 0)\ in\ vec3\ aPos;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ main()\ \{}
+\DoxyCodeLine{\ \ \ \ gl\_Position\ =\ vec4(aPos.x,\ aPos.y,\ aPos.z,\ 1.0);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{pasos_render_autotoc_md10}{}\doxysubsection{\texorpdfstring{Copilar un shader}{Copilar un shader}}\label{pasos_render_autotoc_md10}
+Primero hay que pasarlo a un const char\texorpdfstring{$\ast$}{*} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vertexShaderSource\ =\ \textcolor{stringliteral}{"{}\#version\ 330\ core\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}layout\ (location\ =\ 0)\ in\ vec3\ aPos;\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}void\ main()\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}\{\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}\ gl\_Position\ =\ vec4(aPos.x,\ aPos.y,\ aPos.z,\ 1.0);\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}\}\(\backslash\)0"{}};}
+
+\end{DoxyCode}
+
+
+Y luego creamos un objeto de tipo {\bfseries{GL\+\_\+\+VERTEX\+\_\+\+SHADER}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Creamos\ el\ objeto\ de\ shader}}
+\DoxyCodeLine{GLuint\ vertexShader;}
+\DoxyCodeLine{vertexShader\ =\ glCreateShader(GL\_VERTEX\_SHADER);\ \textcolor{comment}{//\ Se\ crea\ con\ el\ tipo\ especifico}}
+\DoxyCodeLine{glShaderSource(vertexShader,\ 1,\ \&vertexShaderSource,\ NULL);\ \textcolor{comment}{//\ Se\ linkea\ con\ el\ source\ code}}
+\DoxyCodeLine{glCompileShader(vertexShader);\ \textcolor{comment}{//\ Se\ compila}}
+
+\end{DoxyCode}
+ El número 1 especifica cuantas strings le pasamos, en nuestro caso es solo vertex\+Shader\+Source.
+
+Así se puede comprobar si esta bien compilado y si no lo esta se muestran los errores en consola 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ success;}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ infoLog[512];}
+\DoxyCodeLine{glGetShaderiv(vertexShader,\ GL\_COMPILE\_STATUS,\ \&success);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (!success)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ glGetShaderInfoLog(vertexShader,\ 512,\ NULL,\ infoLog);}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}ERROR::SHADER::VERTEX::COMPILATION\_FAILED\(\backslash\)n"{}}\ <<}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ infoLog\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{pasos_render_autotoc_md11}{}\doxysection{\texorpdfstring{2.\+4 Fragment Shader}{2.\+4 Fragment Shader}}\label{pasos_render_autotoc_md11}
+Este shader decide cual es el color final de cada vértice. {\itshape (En verdad queda el paso de opacidad y bending, pero el color opaco final se decide aquí)}
+
+Aquí un pequeño ejemplo que solo pone el color a un tono de naranja 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#version\ 330\ core\ }}
+\DoxyCodeLine{out\ vec4\ FragColor;\ }
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ main()\ \{\ }
+\DoxyCodeLine{\ \ \ \ FragColor\ =\ vec4(1.0f,\ 0.5f,\ 0.2f,\ 1.0f);\ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Y para crearlo se sigue el mismo proceso 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fragShaderSource\ =\ \textcolor{stringliteral}{"{}\#version\ 330\ core\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}out\ vec4\ FragColor;\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}void\ main()\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}\{\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}FragColor\ =\ vec4(1.0f,\ 0.5f,\ 0.2f,\ 1.0f);\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}\}\(\backslash\)0"{}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{GLuint\ fragmentShader;}
+\DoxyCodeLine{fragmentShader\ =\ glCreateShader(GL\_FRAGMENT\_SHADER);}
+\DoxyCodeLine{glShaderSource(fragmentShader,\ 1,\ \&fragShaderSource,\ NULL);}
+\DoxyCodeLine{glCompileShader(fragmentShader);}
+
+\end{DoxyCode}
+\hypertarget{pasos_render_autotoc_md12}{}\doxysubsection{\texorpdfstring{Shader Program}{Shader Program}}\label{pasos_render_autotoc_md12}
+Ahora hay que linkear todos los shaders a un programa. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GLuint\ shaderProgram;}
+\DoxyCodeLine{shaderProgram\ =\ glCreateProgram();\ \textcolor{comment}{//\ Se\ crea\ el\ programa}}
+\DoxyCodeLine{glAttachShader(shaderProgram,\ vertexShader);\ \textcolor{comment}{//\ Se\ añaden\ los\ shaders\ al\ programa}}
+\DoxyCodeLine{glAttachShader(shaderProgram,\ fragmentShader);}
+\DoxyCodeLine{glLinkProgram(shaderProgram);\ \textcolor{comment}{//\ Se\ linkea\ el\ programa}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Comprobar\ si\ hay\ errores\ de\ linker}}
+\DoxyCodeLine{glGetProgramiv(shaderProgram,\ GL\_LINK\_STATUS,\ \&success);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (!success)\ \{}
+\DoxyCodeLine{\ \ \ \ glGetProgramInfoLog(shaderProgram,\ 512,\ NULL,\ infoLog);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Hay\ que\ borrar\ los\ shaders\ ya\ que\ ya\ se\ han\ compilado\ y\ linkeado}}
+\DoxyCodeLine{glDeleteShader(vertexShader);}
+\DoxyCodeLine{glDeleteShader(fragmentShader);}
+
+\end{DoxyCode}
+
+
+Para usar el shader simplemente se llama a esta función 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{glUseProgram(shaderProgram);}
+
+\end{DoxyCode}
+\hypertarget{pasos_render_autotoc_md13}{}\doxysection{\texorpdfstring{2.\+5 Link Vertex Attributes}{2.\+5 Link Vertex Attributes}}\label{pasos_render_autotoc_md13}
+Una vez creado el programa hay que decirle como interpretar la información.
+
+
+\begin{DoxyTable}{4}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}{\bfseries{Vértice}}  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}{\bfseries{Componente X}}  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}{\bfseries{Componente Y}}  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}{\bfseries{Componente Z}}  \\
+{\bfseries{VERTEX 1}}  &Bytes 0 -\/ 4  &Bytes 4 -\/ 8  &Bytes 8 -\/ 12  \\
+{\bfseries{VERTEX 2}}  &Bytes 12 -\/ 16  &Bytes 16 -\/ 20  &Bytes 20 -\/ 24  \\
+{\bfseries{VERTEX 3}}  &Bytes 24 -\/ 28  &Bytes 28 -\/ 32  &Bytes 32 -\/ 36  \\
+\end{DoxyTable}
+
+
+{\bfseries{Configuración del Atributo (POSITION):\+}}
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Stride (Salto):\+}} 12 bytes
+\item {\bfseries{Offset (Desplazamiento inicial):\+}} 0 bytes 
+\end{DoxyItemize}\hypertarget{pasos_render_autotoc_md14}{}\doxysubsubsection{\texorpdfstring{Detalles del formato de datos}{Detalles del formato de datos}}\label{pasos_render_autotoc_md14}
+
+\begin{DoxyItemize}
+\item Los datos de posición se almacenan como valores de punto flotante ({\itshape float}) de 32 bits (4 bytes).
+\item Cada posición está compuesta por 3 de esos valores (X, Y, Z).
+\item No hay espacio (ni otros valores) entre cada conjunto de 3 valores. Los valores están empaquetados de forma compacta ({\itshape tightly packed}) en el arreglo.
+\item El primer valor de los datos se encuentra exactamente al principio del búfer.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{glVertexAttribPointer(0,\ 3,\ GL\_FLOAT,\ GL\_FALSE,\ 3\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}),\ (\textcolor{keywordtype}{void}*)0);\ glEnableVertexAttribArray(0);}
+
+\end{DoxyCode}
+ Parámetros:\+
+\begin{DoxyEnumerate}
+\item Indica cual atributo vamos a modificar, en el shader se especificó que sería {\itshape location = 0}
+\item El tamaño del vertex attribute, es decir 3 valores (x, y, z)
+\item Que tipo de data se almacena, (GL\+\_\+\+FLOAT, 4bytes)
+\item Si queremos la data normalizada o no
+\item Aqui se indica el stride, que distancia hay entre vértices consecutivos (12 = 3 \texorpdfstring{$\ast$}{*} 4Bytes)
+\item El offset de la data de posición (está al principio asique 0)
+\end{DoxyEnumerate}\hypertarget{pasos_render_autotoc_md15}{}\doxysection{\texorpdfstring{2.\+6 VAO}{2.\+6 VAO}}\label{pasos_render_autotoc_md15}
+Para hacer el proceso de obtener los atributos de los vértices, lo mejor es utilizar un array
+
+ 
+\begin{DoxyImage}%
+\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{VAO.png}%
+\doxyfigcaption{Flujo del VAO}%
+\end{DoxyImage}
+   
+
+Así se genera un VAO 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GLuint\ VAO;}
+\DoxyCodeLine{glGenVertexArrays(1,\ \&VAO);}
+\DoxyCodeLine{\textcolor{comment}{//\ 1.\ bind\ Vertex\ Array\ Object}}
+\DoxyCodeLine{glBindVertexArray(VAO);}
+\DoxyCodeLine{\textcolor{comment}{//\ 2.\ copy\ our\ vertices\ array\ in\ a\ buffer\ for\ OpenGL\ to\ use}}
+\DoxyCodeLine{glBindBuffer(GL\_ARRAY\_BUFFER,\ VBO);}
+\DoxyCodeLine{glBufferData(GL\_ARRAY\_BUFFER,\ \textcolor{keyword}{sizeof}(vertices),\ vertices,\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\textcolor{comment}{//\ 3.\ copy\ our\ index\ array\ in\ a\ element\ buffer\ for\ OpenGL\ to\ use}}
+\DoxyCodeLine{glBindBuffer(GL\_ELEMENT\_ARRAY\_BUFFER,\ EBO);}
+\DoxyCodeLine{glBufferData(GL\_ELEMENT\_ARRAY\_BUFFER,\ \textcolor{keyword}{sizeof}(indices),\ indices,}
+\DoxyCodeLine{\ \ \ \ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\textcolor{comment}{//\ 4.\ then\ set\ our\ vertex\ attributes\ pointers}}
+\DoxyCodeLine{glVertexAttribPointer(0,\ 3,\ GL\_FLOAT,\ GL\_FALSE,\ 3\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}),}
+\DoxyCodeLine{\ \ \ \ (\textcolor{keywordtype}{void}*)0);}
+\DoxyCodeLine{glEnableVertexAttribArray(0);}
+
+\end{DoxyCode}
+\hypertarget{pasos_render_autotoc_md16}{}\doxysection{\texorpdfstring{2.\+7 EBO}{2.\+7 EBO}}\label{pasos_render_autotoc_md16}
+El EBO sirve para evitar repetición de vértices y va por índices, es decir:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{float}\ vertices[]\ =\ \{}
+\DoxyCodeLine{\ \ \ \ -\/0.5f,\ \ -\/0.5f,\ 0.0f,\ \textcolor{comment}{//\ Abajo\ izq}}
+\DoxyCodeLine{\ \ \ \ 0.5f,\ -\/0.5f,\ 0.0f,\ \textcolor{comment}{//\ Abajo\ der}}
+\DoxyCodeLine{\ \ \ \ 0.5f,\ 0.5f,\ 0.0f,\ \textcolor{comment}{//\ Arriba\ der}}
+\DoxyCodeLine{\ \ \ \ -\/0.5f,\ 0.5f,\ 0.0f,\ \textcolor{comment}{//\ Arriba\ izq}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{GLuint\ indices[]\ =\ \{}
+\DoxyCodeLine{\ \ \ \ 0,\ 1,\ 3,\ \ \textcolor{comment}{//\ Primer\ triángulo}}
+\DoxyCodeLine{\ \ \ \ 1,\ 2,\ 3,\ \ \textcolor{comment}{//\ Segundo\ triángulo}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Luego se crea el buffer del EBO 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GLuint\ EBO;}
+\DoxyCodeLine{glGenBuffers(1,\ \&EBO);}
+\DoxyCodeLine{glBindBuffer(GL\_ELEMENT\_ARRAY\_BUFFER,\ EBO);}
+\DoxyCodeLine{glBufferData(GL\_ELEMENT\_ARRAY\_BUFFER,\ \textcolor{keyword}{sizeof}(indices),\ indices,\ GL\_STATIC\_DRAW);}
+
+\end{DoxyCode}
+
+
+Luego al crear el VAO se añade el EBO 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ 3.\ copy\ our\ index\ array\ in\ a\ element\ buffer\ for\ OpenGL\ to\ use}}
+\DoxyCodeLine{glBindBuffer(GL\_ELEMENT\_ARRAY\_BUFFER,\ EBO);}
+\DoxyCodeLine{glBufferData(GL\_ELEMENT\_ARRAY\_BUFFER,\ \textcolor{keyword}{sizeof}(indices),\ indices,\ GL\_STATIC\_DRAW);}
+
+\end{DoxyCode}
+
+
+Y para renderizar seria así 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{glDrawElements(GL\_TRIANGLES,\ 6,\ GL\_UNSIGNED\_INT,\ 0);}
+
+\end{DoxyCode}
+ 

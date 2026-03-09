@@ -1,0 +1,35 @@
+\doxysection{orthonormalize.\+inl}
+\hypertarget{orthonormalize_8inl_source}{}\label{orthonormalize_8inl_source}\index{C:/Users/manza/Desktop/UNIVERSIDAD/IG/Intro OpenGL/libs/glm/include/glm/gtx/orthonormalize.inl@{C:/Users/manza/Desktop/UNIVERSIDAD/IG/Intro OpenGL/libs/glm/include/glm/gtx/orthonormalize.inl}}
+\doxymbox{\hyperlink{orthonormalize_8inl}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00006\ \ \ \ \ \doxymbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \doxymbox{\hyperlink{structglm_1_1mat}{mat<3,\ 3,\ T,\ Q>}}\ \doxymbox{\hyperlink{group__gtx__orthonormalize_ga63f33b913d71219449b1aa5e2d68cff5}{orthonormalize}}(\doxymbox{\hyperlink{structglm_1_1mat}{mat<3,\ 3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ m)}
+\DoxyCodeLine{00007\ \ \ \ \ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structglm_1_1mat}{mat<3,\ 3,\ T,\ Q>}}\ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}\ =\ m;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[0]\ =\ \doxymbox{\hyperlink{group__core__func__geometric_ga5c6c1379961d4589035a390856f2d66c}{normalize}}(\doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[0]);}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ T\ d0\ =\ \doxymbox{\hyperlink{namespaceglm_aee4f67dd98afd5ecd486c06bbf72211d}{dot}}(\doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[0],\ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[1]);}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[1]\ -\/=\ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[0]\ *\ d0;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[1]\ =\ \doxymbox{\hyperlink{group__core__func__geometric_ga5c6c1379961d4589035a390856f2d66c}{normalize}}(\doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[1]);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ T\ d1\ =\ \doxymbox{\hyperlink{namespaceglm_aee4f67dd98afd5ecd486c06bbf72211d}{dot}}(\doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[1],\ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[2]);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ d0\ =\ \doxymbox{\hyperlink{namespaceglm_aee4f67dd98afd5ecd486c06bbf72211d}{dot}}(\doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[0],\ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[2]);}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[2]\ -\/=\ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[0]\ *\ d0\ +\ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[1]\ *\ d1;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[2]\ =\ \doxymbox{\hyperlink{group__core__func__geometric_ga5c6c1379961d4589035a390856f2d66c}{normalize}}(\doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}}[2]);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{glad_8h_abe08814c2f72843fde4d8df41440d5a0}{r}};}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{00025\ \ \ \ \ \doxymbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\_FUNC\_QUALIFIER}}\ \doxymbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \doxymbox{\hyperlink{group__gtx__orthonormalize_ga63f33b913d71219449b1aa5e2d68cff5}{orthonormalize}}(\doxymbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \doxymbox{\hyperlink{glad_8h_a92d0386e5c19fb81ea88c9f99644ab1d}{x}},\ \doxymbox{\hyperlink{structglm_1_1vec}{vec<3,\ T,\ Q>}}\ \textcolor{keyword}{const}\&\ \doxymbox{\hyperlink{glad_8h_a66ddd433d2cacfe27f5906b7e86faeed}{y}})}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{group__core__func__geometric_ga5c6c1379961d4589035a390856f2d66c}{normalize}}(\doxymbox{\hyperlink{glad_8h_a92d0386e5c19fb81ea88c9f99644ab1d}{x}}\ -\/\ \doxymbox{\hyperlink{glad_8h_a66ddd433d2cacfe27f5906b7e86faeed}{y}}\ *\ \doxymbox{\hyperlink{namespaceglm_aee4f67dd98afd5ecd486c06bbf72211d}{dot}}(\doxymbox{\hyperlink{glad_8h_a66ddd433d2cacfe27f5906b7e86faeed}{y}},\ \doxymbox{\hyperlink{glad_8h_a92d0386e5c19fb81ea88c9f99644ab1d}{x}}));}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \}\textcolor{comment}{//namespace\ glm}}
+
+\end{DoxyCode}

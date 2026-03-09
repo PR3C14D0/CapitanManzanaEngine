@@ -1,0 +1,45 @@
+\doxysection{Referencia de la clase Quad\+Mesh}
+\hypertarget{class_quad_mesh}{}\label{class_quad_mesh}\index{QuadMesh@{QuadMesh}}
+
+
+Crea una mesh de tipo Quad.  
+
+
+
+
+{\ttfamily \+\#include $<$Quad\+Mesh.\+h$>$}
+
+
+
+Diagrama de herencia de Quad\+Mesh\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=143pt]{class_quad_mesh__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_quad_mesh_a87e1d1c471b5ecfaca6e3a8289f07834}\label{class_quad_mesh_a87e1d1c471b5ecfaca6e3a8289f07834} 
+void {\bfseries generate\+Mesh} () override
+\begin{DoxyCompactList}\small\item\em Genera el mesh colocando los v�rtices, colores, etc... \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{class_mesh}{Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Mesh} ()=default
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+virtual void {\bfseries render} () const
+\begin{DoxyCompactList}\small\item\em Renderiza el mesh. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_mesh_ae2ff02b81d1d2db3b25f0e8126f54a90}{set\+Shader}} (\doxymbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*}\doxymbox{\hyperlink{class_mesh_a923341025dfc51c14392b703b15dcd58}{shader}})
+\begin{DoxyCompactList}\small\item\em Cambia el shader que utiliza la mesh. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_mesh_a76f3c728c420cd652a001dd3ec8d99c0}{set\+Model\+Matrix}} (glm::\+mat4 model)
+\begin{DoxyCompactList}\small\item\em Establece la matriz de modelado de la malla. \end{DoxyCompactList}\item 
+glm::\+mat4 \doxymbox{\hyperlink{class_mesh_a5c1958cafa8bf30ebc590880bf11e125}{model\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em La matriz de modelado del mesh, que guarda su posici�n rotacion y escala en el mundo. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_shader}{Shader}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_mesh_a923341025dfc51c14392b703b15dcd58}{shader}} ()
+\begin{DoxyCompactList}\small\item\em El shader que esta usando la mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Crea una mesh de tipo Quad. 

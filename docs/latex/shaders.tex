@@ -1,0 +1,91 @@
+\chapter{3.\+Shaders }
+\hypertarget{shaders}{}\label{shaders}\index{3.Shaders@{3.Shaders}}
+Vamos a ver como funcionan los shaders programados en GLSL que es un lenguaje parecido a C.\hypertarget{shaders_autotoc_md17}{}\doxysection{\texorpdfstring{3.\+1 GLSL}{3.\+1 GLSL}}\label{shaders_autotoc_md17}
+Como ya he dicho están escritos en algo parecido a C. Siempre se empieza con una declaración de la versión. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#version\ 330\ }\textcolor{comment}{//\ Equivale\ a\ OpenGL\ 3.3}}
+
+\end{DoxyCode}
+
+
+Tiene unas variables para comunicarnos con el shader:\+
+\begin{DoxyItemize}
+\item Inputs:\+ sirven para recibir información de ese vértice en concreto. Por ejemplo:\+ color, posición textura... 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{in\ vec3\ aPos;}
+
+\end{DoxyCode}
+ Estas se les conoce como vertex attributes y tienen un límite, como máximo 16 de vértices de 4 componentes.
+\item Out:\+ sirven para mandar información al siguiente paso de renderizado. Como modificar la posición y luego pasarla. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{out\ vec4\ FragColor;}
+
+\end{DoxyCode}
+
+\item Uniforms:\+ son variables globales y que si valor no cambia hasta que se vuelve a enviar otro 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uniform\ vec4\ ourColor;}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{shaders_autotoc_md18}{}\doxysection{\texorpdfstring{3.\+2 Tipos}{3.\+2 Tipos}}\label{shaders_autotoc_md18}
+Como en c las variables tienen un tipo, ya sea int, float, bool... Pero tambien tiene el tipo vector y matrices.\hypertarget{shaders_autotoc_md19}{}\doxysubsection{\texorpdfstring{Vector}{Vector}}\label{shaders_autotoc_md19}
+Puedes tener vectores de 1,2,3,4 componentes. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{vecn\ \textcolor{comment}{//\ the\ default\ vector\ of\ n\ floats.}}
+\DoxyCodeLine{bvecn\ \textcolor{comment}{//\ a\ vector\ of\ n\ booleans.\ }}
+\DoxyCodeLine{ivecn\ \textcolor{comment}{//a\ vector\ of\ n\ integers.}}
+\DoxyCodeLine{uvecn\ \textcolor{comment}{//\ a\ vector\ of\ n\ unsigned\ integers.\ }}
+\DoxyCodeLine{dvecn\ \textcolor{comment}{//\ a\ vector\ of\ n\ double.}}
+
+\end{DoxyCode}
+
+
+Se pueden construir así 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{vec2\ someVec;\ }
+\DoxyCodeLine{vec4\ differentVec\ =\ someVec.xyxx;\ }
+\DoxyCodeLine{vec3\ anotherVec\ =\ differentVec.zyw;}
+\DoxyCodeLine{vec4\ otherVec\ =\ someVec.xxxx\ +\ anotherVec.yxzy;}
+
+\end{DoxyCode}
+\hypertarget{shaders_autotoc_md20}{}\doxysection{\texorpdfstring{3.\+3 Comunicación entre Shaders}{3.\+3 Comunicación entre Shaders}}\label{shaders_autotoc_md20}
+Es posible pasar información del vertex al fragment shader, para ello las variables de out del vertex tienen que coincidir con el in del fragment. Ejemplo
+
+{\bfseries{Vertex \doxylink{class_shader}{Shader}}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#version\ 330\ core\ }}
+\DoxyCodeLine{layout\ (location\ =\ 0)\ in\ vec3\ aPos;\ \textcolor{comment}{//\ position\ tiene\ atributo\ position\ 0\ }}
+\DoxyCodeLine{out\ vec4\ vertexColor;\ \textcolor{comment}{//\ color\ de\ salida}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ main()\ \{\ }
+\DoxyCodeLine{\ \ \ \ gl\_Position\ =\ vec4(aPos,\ 1.0);}
+\DoxyCodeLine{\ \ \ \ vertexColor\ =\ vec4(0.5,\ 0.0,\ 0.0,\ 1.0);\ \textcolor{comment}{//\ output\ a\ rojo\ oscuro}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Fragment \doxylink{class_shader}{Shader}}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#version\ 330\ core\ }}
+\DoxyCodeLine{out\ vec4\ FragColor;\ }
+\DoxyCodeLine{in\ vec4\ vertexColor;\ \textcolor{comment}{//\ input\ con\ el\ mismo\ nombre}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ main()\ \{\ }
+\DoxyCodeLine{\ \ \ \ FragColor\ =\ vertexColor;\ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{shaders_autotoc_md21}{}\doxysection{\texorpdfstring{3.\+4 Uniforms}{3.\+4 Uniforms}}\label{shaders_autotoc_md21}
+Como ya hemos dicho antes, son variables globales y se pueden declarar en cualquier etapa de los shaders.
+
+Para mandar información al shader, se hace de la siguiente manera 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ vertexColorLocation\ =\ glGetUniformLocation(shaderProgram,\ \textcolor{stringliteral}{"{}ourColor"{}});}
+\DoxyCodeLine{glUniform4f(vertexColorLocation,\ v.x,\ v.y,\ v.z,\ v.w);\ \textcolor{comment}{//\ Espera\ un\ vec4\ de\ floats}}
+
+\end{DoxyCode}
+
+
+Primero se obtiene la localización de la variable en memoria, poniendo el nombre exacto de la variable. Siempre primero se tiene que hacer el use antes del uniform. 

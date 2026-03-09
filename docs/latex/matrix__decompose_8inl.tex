@@ -1,0 +1,23 @@
+\doxysection{C:\+/\+\+Users/\+manza/\+\+Desktop/\+\+UNIVERSIDAD/\+\+IG/\+\+Intro Open\+GL/\+libs/\+glm/\+include/\+glm/\+gtx/\+matrix\+\_\+decompose.inl File Reference}
+\hypertarget{matrix__decompose_8inl}{}\label{matrix__decompose_8inl}\index{C:/Users/manza/Desktop/UNIVERSIDAD/IG/Intro OpenGL/libs/glm/include/glm/gtx/matrix\_decompose.inl@{C:/Users/manza/Desktop/UNIVERSIDAD/IG/Intro OpenGL/libs/glm/include/glm/gtx/matrix\_decompose.inl}}
+{\ttfamily \+\#include "{}../\+gtc/\+constants.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}../\+gtc/\+epsilon.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}../\+gtx/\+transform.\+hpp"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \doxymbox{\hyperlink{namespaceglm}{glm}}
+\begin{DoxyCompactList}\small\item\em \doxylink{group__core}{Core features} \end{DoxyCompactList}\item 
+namespace \doxymbox{\hyperlink{namespaceglm_1_1detail}{glm::\+detail}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T, \doxymbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q$>$ }\\\doxymbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\+\_\+\+FUNC\+\_\+\+QUALIFIER}} \doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ \doxymbox{\hyperlink{namespaceglm_1_1detail_a4363abf5c2e8ba2090523a122202fe76}{glm::\+detail::\+combine}} (\doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ const \&\doxymbox{\hyperlink{glad_8h_ac8729153468b5dcf13f971b21d84d4e5}{a}}, \doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ const \&\doxymbox{\hyperlink{glad_8h_a6eba317e3cf44d6d26c04a5a8f197dcb}{b}}, T ascl, T bscl)
+\begin{DoxyCompactList}\small\item\em Make a linear combination of two vectors and return the result. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T, \doxymbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q$>$ }\\\doxymbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\+\_\+\+FUNC\+\_\+\+QUALIFIER}} \doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ \doxymbox{\hyperlink{namespaceglm_1_1detail_a8e563a75f3346ec61537f1601eb5f8cb}{glm::\+detail::\+scale}} (\doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ const \&\doxymbox{\hyperlink{glad_8h_a14cfbe2fc2234f5504618905b69d1e06}{v}}, T desired\+Length)
+\item 
+{\footnotesize template$<$typename T, \doxymbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q$>$ }\\\doxymbox{\hyperlink{setup_8hpp_a33fdea6f91c5f834105f7415e2a64407}{GLM\+\_\+\+FUNC\+\_\+\+QUALIFIER}} bool \doxymbox{\hyperlink{group__gtx__matrix__decompose_gabd7878e1b23aab583bc01040c5ed2b71}{glm::\+decompose}} (\doxymbox{\hyperlink{structglm_1_1mat}{mat}}$<$ 4, 4, T, Q $>$ const \&Model\+Matrix, \doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ \&Scale, \doxymbox{\hyperlink{structglm_1_1qua}{qua}}$<$ T, Q $>$ \&Orientation, \doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ \&Translation, \doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ \&Skew, \doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 4, T, Q $>$ \&Perspective)
+\item 
+{\footnotesize template$<$typename T, \doxymbox{\hyperlink{namespaceglm_a36ed105b07c7746804d7fdc7cc90ff25}{qualifier}} Q$>$ }\\\doxymbox{\hyperlink{setup_8hpp_ab2d052de21a70539923e9bcbf6e83a51}{GLM\+\_\+\+FUNC\+\_\+\+DECL}} \doxymbox{\hyperlink{structglm_1_1mat}{mat}}$<$ 4, 4, T, Q $>$ \doxymbox{\hyperlink{group__gtx__matrix__decompose_ga8f836f4e7cc19ba301fc135d579aa2bc}{glm::\+recompose}} (\doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ const \&\doxymbox{\hyperlink{group__ext__matrix__transform_gaae2f8b2080622b24b85e1096748599b6}{scale}}, \doxymbox{\hyperlink{structglm_1_1qua}{qua}}$<$ T, Q $>$ const \&\doxymbox{\hyperlink{group__gtx__rotate__vector_ga83099d005b4af6a7a0d882ff6eb1a536}{orientation}}, \doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ const \&translation, \doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 3, T, Q $>$ const \&skew, \doxymbox{\hyperlink{structglm_1_1vec}{vec}}$<$ 4, T, Q $>$ const \&\doxymbox{\hyperlink{group__ext__matrix__clip__space_ga9e13be491fd69a438c8fda440cf0156e}{perspective}})
+\end{DoxyCompactItemize}

@@ -1,0 +1,65 @@
+\chapter{1.\+Inicialización de Dependencias }
+\hypertarget{init__dep}{}\label{init__dep}\index{1.Inicialización de Dependencias@{1.Inicialización de Dependencias}}
+Veremos como se inicializa GLFW y GLAD, que son dos librerías de open\+GL. También como se crea una ventana con GLFW. \hypertarget{init__dep_autotoc_md3}{}\doxysection{\texorpdfstring{1.\+1 Inicializando GLFW}{1.\+1 Inicializando GLFW}}\label{init__dep_autotoc_md3}
+Para inicializar GLFW lo primero que hay que hacer es incluir su cabecera 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}}
+
+\end{DoxyCode}
+
+
+Después hay que llamar a su método {\bfseries{glfw\+Init()}} que si todo es correcto devuelve {\bfseries{GLFW\+\_\+\+TRUE}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (glfwInit()\ ==\ GLFW\_FALSE)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{init__dep_autotoc_md4}{}\doxysubsection{\texorpdfstring{Crear la ventana}{Crear la ventana}}\label{init__dep_autotoc_md4}
+Una vez inicializado GLFW hay que crear una ventana y crear el contexto 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_window\ =\ glfwCreateWindow(800,\ 600,\ \textcolor{stringliteral}{"{}Ventana\ de\ Ejempl"{}},\ NULL,\ NULL);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\_window\ ==\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ create\ GLFW\ window"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Aqui\ se\ crea\ el\ contexto}}
+\DoxyCodeLine{glfwMakeContextCurrent(\_window);}
+
+\end{DoxyCode}
+
+
+Los parámetros de {\bfseries{glfw\+Create\+Window}}() 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{glfwCreateWindow(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ title,\ GLFWmonitor*\ monitor,\ GLFWwindow*\ share);}
+
+\end{DoxyCode}
+ {\itshape Nota:\+ los dos últimos parámetros no tengo ni idea de como funciona}\hypertarget{init__dep_autotoc_md5}{}\doxysection{\texorpdfstring{1.\+2 Inicializando GLAD}{1.\+2 Inicializando GLAD}}\label{init__dep_autotoc_md5}
+La librería GLAD es como GLEW pero mas moderna y se actualiza mas, básicamente sirve para guardarse los punteros de las funciones de open\+GL.
+
+Lo primero de todo es incluir la cabecera antes que nada 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}}
+
+\end{DoxyCode}
+
+
+Para inicializar correctamente GLAD hay que hacer el init después de que haya un contexto de open\+GL válido 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{...}
+\DoxyCodeLine{\textcolor{comment}{//\ Se\ crea\ el\ contexto}}
+\DoxyCodeLine{glfwMakeContextCurrent(\_window);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ AHora\ ya\ se\ puede\ llamar\ al\ init}}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ initialize\ GLAD"{}}\ <<\ std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 

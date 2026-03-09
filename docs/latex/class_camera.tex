@@ -1,0 +1,71 @@
+\doxysection{Referencia de la clase Camera}
+\hypertarget{class_camera}{}\label{class_camera}\index{Camera@{Camera}}
+
+
+Clase que controla el punto de vista del la ventana, almacena la matriz de vista y la de proyeccion. Se puede configurar para que la camara renderice en formato perspectiva u ortografico.  
+
+
+
+
+{\ttfamily \+\#include $<$Camera.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_camera_aa8cb527cd242049a7afbc876f1e32a64}{upload\+To\+GPU}} (\doxymbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}m)
+\begin{DoxyCompactList}\small\item\em Manda a la GPU las matrices de proyeccion y vista. \end{DoxyCompactList}\item 
+glm::\+mat4 \doxymbox{\hyperlink{class_camera_aa77dcf47815f0549e40111baf0998771}{view\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em La matriz de vista de la camara. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_camera_a673ff998420587e5e8ec08fb15732502}{set\+View\+Mat}} (glm::\+mat4 view)
+\begin{DoxyCompactList}\small\item\em Establece la matriz de vista. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase que controla el punto de vista del la ventana, almacena la matriz de vista y la de proyeccion. Se puede configurar para que la camara renderice en formato perspectiva u ortografico. 
+
+\label{doc-func-members}
+\Hypertarget{class_camera_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_camera_a673ff998420587e5e8ec08fb15732502}\index{Camera@{Camera}!setViewMat@{setViewMat}}
+\index{setViewMat@{setViewMat}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{setViewMat()}{setViewMat()}}
+{\footnotesize\ttfamily \label{class_camera_a673ff998420587e5e8ec08fb15732502} 
+void Camera::\+set\+View\+Mat (\begin{DoxyParamCaption}\item[{glm::\+mat4}]{view}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Establece la matriz de vista. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em view} & La nueva matriz \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_aa8cb527cd242049a7afbc876f1e32a64}\index{Camera@{Camera}!uploadToGPU@{uploadToGPU}}
+\index{uploadToGPU@{uploadToGPU}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{uploadToGPU()}{uploadToGPU()}}
+{\footnotesize\ttfamily \label{class_camera_aa8cb527cd242049a7afbc876f1e32a64} 
+void Camera::\+upload\+To\+GPU (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{m}{}\end{DoxyParamCaption})}
+
+
+
+Manda a la GPU las matrices de proyeccion y vista. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em m} & La mesh objetivo \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_aa77dcf47815f0549e40111baf0998771}\index{Camera@{Camera}!viewMatrix@{viewMatrix}}
+\index{viewMatrix@{viewMatrix}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{viewMatrix()}{viewMatrix()}}
+{\footnotesize\ttfamily \label{class_camera_aa77dcf47815f0549e40111baf0998771} 
+glm::\+mat4 Camera::\+view\+Matrix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+La matriz de vista de la camara. 
+
+\begin{DoxyReturn}{Devuelve}
+La matriz de vista 
+\end{DoxyReturn}

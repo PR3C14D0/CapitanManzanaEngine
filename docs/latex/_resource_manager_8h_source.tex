@@ -1,0 +1,41 @@
+\doxysection{Resource\+Manager.\+h}
+\hypertarget{_resource_manager_8h_source}{}\label{_resource_manager_8h_source}\index{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/managers/ResourceManager.h@{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/managers/ResourceManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <utils/Singleton.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <core/Shader.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_shader}{Shader}};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }ResourceManager\ :\ \textcolor{keyword}{public}\ Singleton<ResourceManager>}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }Singleton<ResourceManager>;}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ SHADERS\_PATH\ =\ \textcolor{stringliteral}{"{}assets/shaders"{}};}
+\DoxyCodeLine{00014\ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<Shader>>\ \_shadersMap;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~ResourceManager();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ cannot\ copy/move}}
+\DoxyCodeLine{00020\ \ \ \ \ ResourceManager(ResourceManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00021\ \ \ \ \ ResourceManager(ResourceManager\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00022\ \ \ \ \ ResourceManager\&\ operator=(ResourceManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00023\ \ \ \ \ ResourceManager\&\ operator=(ResourceManager\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \ \ \ \ \doxymbox{\hyperlink{class_shader}{Shader}}*\ \doxymbox{\hyperlink{class_resource_manager_a5375fe2800c5c179ca94bbf529f6afce}{getShader}}(std::string\ key);}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<Shader*>\ \doxymbox{\hyperlink{class_resource_manager_a48ba5a08de8f25e684e9ca00a1855cf7}{getAllShaders}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ ResourceManager()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ init();}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_resource_manager}{ResourceManager}}\&\ rscrM()\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{return}\ *ResourceManager::Instance();}
+\DoxyCodeLine{00045\ \}}
+
+\end{DoxyCode}
