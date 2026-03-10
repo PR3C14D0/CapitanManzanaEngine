@@ -11,7 +11,9 @@
     <ClCompile Include="src\glad\glad.c" />
     <ClCompile Include="src\core\GLApplication.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="src\core\Scene.cpp" />
+    <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\component\MeshRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Camera.h" />
@@ -25,5 +27,11 @@
     <ClInclude Include="src\utils\logger.h" />
     <ClInclude Include="src\utils\Singleton.h" />
     <ClInclude Include="src\core\Scene.h" />
+    <ClInclude Include="src\ec\component.h" />
+    <ClInclude Include="src\ec\ec.h" />
+    <ClInclude Include="src\ec\entity.h" />
+    <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\component\Transform.h" />
+    <ClInclude Include="src\component\MeshRenderer.h" />
   </ItemGroup>
 </Project>

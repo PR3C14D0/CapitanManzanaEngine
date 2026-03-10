@@ -53,6 +53,8 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <PostBuildEvent>
       <Command>robocopy "$(SolutionDir)assets" "$(OutDir)assets" /MIR
@@ -69,6 +71,8 @@ if %errorlevel% leq 7 exit 0</Command>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -81,7 +85,8 @@ if %errorlevel% leq 7 exit 0</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="src\component\MeshRenderer.cpp" />
+    <ClCompile Include="src\core\Scene.cpp" />
     <ClCompile Include="src\core\Camera.cpp" />
     <ClCompile Include="src\core\mesh\CubeMesh.cpp" />
     <ClCompile Include="src\core\mesh\QuadMesh.cpp" />
@@ -92,8 +97,14 @@ if %errorlevel% leq 7 exit 0</Command>
     <ClCompile Include="src\glad\glad.c" />
     <ClCompile Include="src\core\GLApplication.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\component\MeshRenderer.h" />
+    <ClInclude Include="src\component\Transform.h" />
     <ClInclude Include="src\core\Camera.h" />
     <ClInclude Include="src\core\mesh\CubeMesh.h" />
     <ClInclude Include="src\core\mesh\QuadMesh.h" />
@@ -102,7 +113,11 @@ if %errorlevel% leq 7 exit 0</Command>
     <ClInclude Include="src\core\mesh\TriangleMesh.h" />
     <ClInclude Include="src\core\Scene.h" />
     <ClInclude Include="src\core\Shader.h" />
+    <ClInclude Include="src\ec\component.h" />
+    <ClInclude Include="src\ec\ec.h" />
+    <ClInclude Include="src\ec\entity.h" />
     <ClInclude Include="src\managers\ResourceManager.h" />
+    <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\utils\logger.h" />
     <ClInclude Include="src\utils\Singleton.h" />
   </ItemGroup>

@@ -7,12 +7,13 @@
 
 #include "GLApplication.h"
 #include <utils/logger.h>
-#include <core/Camera.h>
 
 #include <managers/ResourceManager.h>
-#include "mesh/TriangleMesh.h"
-#include "mesh/QuadMesh.h"
 #include "mesh/CubeMesh.h"
+#include <core/Scene.h>
+#include <ec/entity.h>
+#include <component/Transform.h>
+#include <component/MeshRenderer.h>
 
 GLApplication::~GLApplication() {
 	if (ResourceManager::HasInstance()) {
@@ -63,17 +64,14 @@ bool GLApplication::loadManagers() {
 }
 
 void GLApplication::start() {
-	Camera* cam = new Camera();
+	Scene* scene = new Scene();
 
-	CubeMesh* mesh = new CubeMesh(rscrM().getShader("default"));
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::rotate(model, glm::radians(45.0f), glm::vec3(1, 0, 1));
-	mesh->setModelMatrix(model);
+	auto cube = scene->addGameObject(scene);
+	auto tr =cube->addComponent<Transform>();
+	cube->addComponent<MeshRenderer>(new CubeMesh(rscrM().getShader("default")));
 
-	glm::mat4 view = glm::mat4(1.0f);
-	view = glm::translate(view, glm::vec3(0, 0, -3.0f));
-	cam->setViewMat(view);
-
+	tr->setPosition(glm::vec3(0, 0, -3));
+	float angle = 0.0f;
 	while (!glfwWindowShouldClose(_window))
 	{
 		processInput(_window);
@@ -82,17 +80,14 @@ void GLApplication::start() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glEnable(GL_DEPTH_TEST);
 
-		model = glm::rotate(model, glm::radians(0.5f), glm::vec3(0, 1, 0));
-		mesh->setModelMatrix(model);
-		cam->uploadToGPU(mesh);
-		mesh->render();
+		tr->setRotation(glm::vec3(0, angle++, angle));
+		scene->render();
 
 		glfwSwapBuffers(_window);
 		glfwPollEvents();
 	}
 
-	delete mesh;
-	delete cam;
+	delete scene;
 }
 
 void GLApplication::processInput(GLFWwindow* window)
