@@ -31,6 +31,9 @@ public:
 	/// @brief quita todos los objetos que no estén activos de la escena
 	void refresh();
 
+	/// @brief Crea la cuadricula en el plano y = 0
+	void createGrid();
+
 	/// @brief permite añadir objetos a la escena
 	/// @param grID Grupo al que añadir al objeto creado
 	ec::entity_t addGameObject(Scene* scene, ec::ent::groupID grID = ec::ent::None);

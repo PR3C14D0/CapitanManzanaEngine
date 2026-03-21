@@ -46,6 +46,8 @@ void Camera::uploadViewToGPU(Shader* shader, glm::mat4 model) {
 	glm::mat4 modelView = _view * model;
 	shader->use();
 	shader->setUniform("modelView", modelView);
+	shader->setUniform("cameraPos", _cameraPos); // o setVec3
+	shader->setUniform("model", model); // o setVec3
 }
 
 void Camera::setCameraLookAt(float xpos, float ypos) {

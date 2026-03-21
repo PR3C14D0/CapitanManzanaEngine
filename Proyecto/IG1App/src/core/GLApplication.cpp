@@ -55,7 +55,7 @@ bool GLApplication::init() {
 	}
 
 	// Init viewPort
-	glViewport(0, 0, 800, 600);
+	glViewport(0, 0, _width, _height);
 	glfwSetFramebufferSizeCallback(_window, [](GLFWwindow* window, int width, int height) {
 		glViewport(0, 0, width, height);
 		gla()._width = width;
@@ -96,7 +96,9 @@ bool GLApplication::loadManagers() {
 void GLApplication::start() {
 	sceneM().loadScenes();
 
-	float angle = 0.0f;
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	while (!glfwWindowShouldClose(_window))
 	{
 		processInput(_window, sceneM().activeScene()->getCamera());
@@ -113,7 +115,9 @@ void GLApplication::start() {
 		ImGui::NewFrame();
 
 		ImGui::Begin("Inspector");
-		ImGui::Text("Holaaa soy samu");
+		ImGui::Text("Delta Time: %.3f", _deltaTime);
+		glm::vec3 pos = sceneM().activeScene()->getCamera()->getPosition();
+		ImGui::Text("Camera position: X: %.2f  Y: %.2f  Z: %.2f", pos.x, pos.y, pos.z);
 		ImGui::End();
 
 		ImGui::Render();
