@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include <utils/Singleton.h>
 
+#define GLA_MODE_NORMAL 0
+#define GLA_MODE_MOVING 1
+
 struct GLFWwindow;
 class Camera;
 class Scene;
@@ -20,6 +23,8 @@ private:
 
 	float _deltaTime = 0.0f;
 	float _lastFrame = 0.0f;
+
+	int _glaState = GLA_MODE_NORMAL;
 public:
 	virtual ~GLApplication();
 

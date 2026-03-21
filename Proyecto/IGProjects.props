@@ -5,7 +5,7 @@
   <PropertyGroup>
     <OutDir>$(SolutionDir)bin\</OutDir>
     <TargetName>$(ProjectName)$(Configuration)</TargetName>
-    <IncludePath>$(SolutionDir)libs\glm\include;$(SolutionDir)libs\glfw\include;$(SolutionDir)libs\glad\include;$(SolutionDir)libs\stb_image\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libs\glm\include;$(SolutionDir)libs\glfw\include;$(SolutionDir)libs\glad\include;$(SolutionDir)libs\stb_image\include;$(SolutionDir)libs\imgui;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)libs\glfw\lib;$(LibraryPath)</LibraryPath>
     <_PropertySheetDisplayName>IGProjects</_PropertySheetDisplayName>
     <LocalDebuggerEnvironment>PATH=$(SolutionDir)libs\glfw\bin;$(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>

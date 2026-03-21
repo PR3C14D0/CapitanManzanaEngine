@@ -41,6 +41,8 @@ private:
 	float _pitch = 0.0f;	// Respecto al eje x (desde un lado)
 	float _lastX = 0.0f;
 	float _lastY = 0.0f;
+
+	bool _firstMove = true; // Si es la primera vez que se mueve para que no se mueva muy brusco pone el offset del raton a 0
 public:
 	Camera();
 
@@ -51,6 +53,9 @@ public:
 	/// @brief La matriz de vista de la camara
 	/// @return La matriz de vista
 	glm::mat4 viewMatrix() { return _view; }
+
+	/// @brief Se encarga de construir la matriz de proyeccion de dependiedo de los parametros
+	void buildProjectionMat();
 
 	/// @brief Establece la matriz de vista
 	/// @param view La nueva matriz
@@ -70,10 +75,10 @@ public:
 		_view = glm::lookAt(_cameraPos, _cameraPos + _cameraDirection, _cameraUp);
 	}
 
-private:
-	/// @brief Se encarga de construir la matriz de proyeccion de dependiedo de los parametros
-	void buildProjectionMat();
+	/// @brief Establece que que es la primera vez que se mueve la camara
+	void firstMove() { _firstMove = true; }
 
+private:
 	/// @brief Manda a la gpu la matriz de proyeccion
 	/// @param shader El shader objetivo a modificar
 	void uploadProjectionToGPU(Shader* shader);

@@ -49,6 +49,11 @@ void Camera::uploadViewToGPU(Shader* shader, glm::mat4 model) {
 }
 
 void Camera::setCameraLookAt(float xpos, float ypos) {
+	if (_firstMove) {
+		_lastX = xpos;
+		_lastY = ypos;
+		_firstMove = false;
+	}
 
 	float xoffset = xpos - _lastX;
 	float yoffset = _lastY - ypos; // reversed: y ranges bottom to top

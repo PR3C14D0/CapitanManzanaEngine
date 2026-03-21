@@ -5,6 +5,10 @@
 #include <glm/vec4.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+
 #include "GLApplication.h"
 #include <utils/logger.h>
 
@@ -21,6 +25,10 @@ GLApplication::~GLApplication() {
 	if (SceneManager::HasInstance()) {
 		SceneManager::Release();
 	}
+
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 
 	glfwTerminate();
 }
@@ -46,15 +54,27 @@ bool GLApplication::init() {
 		return false;
 	}
 
+	// Init viewPort
 	glViewport(0, 0, 800, 600);
 	glfwSetFramebufferSizeCallback(_window, [](GLFWwindow* window, int width, int height) {
 		glViewport(0, 0, width, height);
+		gla()._width = width;
+		gla()._height = height;
+
+		sceneM().activeScene()->getCamera()->buildProjectionMat();
 	});
 
 	if (!loadManagers()) return false;
 
-	glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPosCallback(_window, mouseCallback);
+
+	//Init Imgui
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	ImGui::StyleColorsDark();
+	ImGui_ImplGlfw_InitForOpenGL(_window, true);
+	ImGui_ImplOpenGL3_Init("#version 330");
 
 	return true;
 }
@@ -88,6 +108,17 @@ void GLApplication::start() {
 		sceneM().update();
 		sceneM().render();
 
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+
+		ImGui::Begin("Inspector");
+		ImGui::Text("Holaaa soy samu");
+		ImGui::End();
+
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 		glfwSwapBuffers(_window);
 		glfwPollEvents();
 
@@ -106,21 +137,38 @@ void GLApplication::processInput(GLFWwindow* window, Camera* cam)
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
 
-	const float cameraSpeed = 2.5f * _deltaTime; // adjust accordingly
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		cameraPos += cameraSpeed * cameraFront;
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		cameraPos -= cameraSpeed * cameraFront;
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) *
-		cameraSpeed;
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) *
-		cameraSpeed;
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
+		if (_glaState == GLA_MODE_NORMAL) {
+			cam->firstMove();
+		}
+
+		_glaState = GLA_MODE_MOVING;
+
+		glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+		const float cameraSpeed = 2.5f * _deltaTime; // adjust accordingly
+		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+			cameraPos += cameraSpeed * cameraFront;
+		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+			cameraPos -= cameraSpeed * cameraFront;
+		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+			cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) *
+			cameraSpeed;
+		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+			cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) *
+			cameraSpeed;
+	}
+
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_RELEASE) {
+		_glaState = GLA_MODE_NORMAL;
+		glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	}
 
 	cam->setPosition(cameraPos);
 }
 
 void GLApplication::mouseCallback(GLFWwindow* window, double xpos, double ypos) {
-	sceneM().activeScene()->getCamera()->setCameraLookAt(xpos, ypos);
+	if (gla()._glaState == GLA_MODE_MOVING) {
+		sceneM().activeScene()->getCamera()->setCameraLookAt(xpos, ypos);
+	}
 }
