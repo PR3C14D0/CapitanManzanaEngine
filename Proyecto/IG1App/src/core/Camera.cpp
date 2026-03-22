@@ -87,3 +87,7 @@ void Camera::setCameraLookAt(float xpos, float ypos) {
 	_cameraDirection = glm::normalize(direction);
 
 }
+
+void Camera::onResize(float w, float h) {
+	_projection = glm::perspective(glm::radians(_fov), w / h, _nearDistance, _farDistance);
+}

@@ -22,7 +22,9 @@ GLApplication::~GLApplication() {
 	if (SceneManager::HasInstance()) {
 		SceneManager::Release();
 	}
+
 	delete _interface;
+	glfwDestroyWindow(_window);
 	glfwTerminate();
 }
 
@@ -107,7 +109,13 @@ void GLApplication::start() {
 		glEnable(GL_DEPTH_TEST);
 
 		sceneM().update();
+
+		// Se hace bind y un bind para que se renderice en el FBO
+		_interface->bind();
 		sceneM().render();
+		_interface->unbind();
+
+		// Se renderiza la interfaz
 		_interface->render();
 
 		glfwSwapBuffers(_window);

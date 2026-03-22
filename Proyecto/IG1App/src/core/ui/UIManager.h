@@ -18,6 +18,9 @@ namespace capiEngine::ui {
 		bool initCoreUI(GLFWwindow* window);
 
 		void render() const;
+
+		void bind() const;
+		void unbind() const;
 	private:
 		bool initImgui(GLFWwindow* window);
 
@@ -27,7 +30,7 @@ namespace capiEngine::ui {
 			auto window = std::make_unique<T>(std::forward<Args>(args)...);
 			T* ptr = window.get();
 
-			constexpr capiEngine::ui::groupID id = static_cast<capiEngine::ui::groupID>(capiEngine::ui::getWindowID<T>);
+			constexpr capiEngine::ui::windowGroupID id = static_cast<capiEngine::ui::windowGroupID>(capiEngine::ui::getWindowID<T>);
 			_windows[id] = std::move(window);
 			return ptr;
 		}

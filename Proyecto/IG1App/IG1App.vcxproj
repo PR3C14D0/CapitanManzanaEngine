@@ -85,6 +85,7 @@ if %errorlevel% leq 7 exit 0</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\ui\windows\ConsoleWindow.cpp" />
     <ClCompile Include="external\imgui\imgui.cpp" />
     <ClCompile Include="external\imgui\imgui_demo.cpp" />
     <ClCompile Include="external\imgui\imgui_draw.cpp" />
@@ -92,6 +93,7 @@ if %errorlevel% leq 7 exit 0</Command>
     <ClCompile Include="external\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="external\imgui\imgui_tables.cpp" />
     <ClCompile Include="external\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\core\ui\windows\SceneWindow.cpp" />
     <ClCompile Include="src\component\MeshRenderer.cpp" />
     <ClCompile Include="src\core\ui\UIManager.cpp" />
     <ClCompile Include="src\core\Scene.cpp" />
@@ -111,8 +113,10 @@ if %errorlevel% leq 7 exit 0</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\core\ui\windows\ViewportWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\ui\windows\ConsoleWindow.h" />
     <ClInclude Include="external\imgui\imconfig.h" />
     <ClInclude Include="external\imgui\imgui.h" />
     <ClInclude Include="external\imgui\imgui_impl_glfw.h" />
@@ -122,6 +126,7 @@ if %errorlevel% leq 7 exit 0</Command>
     <ClInclude Include="external\imgui\imstb_rectpack.h" />
     <ClInclude Include="external\imgui\imstb_textedit.h" />
     <ClInclude Include="external\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\core\ui\windows\SceneWindow.h" />
     <ClInclude Include="src\component\MeshRenderer.h" />
     <ClInclude Include="src\component\Transform.h" />
     <ClInclude Include="src\core\Camera.h" />
@@ -144,6 +149,7 @@ if %errorlevel% leq 7 exit 0</Command>
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\utils\logger.h" />
     <ClInclude Include="src\utils\Singleton.h" />
+    <ClInclude Include="src\core\ui\windows\ViewportWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

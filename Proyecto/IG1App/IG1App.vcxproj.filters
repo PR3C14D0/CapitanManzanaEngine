@@ -24,6 +24,9 @@
     <ClCompile Include="external\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\core\ui\UIManager.cpp" />
     <ClCompile Include="src\core\ui\windows\InspectorWindow.cpp" />
+    <ClCompile Include="src\core\ui\windows\ViewportWindow.cpp" />
+    <ClCompile Include="src\core\ui\windows\SceneWindow.cpp" />
+    <ClCompile Include="src\core\ui\windows\ConsoleWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Camera.h" />
@@ -57,5 +60,8 @@
     <ClInclude Include="src\core\ui\Window.h" />
     <ClInclude Include="src\core\ui\UIGroups.h" />
     <ClInclude Include="src\core\ui\windows\InspectorWindow.h" />
+    <ClInclude Include="src\core\ui\windows\ViewportWindow.h" />
+    <ClInclude Include="src\core\ui\windows\SceneWindow.h" />
+    <ClInclude Include="src\core\ui\windows\ConsoleWindow.h" />
   </ItemGroup>
 </Project>

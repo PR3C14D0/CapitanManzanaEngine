@@ -62,6 +62,11 @@ public:
 	/// @param yOffset El desplazamiento en el eje Y del raton en ese frame
 	void setCameraLookAt(float xOffset, float yOffset);
 
+	/// @brief Cuando se hace resize del viewport
+	/// @param w El nuevo width
+	/// @param h  El nuevo height
+	void onResize(float w, float h);
+
 	const glm::vec3& getPosition() const { return _cameraPos; }
 	const glm::vec3& getCameraFront() const { return _cameraDirection; }
 	const glm::vec3& getCameraUp() const { return _cameraUp; }
