@@ -111,10 +111,20 @@ namespace ec
 			s.beginArray("components");
 			size_t numComp = s.getArraySize();
 			for (size_t k = 0; k < numComp; k++) {
+				s.enterElement(k);
 				std::string compKey = s.readString("type");
 				auto comp = cme::ComponentRegistry::create(compKey);
+				if (!comp) {
+					LOG_ERROR(std::format("El componente es nulo, la key no existe. KEY: {}", compKey));
+					continue;
+				}
+
 				this->addComponent(comp);
+				s.beginScope("data");
 				comp->deserialize(s);
+				s.endScope();
+
+				s.endScope();
 			}
 			s.endScope(); // Salimos de los componentes
 		}
@@ -165,7 +175,25 @@ namespace ec
 		/// @brief Añade un componente ya creado a la entidad, para Deserialización
 		/// @param component El puntero al componente ya instanciado
 		void addComponent(ec::Component* component) {
-			
+			if (!component) return;
+
+			ec::cmpID_t id = component->getID();
+
+			// Borrar si ya existe
+			delete _components[id];
+			_components[id] = component;
+
+			// Registrar en render/update si aplica
+			if (auto* r = component->getAsRender()) {
+				_renderComponents.push_back(r);
+			}
+			if (auto* u = component->getAsUpdate()) {
+				_updateComponents.push_back(u);
+				u->setUpdateIterator(std::prev(_updateComponents.end()));
+			}
+
+			component->setContext(this);
+			component->initComponent();
 		}
 
 		/// @brief Quitar un componente de la entidad

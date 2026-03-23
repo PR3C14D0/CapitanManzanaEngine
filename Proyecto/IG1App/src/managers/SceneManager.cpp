@@ -28,11 +28,12 @@ void SceneManager::render() const {
 }
 
 void SceneManager::loadScenes(std::string& path) {
-	/*cme::JsonSerializer serializer;
+	cme::JsonSerializer serializer;
 	serializer.load(path);
-	_currentScene->deserialize(serializer);*/
+	if (_currentScene) delete _currentScene;
 
-	_currentScene = new Scene("Main");
+	_currentScene = new Scene("");
+	_currentScene->deserialize(serializer);
 }
 
 void SceneManager::saveActiveScene(std::string& path) const{

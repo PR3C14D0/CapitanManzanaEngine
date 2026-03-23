@@ -38,5 +38,26 @@ namespace ec
 		};
 		constexpr groupID_t maxGroupLayer = NUM_GROUP;
 	}
+
+	class RenderComponent;
+	class UpdateComponent;
+
+	template<typename T>
+	inline RenderComponent* tryGetAsRender(T* self) {
+		if constexpr (std::is_base_of_v<RenderComponent, T>)
+			return static_cast<RenderComponent*>(self);
+		return nullptr;
+	}
+
+	template<typename T>
+	inline UpdateComponent* tryGetAsUpdate(T* self) {
+		if constexpr (std::is_base_of_v<UpdateComponent, T>)
+			return static_cast<UpdateComponent*>(self);
+		return nullptr;
+	}
 }
-#define __CMPID_DECL__(cId) constexpr static ec::cmpID_t id = cId;
+
+#define __CMPID_DECL__(cId) constexpr static ec::cmpID_t id = cId; \
+	ec::cmpID_t getID() const override { return id; } \
+	ec::RenderComponent* getAsRender() override { return ec::tryGetAsRender(this); } \
+    ec::UpdateComponent* getAsUpdate() override { return ec::tryGetAsUpdate(this); }

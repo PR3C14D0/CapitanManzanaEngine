@@ -126,10 +126,16 @@ namespace cme::ui {
 		{
 			if (ImGui::BeginMenu("File"))
 			{
-				if (ImGui::MenuItem("Save", "Ctrl+S")) {
+				if (ImGui::MenuItem("Save Scene", "Ctrl+S")) {
 					FileExplorer fe;
 					std::string path = fe.fileDialog(FileDialogMode::Save);
 					sceneM().saveActiveScene(path);
+				}
+
+				if (ImGui::MenuItem("Open Scene", "Ctrl+O")) {
+					FileExplorer fe;
+					std::string path = fe.fileDialog(FileDialogMode::Open);
+					sceneM().loadScenes(path);
 				}
 				ImGui::EndMenu();
 			}
@@ -141,6 +147,14 @@ namespace cme::ui {
 				if (ImGui::MenuItem("Cut", "Ctrl+X")) {}
 				if (ImGui::MenuItem("Copy", "Ctrl+C")) {}
 				if (ImGui::MenuItem("Paste", "Ctrl+V")) {}
+				ImGui::EndMenu();
+			}
+
+			if (ImGui::BeginMenu("GameObject"))
+			{
+				if (ImGui::MenuItem("Cube")) {
+					_createCubeCallback();
+				}
 				ImGui::EndMenu();
 			}
 			ImGui::EndMainMenuBar();

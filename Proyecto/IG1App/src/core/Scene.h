@@ -40,6 +40,8 @@ public:
 	/// @brief Crea la cuadricula en el plano y = 0
 	void createGrid();
 
+	void addCubeToScene();
+
 	/// @brief permite añadir objetos a la escena
 	/// @param grID Grupo al que añadir al objeto creado
 	ec::entity_t addGameObject(Scene* scene, std::string name, ec::ent::groupID grID = ec::ent::None);

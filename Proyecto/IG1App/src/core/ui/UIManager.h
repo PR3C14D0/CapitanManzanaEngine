@@ -3,6 +3,7 @@
 #include <core/ui/UIGroups.h>
 #include <vector>
 #include <memory>
+#include <functional>
 
 namespace cme::ui {
 	class Window;
@@ -12,6 +13,7 @@ namespace cme::ui {
 	{
 	private:
 		std::vector<std::unique_ptr<Window>> _windows;
+		std::function<void()> _createCubeCallback;
 	public:
 		UIManager();
 		~UIManager();
@@ -21,6 +23,8 @@ namespace cme::ui {
 
 		void bind() const;
 		void unbind() const;
+
+		void setCreateCubeCallback(std::function<void()> call) { _createCubeCallback = call; }
 	private:
 		bool initImgui(GLFWwindow* window);
 		void renderMenuBar() const;

@@ -46,7 +46,7 @@ namespace ec
 		inline virtual void initComponent() {}
 
 		inline virtual void start() {}
-
+		virtual ec::cmpID_t getID() const = 0;
 		virtual std::string serializeID() const = 0;
 
 		virtual void serialize(cme::JsonSerializer& s) const = 0;
@@ -65,7 +65,6 @@ namespace ec
 	public:
 		virtual ~RenderComponent() {}
 		virtual void render() const = 0;
-		virtual std::string serializeID() const = 0;
 	};
 
 	/// @brief Componente de update
@@ -78,6 +77,5 @@ namespace ec
 
 		inline UpdateIterator& getUpdateIterator() { return _updateIterator; } // deberia haber aqui un assert
 		void setUpdateIterator(UpdateIterator it) { _updateIterator = it; }
-		virtual std::string serializeID() const = 0;
 	};
 }

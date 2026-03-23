@@ -6,6 +6,7 @@
 #include <component/Transform.h>
 #include <component/MeshRenderer.h>
 #include <core/mesh/QuadMesh.h>
+#include <core/mesh/CubeMesh.h>
 
 Scene::Scene(std::string name) : _name(name) {
 	_cam = new Camera();
@@ -90,6 +91,18 @@ void Scene::createGrid() {
 	gridEntity->addComponent<MeshRenderer>(new QuadMesh(gridShader));
 }
 
+void Scene::addCubeToScene() {
+	auto c =addGameObject(this, "Cube", ec::ent::None);
+	auto tr = c->addComponent<Transform>();
+	tr->setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+	tr->setScale(glm::vec3(1.0f, 1.0f, 1.0f));
+	tr->setRotation(glm::vec3(0.0f, 0.0f, 0.0f));
+
+	c->addComponent<MeshRenderer>(new CubeMesh(rscrM().getShader("default")));
+}
+
+// --------- SERIALIZACION ------------
+
 void Scene::serialize(cme::JsonSerializer& s) const {
 	s.write("name", _name);
 	s.beginArray("entities_groups");
@@ -126,7 +139,6 @@ void Scene::deserialize(cme::JsonSerializer& s) {
 			s.enterElement(j);
 			std::string entityName = s.readString("name");
 			auto ent = addGameObject(this, entityName, (ec::ent::groupID)grpID);
-
 			ent->deserialize(s);
 
 			s.endScope(); // Salimos de la entidad j

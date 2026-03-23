@@ -104,8 +104,14 @@ bool GLApplication::loadManagers() {
 		return false;
 	}
 
+	// Registrar Componentes
 	cme::ComponentRegistry::registerComponent<Transform>("Transform");
 	cme::ComponentRegistry::registerComponent<MeshRenderer>("MeshRenderer");
+
+	// Registrar Callbacks interfaz
+	_interface->setCreateCubeCallback([]() {
+		sceneM().activeScene()->addCubeToScene();
+	});
 
 	return true;
 }
