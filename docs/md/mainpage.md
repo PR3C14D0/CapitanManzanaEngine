@@ -10,6 +10,9 @@ Aquí se muestra una lista de apuntes de OpenGL que he ido haciendo
 * [3. Shaders](@ref shaders)
 * [4. Transformaciones Vectoriales](@ref transf)
 
+## Características del motor
+
+1. [Serializacion](@ref serialz)
 
 ---
 *Nota: Recuerda guardar este archivo con codificación UTF-8 para que las tildes se vean bien.*\n

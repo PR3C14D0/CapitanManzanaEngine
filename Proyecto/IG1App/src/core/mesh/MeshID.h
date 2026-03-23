@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-namespace capiEngine {
+namespace cme {
 	using meshID_t = uint8_t;
 	enum meshID : meshID_t
 	{

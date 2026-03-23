@@ -1,6 +1,6 @@
 #include "ConsoleWindow.h"
 
-namespace capiEngine::ui {
+namespace cme::ui {
 	void ConsoleWindow::renderWindowContent() {
         if (ImGui::Button("Clear")) {
             const_cast<ConsoleWindow*>(this)->_logs.clear();

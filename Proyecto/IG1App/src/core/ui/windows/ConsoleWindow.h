@@ -3,13 +3,13 @@
 #include <string>
 #include <vector>
 
-namespace capiEngine::ui {
+namespace cme::ui {
 	class ConsoleWindow : public Window
 	{
 	private:
 		std::vector<std::string> _logs;
 	public:
-		WINDOW_ID(capiEngine::ui::windowGroupID::CONSOLE)
+		WINDOW_ID(cme::ui::windowGroupID::CONSOLE)
 		ConsoleWindow(const char* name, ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse) :
 			Window(name, flags) { }
 

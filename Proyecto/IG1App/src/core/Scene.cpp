@@ -82,14 +82,58 @@ void Scene::createGrid() {
 	// 2. Crear la entidad
 	ec::entity_t gridEntity = addGizmos();
 
-	// 3. Añadirle el Transform (escala grande, ej. 100x100)
 	auto tr = gridEntity->addComponent<Transform>();
 	tr->setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-	tr->setScale(glm::vec3(500.0f, 1.0f, 500.0f)); // Un plano muy grande
+	tr->setScale(glm::vec3(500.0f, 500.0f, 1.0f)); // Un plano muy grande
 	tr->setRotation(glm::vec3(-90.0f, 0.0f, 0.0f)); // Rotarlo para que acueste en Y=0 (depende de tu QuadMesh)
 
-	// 4. Añadir tu QuadMesh
 	gridEntity->addComponent<MeshRenderer>(new QuadMesh(gridShader));
-	//gridShader->setUniform("model", tr->getModelMatrix());
-	//gridShader->setUniform("cameraPos", _cam->getPosition());
+}
+
+void Scene::serialize(cme::JsonSerializer& s) const {
+	s.write("name", _name);
+	s.beginArray("entities_groups");
+	for (int i = 0; i < ec::ent::maxGroupLayer; i++) {
+		s.pushObjectToArray();
+		s.write("group", i);
+		s.beginArray("entities");
+		for (ec::entity_t gObj : _gameObjectsByGroup[i]) {
+			gObj->serialize(s);
+		}
+		s.endScope(); // El del array de entidades
+	}
+
+	s.endScope(); // El array de grupos
+}
+
+void Scene::deserialize(cme::JsonSerializer& s) {
+	_name = s.readString("name");
+	s.beginArray("entities_groups");
+	size_t numGroups = s.getArraySize();
+
+	if (numGroups >= ec::ent::maxGroupLayer) {
+		LOG_ERROR("Hay mas grupos de entidades de los permitidos en el archivo de escena a cargar");
+		return;
+	}
+
+	for (size_t i = 0; i < numGroups; i++) {
+		s.enterElement(i);
+		ec::groupID_t grpID = s.readInt("group");
+		s.beginArray("entities");
+
+		size_t numEntities = s.getArraySize();
+		for (size_t j = 0; j < numEntities; j++) {
+			s.enterElement(j);
+			std::string entityName = s.readString("name");
+			auto ent = addGameObject(this, entityName, (ec::ent::groupID)grpID);
+
+			ent->deserialize(s);
+
+			s.endScope(); // Salimos de la entidad j
+		}
+		s.endScope(); // Salimos del array entities
+		s.endScope(); // Salimos del grupo 1
+	}
+
+	s.endScope();
 }

@@ -4,7 +4,7 @@
 #include <sstream>
 #include <utils/Singleton.h>
 
-namespace capiEngine {
+namespace cme {
     /// @brief Se encarga de mandar mensajes a la consola y a la ventana "ConsoleWindow" del motor
     class Logger : public Singleton<Logger> {
         friend class Singleton<Logger>;
@@ -34,27 +34,27 @@ namespace capiEngine {
     };
 }
 
-inline capiEngine::Logger& logger() {
-    return *capiEngine::Logger::Instance();
+inline cme::Logger& logger() {
+    return *cme::Logger::Instance();
 }
 
 // Manda un mensaje a la consola
 #define LOG_INFO(x) { \
     std::ostringstream _ss; _ss << "[INFO] " << x; \
     std::cout << _ss.str() << std::endl; \
-    if (capiEngine::Logger::HasInstance()) logger().send(_ss.str()); \
+    if (cme::Logger::HasInstance()) logger().send(_ss.str()); \
 }
 
 // Manda un aviso a la consola
 #define LOG_WARN(x) { \
     std::ostringstream _ss; _ss << "[WARN] " << x << " (" << __FILE__ << ":" << __LINE__ << ")"; \
     std::cout << "\033[33m" << _ss.str() << "\033[0m" << std::endl; \
-    if (capiEngine::Logger::HasInstance()) logger().send(_ss.str()); \
+    if (cme::Logger::HasInstance()) logger().send(_ss.str()); \
 }
 
 // Manda un error a la consola
 #define LOG_ERROR(x) { \
     std::ostringstream _ss; _ss << "[ERROR] " << x << " (" << __FILE__ << ":" << __LINE__ << ")"; \
     std::cerr << "\033[31m" << _ss.str() << "\033[0m" << std::endl; \
-    if (capiEngine::Logger::HasInstance()) logger().send(_ss.str()); \
+    if (cme::Logger::HasInstance()) logger().send(_ss.str()); \
 }

@@ -2,13 +2,13 @@
 #include <core/ui/Window.h>
 #include <ec/entity.h>
 
-namespace capiEngine::ui {
+namespace cme::ui {
 	class SceneWindow : public Window
 	{
 	private:
 		std::function<void(ec::entity_t)> _selectedEntCallback = nullptr;
 	public:
-		WINDOW_ID(capiEngine::ui::windowGroupID::SCENE)
+		WINDOW_ID(cme::ui::windowGroupID::SCENE)
 
 		SceneWindow(const char* name, ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse) :
 			Window(name, flags) {

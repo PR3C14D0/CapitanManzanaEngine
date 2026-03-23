@@ -14,6 +14,10 @@
 #include <core/Camera.h>
 #include <core/ui/UIManager.h>
 
+#include <core/register/ComponentRegistry.h>
+#include <component/Transform.h>
+#include <component/MeshRenderer.h>
+
 GLApplication::~GLApplication() {
 	if (ResourceManager::HasInstance()) {
 		ResourceManager::Release();
@@ -23,8 +27,8 @@ GLApplication::~GLApplication() {
 		SceneManager::Release();
 	}
 
-	if (capiEngine::Logger::HasInstance()) {
-		capiEngine::Logger::Release();
+	if (cme::Logger::HasInstance()) {
+		cme::Logger::Release();
 	}
 
 	delete _interface;
@@ -89,22 +93,26 @@ bool GLApplication::loadManagers() {
 		return false;
 	}
 
-	if (!capiEngine::Logger::Init()) {
+	if (!cme::Logger::Init()) {
 		LOG_ERROR("Error al inicializar el Logger");
 		return false;
 	}
 
-	_interface = new capiEngine::ui::UIManager();
+	_interface = new cme::ui::UIManager();
 	if (!_interface->initCoreUI(_window)) {
 		LOG_ERROR("Error al inicializar la interfaz del motor");
 		return false;
 	}
 
+	cme::ComponentRegistry::registerComponent<Transform>("Transform");
+	cme::ComponentRegistry::registerComponent<MeshRenderer>("MeshRenderer");
+
 	return true;
 }
 
 void GLApplication::start() {
-	sceneM().loadScenes();
+	std::string name = "";
+	sceneM().loadScenes(name);
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

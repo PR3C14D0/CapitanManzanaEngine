@@ -3,13 +3,19 @@
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
+
 #include <core/ui/Window.h>
 #include <core/ui/windows/InspectorWindow.h>
 #include <core/ui/windows/ViewportWindow.h>
 #include <core/ui/windows/SceneWindow.h>
 #include <core/ui/windows/ConsoleWindow.h>
+
+#include <managers/SceneManager.h>
+
 #include <utils/logger.h>
-namespace capiEngine::ui {
+#include <utils/FileExplorer.h>
+
+namespace cme::ui {
 	UIManager::UIManager() {
 		_windows.resize(windowGroupID::NUM_GROUP);
 
@@ -83,8 +89,6 @@ namespace capiEngine::ui {
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		// RENDER DE LOS PANELES
-
 		ImGuiViewport* viewport = ImGui::GetMainViewport();
 		ImGui::SetNextWindowPos(viewport->Pos);
 		ImGui::SetNextWindowSize(viewport->Size);
@@ -104,10 +108,29 @@ namespace capiEngine::ui {
 		ImGui::Begin("DockSpace", nullptr, flags);
 		ImGui::PopStyleVar();
 		ImGui::DockSpace(ImGui::GetID("MainDockSpace"));
+
+		renderMenuBar();
+
+		ImGui::End();
+
+		for (auto& win : _windows) {
+			if (win) win->render();
+		}
+
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+	}
+
+	void UIManager::renderMenuBar() const {
 		if (ImGui::BeginMainMenuBar())
 		{
 			if (ImGui::BeginMenu("File"))
 			{
+				if (ImGui::MenuItem("Save", "Ctrl+S")) {
+					FileExplorer fe;
+					std::string path = fe.fileDialog(FileDialogMode::Save);
+					sceneM().saveActiveScene(path);
+				}
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Edit"))
@@ -122,13 +145,5 @@ namespace capiEngine::ui {
 			}
 			ImGui::EndMainMenuBar();
 		}
-		ImGui::End();
-
-		for (auto& win : _windows) {
-			if (win) win->render();
-		}
-
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 }

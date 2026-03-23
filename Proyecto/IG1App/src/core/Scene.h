@@ -3,11 +3,12 @@
 #include <vector>
 #include <functional>
 #include <ec/ec.h>
+#include <core/serialize/Serializable.h>
 #include <string>
 
 class Camera;
 
-class Scene
+class Scene : public cme::Serializable
 {
 private:
 	/// @param gameObjectsByLayer vectores de objetos según la layer a la que pertencen
@@ -48,5 +49,8 @@ public:
 	Camera* getCamera() { return _cam; }
 
 	std::string name() { return _name; }
+
+	void serialize(cme::JsonSerializer& s) const override;
+	void deserialize(cme::JsonSerializer& s) override;
 };
 

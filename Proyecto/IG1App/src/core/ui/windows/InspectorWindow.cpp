@@ -8,7 +8,7 @@
 #include <core/Camera.h>
 #include <component/Transform.h>
 
-namespace capiEngine::ui {
+namespace cme::ui {
 	void InspectorWindow::renderWindowContent() {
 		if (_selectedEnt) {
 			ImGui::SeparatorText("GameObject");

@@ -6,7 +6,7 @@
 #include <functional>
 #include <string>
 
-namespace capiEngine::ui {
+namespace cme::ui {
 	/// @brief Interfaz para crear ventanas y añadirlas al render del CoreUI
 	class Window
 	{

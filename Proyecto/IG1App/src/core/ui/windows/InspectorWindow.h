@@ -2,13 +2,13 @@
 #include <core/ui/Window.h>
 #include <ec/entity.h>
 
-namespace capiEngine::ui {
+namespace cme::ui {
 	class InspectorWindow : public Window
 	{
 	private:
 		ec::entity_t _selectedEnt = nullptr;
 	public:
-		WINDOW_ID(capiEngine::ui::windowGroupID::INSPECTOR)
+		WINDOW_ID(cme::ui::windowGroupID::INSPECTOR)
 		InspectorWindow(const char* name, ImGuiWindowFlags flags = ImGuiWindowFlags_NoCollapse) :
 			Window(name, flags) {}
 

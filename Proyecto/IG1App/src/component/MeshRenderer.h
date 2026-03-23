@@ -1,12 +1,12 @@
 #pragma once
 #include <ec/component.h>
-#include <core/serialize/Serializable.h>
+#include <string>
 
 class Mesh;
 class Camera;
 class Transform;
 
-class MeshRenderer : public ec::Component, public ec::RenderComponent, public capiEngine::Serializable {
+class MeshRenderer : public ec::Component, public ec::RenderComponent {
 private:
 	Mesh* _mesh = nullptr;
 	Camera* _cam = nullptr;
@@ -22,6 +22,8 @@ public:
 
 	void initComponent() override;
 
-	virtual void serialize(capiEngine::JsonSerializer& s) const override;
-	virtual void deserialize(capiEngine::JsonSerializer& s) override;
+	void serialize(cme::JsonSerializer& s) const override;
+	void deserialize(cme::JsonSerializer& s) override;
+
+	std::string serializeID() const override { return "MeshRenderer"; }
 };

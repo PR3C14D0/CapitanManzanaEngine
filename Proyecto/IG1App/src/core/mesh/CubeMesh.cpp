@@ -5,7 +5,7 @@ CubeMesh::CubeMesh() {
 	generateMesh();
 	initBuffers();
 
-	_id = capiEngine::CUBE;
+	_id = cme::CUBE;
 }
 
 CubeMesh::CubeMesh(Shader* shader) : CubeMesh() {

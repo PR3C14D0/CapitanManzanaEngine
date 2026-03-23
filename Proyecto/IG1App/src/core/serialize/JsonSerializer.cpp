@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-namespace capiEngine {
+namespace cme {
 	JsonSerializer::JsonSerializer() {
 		_scope = &_data;
 	}
@@ -42,6 +42,25 @@ namespace capiEngine {
 		_scope->push_back(json::object());
 		_scopeStack.push(&_scope->back());
 		_scope = _scopeStack.top();
+	}
+
+	// ---- Métodos para iterar Arrays en Lectura ----
+	size_t JsonSerializer::getArraySize() const {
+		if (_scope && _scope->is_array()) {
+			return _scope->size();
+		}
+		return 0;
+	}
+
+	void JsonSerializer::enterElement(size_t index) {
+		if (_scope && _scope->is_array() && index < _scope->size()) {
+			// Metemos el elemento [index] en la pila para que sea nuestro nuevo scope
+			_scopeStack.push(&(*_scope)[index]);
+			_scope = _scopeStack.top();
+		}
+		else {
+			LOG_WARN(std::format("Intentando acceder a un indice invalido o el scope no es un array (indice: {})", index));
+		}
 	}
 
 	void JsonSerializer::save(const std::string& path) const {

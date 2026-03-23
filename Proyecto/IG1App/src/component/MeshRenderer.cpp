@@ -31,11 +31,11 @@ void MeshRenderer::initComponent() {
 	assert(_tr != nullptr);
 }
 
-void MeshRenderer::serialize(capiEngine::JsonSerializer& s) const {
+void MeshRenderer::serialize(cme::JsonSerializer& s) const {
 	s.write("mesh", (int)_mesh->id());
 }
 
-void MeshRenderer::deserialize(capiEngine::JsonSerializer& s) {
+void MeshRenderer::deserialize(cme::JsonSerializer& s) {
 	int meshID = s.readInt("mesh");
 	if (meshID == 1) {
 		_mesh = new TriangleMesh(rscrM().getShader("default"));

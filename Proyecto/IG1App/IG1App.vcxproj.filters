@@ -69,5 +69,7 @@
     <ClInclude Include="src\core\serialize\JsonSerializer.h" />
     <ClInclude Include="src\core\serialize\Serializable.h" />
     <ClInclude Include="src\core\mesh\MeshID.h" />
+    <ClInclude Include="src\utils\FileExplorer.h" />
+    <ClInclude Include="src\core\register\ComponentRegistry.h" />
   </ItemGroup>
 </Project>

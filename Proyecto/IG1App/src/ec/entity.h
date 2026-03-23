@@ -9,12 +9,13 @@
 
 #include <core/serialize/Serializable.h>
 #include <core/serialize/JsonSerializer.h>
+#include <core/register/ComponentRegistry.h>
 
 class Scene;
 namespace ec
 {
 	class EntityManager;
-	class Entity : public capiEngine::Serializable
+	class Entity : public cme::Serializable
 	{
 	public:
 		Entity(ent::groupID groupID, Scene* _scenePtr, std::string name)
@@ -82,12 +83,40 @@ namespace ec
 			}
 		}
 
-		void serialize(capiEngine::JsonSerializer& s) const {
-			
+		void serialize(cme::JsonSerializer& s) const {
+			// 1. Añadimos una nueva entidad al array de entidades
+			s.pushObjectToArray();
+			// 2. Guardamos sus datos básicos
+			s.write("name", this->_name); // Asumiendo que tu entidad tiene nombre
+			// 3. Abrimos el array de componentes
+			s.beginArray("components");
+			for (auto component : _components) {
+				if (!component) continue;
+				// Por cada componente, metemos un nuevo objeto en el array
+				s.pushObjectToArray();
+				s.write("type", component->serializeID());
+
+				s.beginScope("data");
+				component->serialize(s); // Aquí llama al Transform, MeshRenderer, etc.
+				s.endScope();
+
+				s.endScope(); // Cerramos el objeto de este componente
+			}
+
+			s.endScope(); // Cerramos el array "components"
+			s.endScope(); // Cerramos el objeto de la entidad
 		}
 
-		void deserialize(capiEngine::JsonSerializer& s) {
-			
+		void deserialize(cme::JsonSerializer& s) {
+			s.beginArray("components");
+			size_t numComp = s.getArraySize();
+			for (size_t k = 0; k < numComp; k++) {
+				std::string compKey = s.readString("type");
+				auto comp = cme::ComponentRegistry::create(compKey);
+				this->addComponent(comp);
+				comp->deserialize(s);
+			}
+			s.endScope(); // Salimos de los componentes
 		}
 		
 		/// @brief Añadir un componente a la entidad
@@ -131,6 +160,12 @@ namespace ec
 
 			// Devolver el componente
 			return component;
+		}
+
+		/// @brief Añade un componente ya creado a la entidad, para Deserialización
+		/// @param component El puntero al componente ya instanciado
+		void addComponent(ec::Component* component) {
+			
 		}
 
 		/// @brief Quitar un componente de la entidad

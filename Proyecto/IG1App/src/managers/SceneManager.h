@@ -14,8 +14,8 @@ public:
 	void update();
 	void render() const;
 
-	void loadScenes();
-	void saveActiveScene(std::string& path);
+	void loadScenes(std::string& path);
+	void saveActiveScene(std::string& path) const;
 
 	/// @brief Devuelve la escena activa
 	/// @return Puntero a la escena

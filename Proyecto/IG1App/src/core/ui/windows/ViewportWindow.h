@@ -1,7 +1,7 @@
 #pragma once
 #include <core/ui/Window.h>
 
-namespace capiEngine::ui {
+namespace cme::ui {
 	/// @brief Ventana que se encarga de renderizar el viewport
 	class ViewportWindow : public Window
 	{
@@ -12,7 +12,7 @@ namespace capiEngine::ui {
 		float _width = 800;
 		float _height = 600;
 	public:
-		WINDOW_ID(capiEngine::ui::windowGroupID::VIEWPORT)
+		WINDOW_ID(cme::ui::windowGroupID::VIEWPORT)
 		ViewportWindow(const char* name) : Window(name) {
 			initFBO();
 		}

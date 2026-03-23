@@ -3,9 +3,9 @@
 #include <stack>
 #include <glm/vec3.hpp>
 
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
-namespace capiEngine {
+namespace cme {
 	/// @brief Se encarga de serializar en un JSON lo que sea de tipo Serializable
 	class JsonSerializer
 	{
@@ -31,6 +31,8 @@ namespace capiEngine {
 		std::string readString(const std::string& key) const;
 
 		void beginArray(const std::string& key);
+		size_t getArraySize() const;
+		void enterElement(size_t index);
 		void pushObjectToArray();
 
 		/// @brief Cambia de scope para leer o escribir en el json

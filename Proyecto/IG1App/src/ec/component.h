@@ -5,16 +5,20 @@
 #include <functional>
 #include <array>
 #include <utils/logger.h>
+#include <core/serialize/Serializable.h>
 
 class Transform;
 class Scene;
 namespace ec
 {
+	class RenderComponent;
+	class UpdateComponent;
+
 	/// @brief Declaracion adelantada, para evitar dependencia circular
-	class Component
+	class Component : public cme::Serializable
 	{
 		using Iterator = std::vector<Component*>::iterator;
-		public:
+	public:
 
 		/// @brief Constructor
 		Component() : _entity(nullptr) {
@@ -43,6 +47,13 @@ namespace ec
 
 		inline virtual void start() {}
 
+		virtual std::string serializeID() const = 0;
+
+		virtual void serialize(cme::JsonSerializer& s) const = 0;
+		virtual void deserialize(cme::JsonSerializer& s) = 0;
+
+		virtual RenderComponent* getAsRender() { return nullptr; }
+		virtual UpdateComponent* getAsUpdate() { return nullptr; }
 	};
 
 
@@ -54,6 +65,7 @@ namespace ec
 	public:
 		virtual ~RenderComponent() {}
 		virtual void render() const = 0;
+		virtual std::string serializeID() const = 0;
 	};
 
 	/// @brief Componente de update
@@ -63,7 +75,9 @@ namespace ec
 		UpdateIterator _updateIterator;
 	public:
 		virtual void update() =  0;
+
 		inline UpdateIterator& getUpdateIterator() { return _updateIterator; } // deberia haber aqui un assert
 		void setUpdateIterator(UpdateIterator it) { _updateIterator = it; }
+		virtual std::string serializeID() const = 0;
 	};
 }

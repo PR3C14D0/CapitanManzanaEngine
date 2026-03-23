@@ -4,7 +4,7 @@
 #include <utils/logger.h>
 #include <format>
 
-namespace capiEngine::ui {
+namespace cme::ui {
 	void SceneWindow::renderWindowContent() {
 		Scene* scene = sceneM().activeScene();
 		int groupId = 0;

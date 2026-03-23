@@ -28,7 +28,7 @@ protected:
 
 	glm::mat4 _model = glm::mat4(1.0f); // La matriz de modelado del mesh, que guarda su posición rotacion y escala en el mundo
 
-	capiEngine::meshID _id = capiEngine::None;
+	cme::meshID _id = cme::None;
 public:
 	/// @brief Constructor por defecto
 	Mesh() = default;
@@ -52,7 +52,7 @@ public:
 	/// @return Un puntero al shader
 	Shader* shader() { return _shader; }
 
-	capiEngine::meshID id() { return _id; }
+	cme::meshID id() { return _id; }
 protected:
 	void initBuffers();
 };

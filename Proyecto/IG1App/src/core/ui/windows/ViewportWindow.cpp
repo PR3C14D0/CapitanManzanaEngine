@@ -5,7 +5,7 @@
 #include <core/Scene.h>
 #include <core/Camera.h>
 
-namespace capiEngine::ui {
+namespace cme::ui {
 	ViewportWindow::~ViewportWindow() {
 		glDeleteFramebuffers(1, &_fbo);
 		glDeleteTextures(1, &_texture);

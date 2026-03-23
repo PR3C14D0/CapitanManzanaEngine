@@ -2,7 +2,7 @@
 #include <cstdint>
 #define UI_WINDOW_GROUP_LIST INSPECTOR, VIEWPORT, SCENE, CONSOLE, NUM_GROUP
 
-namespace capiEngine::ui {
+namespace cme::ui {
 	using windowGroupID_t = uint8_t;
 	enum windowGroupID : windowGroupID_t
 	{
@@ -14,4 +14,4 @@ namespace capiEngine::ui {
 	constexpr windowGroupID_t getWindowID = T::id;
 }
 
-#define WINDOW_ID(cId) constexpr static capiEngine::ui::windowGroupID_t id = cId;
+#define WINDOW_ID(cId) constexpr static cme::ui::windowGroupID_t id = cId;

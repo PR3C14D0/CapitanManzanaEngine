@@ -5,7 +5,7 @@ QuadMesh::QuadMesh() {
 	generateMesh();
 	initBuffers();
 
-	_id = capiEngine::QUAD;
+	_id = cme::QUAD;
 }
 
 QuadMesh::QuadMesh(Shader* shader) : QuadMesh() {

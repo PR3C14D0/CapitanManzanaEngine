@@ -5,6 +5,7 @@
 #include <component/MeshRenderer.h>
 #include <core/mesh/CubeMesh.h>
 #include <managers/ResourceManager.h>
+#include <core/serialize/JsonSerializer.h>
 
 SceneManager::~SceneManager() {
 	delete _currentScene;
@@ -26,15 +27,16 @@ void SceneManager::render() const {
 	_currentScene->render();
 }
 
-void SceneManager::loadScenes() {
-	_currentScene = new Scene("Escena 1");
-	auto cube = _currentScene->addGameObject(_currentScene, "Cube");
-	auto tr = cube->addComponent<Transform>();
-	cube->addComponent<MeshRenderer>(new CubeMesh(rscrM().getShader("default")));
+void SceneManager::loadScenes(std::string& path) {
+	/*cme::JsonSerializer serializer;
+	serializer.load(path);
+	_currentScene->deserialize(serializer);*/
 
-	tr->setPosition(glm::vec3(0, 0, 0));
+	_currentScene = new Scene("Main");
 }
 
-void saveActiveScene(std::string& path) {
-
+void SceneManager::saveActiveScene(std::string& path) const{
+	cme::JsonSerializer serializer;
+	_currentScene->serialize(serializer);
+	serializer.save(path);
 }
