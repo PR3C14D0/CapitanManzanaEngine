@@ -7,6 +7,7 @@
 #define CME_STATE_VIEWPORT_MOVING 1
 
 typedef std::function<void()> shortcutCall;
+struct GLFWwindow;
 
 namespace cme {
 	/// @brief Estructurra que maneja los atajos de teclado
@@ -49,10 +50,17 @@ namespace cme {
 	public:
 		~InputManager();
 
+		/// @brief Procesa los inputs durante la ejecución
 		void proccessInput();
 
 		void addShortcut(Shortcut shortC) { _shortcuts.push_back(shortC); }
 		void addStateChanger(StateChanger changer) { _stateChangers.push_back(changer); }
+
+		/// @brief Procesa el input del raton, se llama omo callback
+		/// @param window LA ventana
+		/// @param xpos La posicion del raton en el eje X
+		/// @param ypos La posicion del raton en el eje Y
+		static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
 
 		// cannot copy/move
 		InputManager(InputManager&) = delete;

@@ -1,9 +1,6 @@
 ﻿#pragma once
 #include <utils/Singleton.h>
 
-#define GLA_MODE_NORMAL 0
-#define GLA_MODE_MOVING 1
-
 struct GLFWwindow;
 
 namespace cme {
@@ -30,7 +27,6 @@ namespace cme {
 		float _deltaTime = 0.0f;
 		float _lastFrame = 0.0f;
 
-		int _glaState = GLA_MODE_NORMAL;
 	public:
 		virtual ~GLApplication();
 
@@ -62,14 +58,6 @@ namespace cme {
 		/// @brief Carga las instancias de los managers
 		/// @return True si se carga correctamente
 		bool loadManagers();
-		/// @brief Procesa los inputs durante la ejecución
-		/// @param window La ventana de los inputs
-		void processInput(GLFWwindow* window, Camera* cam);
-		/// @brief Procesa el input del raton, se llama omo callback
-		/// @param window LA ventana
-		/// @param xpos La posicion del raton en el eje X
-		/// @param ypos La posicion del raton en el eje Y
-		static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
 	};
 
 	/// @brief Obtiene la instancia de la clase

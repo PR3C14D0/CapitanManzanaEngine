@@ -116,4 +116,10 @@ namespace cme {
 	bool InputManager::init() {
 		return true;
 	}
+
+	void InputManager::mouseCallback(GLFWwindow* window, double xpos, double ypos) {
+		if (inpM()._currentState == CME_STATE_VIEWPORT_MOVING) {
+			sceneM().activeScene()->getCamera()->setCameraLookAt(xpos, ypos);
+		}
+	}
 }

@@ -86,7 +86,7 @@ namespace cme {
 		direction.y = sin(glm::radians(_pitch));
 		direction.z = sin(glm::radians(_yaw)) * cos(glm::radians(_pitch));
 		_cameraDirection = glm::normalize(direction);
-
+		_view = glm::lookAt(_cameraPos, _cameraPos + _cameraDirection, _cameraUp);
 	}
 
 	void Camera::onResize(float w, float h) {

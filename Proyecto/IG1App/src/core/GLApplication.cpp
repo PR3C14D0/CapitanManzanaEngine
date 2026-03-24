@@ -81,7 +81,6 @@ namespace cme {
 
 			sceneM().activeScene()->getCamera()->buildProjectionMat();
 			});
-		glfwSetCursorPosCallback(_window, mouseCallback);
 
 		if (!loadManagers()) return false;
 
@@ -108,6 +107,8 @@ namespace cme {
 			LOG_ERROR("Error al inicializar el Scene Manager");
 			return false;
 		}
+
+		glfwSetCursorPosCallback(_window, inpM().mouseCallback);
 
 		_interface = new ui::UIManager();
 		if (!_interface->initCoreUI(_window)) {
@@ -136,7 +137,6 @@ namespace cme {
 
 		while (!glfwWindowShouldClose(_window))
 		{
-			//processInput(_window, sceneM().activeScene()->getCamera());
 			inpM().proccessInput();
 
 			glClearColor(0.3f, 0.3f, 0.31f, 1.0f);
@@ -161,54 +161,4 @@ namespace cme {
 			_lastFrame = currentFrame;
 		}
 	}
-
-	void GLApplication::processInput(GLFWwindow* window, Camera* cam)
-	{
-		glm::vec3 cameraPos = cam->getPosition();
-		glm::vec3 cameraFront = cam->getCameraFront();
-		glm::vec3 cameraUp = cam->getCameraUp();
-
-		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-			glfwSetWindowShouldClose(window, true);
-
-		if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
-			if (_glaState == GLA_MODE_NORMAL) {
-				cam->firstMove();
-			}
-
-			_glaState = GLA_MODE_MOVING;
-
-			glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-			float cameraSpeed = 0.0f;
-			if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-				cameraSpeed = 5.0f * _deltaTime;
-			if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE)
-				cameraSpeed = 2.5f * _deltaTime;
-
-			if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-				cameraPos += cameraSpeed * cameraFront;
-			if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-				cameraPos -= cameraSpeed * cameraFront;
-			if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-				cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-			if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-				cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) *
-				cameraSpeed;
-		}
-
-		if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_RELEASE) {
-			_glaState = GLA_MODE_NORMAL;
-			glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-		}
-
-		cam->setPosition(cameraPos);
-	}
-
-	void GLApplication::mouseCallback(GLFWwindow* window, double xpos, double ypos) {
-		if (gla()._glaState == GLA_MODE_MOVING) {
-			sceneM().activeScene()->getCamera()->setCameraLookAt(xpos, ypos);
-		}
-	}
-
 }

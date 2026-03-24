@@ -6,6 +6,10 @@
 #include <core/Camera.h>
 
 namespace cme::ui {
+    ViewportWindow::ViewportWindow(const char* name) : Window(name) {
+        initFBO();
+    }
+
 	ViewportWindow::~ViewportWindow() {
 		glDeleteFramebuffers(1, &_fbo);
 		glDeleteTextures(1, &_texture);
