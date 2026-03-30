@@ -4,9 +4,62 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ LOG\_INFO(x)\ \ std::cout\ <<\ "{}[INFO]\ "{}\ <<\ x\ <<\ std::endl}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ LOG\_WARN(x)\ \ std::cout\ <<\ "{}\(\backslash\)033[33m[WARN]\ "{}\ <<\ x\ <<\ "{}\(\backslash\)033[0m\ ("{}\ <<\ \_\_FILE\_\_\ <<\ "{}:"{}\ <<\ \_\_LINE\_\_\ <<\ "{})"{}\ <<\ std::endl}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ LOG\_ERROR(x)\ std::cerr\ <<\ "{}\(\backslash\)033[31m[ERROR]\ "{}\ <<\ x\ <<\ "{}\(\backslash\)033[0m\ ("{}\ <<\ \_\_FILE\_\_\ <<\ "{}:"{}\ <<\ \_\_LINE\_\_\ <<\ "{})"{}\ <<\ std::endl}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <utils/Singleton.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }cme\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }Logger\ :\ \textcolor{keyword}{public}\ Singleton<Logger>\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }Singleton<Logger>;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Puntero\ a\ función para\ redirigir\ los\ logs}}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ std::function<void(\textcolor{keyword}{const}\ std::string\&)>\ logCallback\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setCallback(std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::string\&)>\ cb)\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ logCallback\ =\ cb;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ clear()\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ logCallback\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ send(\textcolor{keyword}{const}\ std::string\&\ msg)\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logCallback)\ logCallback(msg);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ Logger()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \string~Logger()\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ clear();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ init()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \};}
+\DoxyCodeLine{00035\ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{classcme_1_1_logger}{cme::Logger}}\&\ logger()\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ *cme::Logger::Instance();}
+\DoxyCodeLine{00039\ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ Manda\ un\ mensaje\ a\ la\ consola}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ LOG\_INFO(x)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\ \ \ \ std::ostringstream\ \_ss;\ \_ss\ <<\ "{}[INFO]\ "{}\ <<\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\ \ \ \ std::cout\ <<\ \_ss.str()\ <<\ std::endl;\ \(\backslash\)}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\ \ \ \ if\ (cme::Logger::HasInstance())\ logger().send(\_ss.str());\ \(\backslash\)}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ Manda\ un\ aviso\ a\ la\ consola}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ LOG\_WARN(x)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\ \ \ \ std::ostringstream\ \_ss;\ \_ss\ <<\ "{}[WARN]\ "{}\ <<\ x\ <<\ "{}\ ("{}\ <<\ \_\_FILE\_\_\ <<\ "{}:"{}\ <<\ \_\_LINE\_\_\ <<\ "{})"{};\ \(\backslash\)}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\ \ \ \ std::cout\ <<\ "{}\(\backslash\)033[33m"{}\ <<\ \_ss.str()\ <<\ "{}\(\backslash\)033[0m"{}\ <<\ std::endl;\ \(\backslash\)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ if\ (cme::Logger::HasInstance())\ logger().send(\_ss.str());\ \(\backslash\)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ Manda\ un\ error\ a\ la\ consola}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ LOG\_ERROR(x)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ std::ostringstream\ \_ss;\ \_ss\ <<\ "{}[ERROR]\ "{}\ <<\ x\ <<\ "{}\ ("{}\ <<\ \_\_FILE\_\_\ <<\ "{}:"{}\ <<\ \_\_LINE\_\_\ <<\ "{})"{};\ \(\backslash\)}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \ \ \ std::cerr\ <<\ "{}\(\backslash\)033[31m"{}\ <<\ \_ss.str()\ <<\ "{}\(\backslash\)033[0m"{}\ <<\ std::endl;\ \(\backslash\)}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \ \ \ if\ (cme::Logger::HasInstance())\ logger().send(\_ss.str());\ \(\backslash\)}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\}}}
 
 \end{DoxyCode}

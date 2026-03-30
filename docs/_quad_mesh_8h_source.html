@@ -102,22 +102,23 @@ $(function(){initNavTree('_quad_mesh_8h_source.html','',''); });
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;core/Mesh.h&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span></div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="class_quad_mesh.html">    5</a></span><span class="keyword">class </span>QuadMesh : <span class="keyword">public</span> <a class="code hl_function" href="class_mesh.html#ae6b6c56f0ebfa2f6b2b10d25a835c865">Mesh</a></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    QuadMesh();</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    QuadMesh(<a class="code hl_class" href="class_shader.html">Shader</a>* <a class="code hl_function" href="class_mesh.html#a923341025dfc51c14392b703b15dcd58">shader</a>);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_quad_mesh.html#a87e1d1c471b5ecfaca6e3a8289f07834">generateMesh</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>};</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span>cme {</div>
+<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classcme_1_1_quad_mesh.html">    6</a></span>    <span class="keyword">class </span>QuadMesh : <span class="keyword">public</span> <a class="code hl_function" href="classcme_1_1_mesh.html#acd6ada4c6b4c00b75180873181d5fbb3">Mesh</a></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        QuadMesh();</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        QuadMesh(<a class="code hl_class" href="classcme_1_1_shader.html">Shader</a>* <a class="code hl_function" href="classcme_1_1_mesh.html#ad318c761840b29a41309a781748cd530">shader</a>);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classcme_1_1_quad_mesh.html#afc366fc50660af0e50b084e44df96441">generateMesh</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    };</div>
 </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="ttc" id="aclass_mesh_html_a923341025dfc51c14392b703b15dcd58"><div class="ttname"><a href="class_mesh.html#a923341025dfc51c14392b703b15dcd58">Mesh::shader</a></div><div class="ttdeci">Shader * shader()</div><div class="ttdoc">El shader que esta usando la mesh.</div><div class="ttdef"><b>Definition</b> Mesh.h:50</div></div>
-<div class="ttc" id="aclass_mesh_html_ae6b6c56f0ebfa2f6b2b10d25a835c865"><div class="ttname"><a href="class_mesh.html#ae6b6c56f0ebfa2f6b2b10d25a835c865">Mesh::Mesh</a></div><div class="ttdeci">Mesh()=default</div><div class="ttdoc">Constructor por defecto.</div></div>
-<div class="ttc" id="aclass_quad_mesh_html_a87e1d1c471b5ecfaca6e3a8289f07834"><div class="ttname"><a href="class_quad_mesh.html#a87e1d1c471b5ecfaca6e3a8289f07834">QuadMesh::generateMesh</a></div><div class="ttdeci">void generateMesh() override</div><div class="ttdoc">Genera el mesh colocando los vértices, colores, etc...</div><div class="ttdef"><b>Definition</b> QuadMesh.cpp:13</div></div>
-<div class="ttc" id="aclass_shader_html"><div class="ttname"><a href="class_shader.html">Shader</a></div><div class="ttdoc">Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...</div><div class="ttdef"><b>Definition</b> Shader.h:29</div></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
+<div class="ttc" id="aclasscme_1_1_mesh_html_acd6ada4c6b4c00b75180873181d5fbb3"><div class="ttname"><a href="classcme_1_1_mesh.html#acd6ada4c6b4c00b75180873181d5fbb3">cme::Mesh::Mesh</a></div><div class="ttdeci">Mesh()=default</div><div class="ttdoc">Constructor por defecto.</div></div>
+<div class="ttc" id="aclasscme_1_1_mesh_html_ad318c761840b29a41309a781748cd530"><div class="ttname"><a href="classcme_1_1_mesh.html#ad318c761840b29a41309a781748cd530">cme::Mesh::shader</a></div><div class="ttdeci">Shader * shader()</div><div class="ttdoc">El shader que esta usando la mesh.</div><div class="ttdef"><b>Definition</b> Mesh.h:54</div></div>
+<div class="ttc" id="aclasscme_1_1_quad_mesh_html_afc366fc50660af0e50b084e44df96441"><div class="ttname"><a href="classcme_1_1_quad_mesh.html#afc366fc50660af0e50b084e44df96441">cme::QuadMesh::generateMesh</a></div><div class="ttdeci">void generateMesh() override</div><div class="ttdoc">Genera el mesh colocando los vértices, colores, etc...</div><div class="ttdef"><b>Definition</b> QuadMesh.cpp:16</div></div>
+<div class="ttc" id="aclasscme_1_1_shader_html"><div class="ttname"><a href="classcme_1_1_shader.html">cme::Shader</a></div><div class="ttdoc">Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...</div><div class="ttdef"><b>Definition</b> Shader.h:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

@@ -1,0 +1,41 @@
+\doxysection{File\+Explorer.\+h}
+\hypertarget{_file_explorer_8h_source}{}\label{_file_explorer_8h_source}\index{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/utils/FileExplorer.h@{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/utils/FileExplorer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <commdlg.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }cme\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{enum\ class}\ FileDialogMode\ \{\ Open,\ Save\ \};}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }FileExplorer\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ FileExplorer()\ \{\}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::string\ \doxymbox{\hyperlink{classcme_1_1_file_explorer_a1d8e22b24b4c1b388f27753d6561e7c9}{fileDialog}}(FileDialogMode\ mode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filter\ =\ \textcolor{stringliteral}{"{}Scene\ Files\(\backslash\)0*.json\(\backslash\)0All\ Files\(\backslash\)0*.*\(\backslash\)0"{}})\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ OPENFILENAMEA\ ofn;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ filePath[MAX\_PATH]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ ZeroMemory(\&ofn,\ \textcolor{keyword}{sizeof}(ofn));}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ ofn.lStructSize\ =\ \textcolor{keyword}{sizeof}(ofn);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ ofn.hwndOwner\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ ofn.lpstrFile\ =\ filePath;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ ofn.nMaxFile\ =\ MAX\_PATH;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ ofn.lpstrFilter\ =\ filter;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ ofn.Flags\ =\ OFN\_PATHMUSTEXIST\ |\ OFN\_FILEMUSTEXIST;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ FileDialogMode::Open)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (GetOpenFileNameA(\&ofn))\ \textcolor{keywordflow}{return}\ filePath;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ofn.lpstrDefExt\ =\ \textcolor{stringliteral}{"{}json"{}};\ \textcolor{comment}{//\ extensión por\ defecto\ al\ guardar}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (GetSaveFileNameA(\&ofn))\ \textcolor{keywordflow}{return}\ filePath;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \};}
+\DoxyCodeLine{00038\ \}}
+
+\end{DoxyCode}

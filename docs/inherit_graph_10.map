@@ -1,3 +1,9 @@
 <map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
-<area shape="rect" id="Node000000" href="$struct_shader_creation_data.html" title="Contiene la información necesaria para crear un shader, incluyendo las rutas de los archivos de shade..." alt="" coords="5,5,145,32"/>
+<area shape="rect" id="Node000000" href="$classcme_1_1_mesh.html" title="Clase abstracta que sirve como padre para crear todo tipo de mallas distintas." alt="" coords="5,56,92,83"/>
+<area shape="rect" id="Node000001" href="$classcme_1_1_cube_mesh.html" title="Genera una mesh de tipo cubo." alt="" coords="147,5,264,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="105,48,164,31,160,34,108,53"/>
+<area shape="rect" id="Node000002" href="$classcme_1_1_quad_mesh.html" title="Crea una mesh de tipo Quad." alt="" coords="147,56,264,83"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="107,67,149,68,144,70,108,72"/>
+<area shape="rect" id="Node000003" href="$classcme_1_1_triangle_mesh.html" title="Genera el mesh de un triangulo." alt="" coords="140,107,272,133"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="107,85,165,105,160,107,106,91"/>
 </map>

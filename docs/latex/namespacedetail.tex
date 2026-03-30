@@ -1,0 +1,364 @@
+\doxysection{Referencia del espacio de nombres detail}
+\hypertarget{namespacedetail}{}\label{namespacedetail}\index{detail@{detail}}
+
+
+detail namespace with internal helper functions  
+
+
+\doxysubsubsection*{Espacios de nombres}
+\begin{DoxyCompactItemize}
+\item 
+namespace \doxymbox{\hyperlink{namespacedetail_1_1dtoa__impl}{dtoa\+\_\+impl}}
+\begin{DoxyCompactList}\small\item\em implements the Grisu2 algorithm for binary to decimal floating-\/point conversion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structdetail_1_1position__t}{position\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em struct to capture the start position of the current token \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1exception}{exception}}
+\begin{DoxyCompactList}\small\item\em general exception of the \doxylink{classbasic__json}{basic\+\_\+json} class \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1parse__error}{parse\+\_\+error}}
+\begin{DoxyCompactList}\small\item\em exception indicating a parse error \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1invalid__iterator}{invalid\+\_\+iterator}}
+\begin{DoxyCompactList}\small\item\em exception indicating errors with iterators \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1type__error}{type\+\_\+error}}
+\begin{DoxyCompactList}\small\item\em exception indicating executing a member function with a wrong type \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1out__of__range}{out\+\_\+of\+\_\+range}}
+\begin{DoxyCompactList}\small\item\em exception indicating access out of the defined range \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1other__error}{other\+\_\+error}}
+\begin{DoxyCompactList}\small\item\em exception indicating other library errors \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1iteration__proxy}{iteration\+\_\+proxy}}
+\begin{DoxyCompactList}\small\item\em proxy class for the items() function \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1file__input__adapter}{file\+\_\+input\+\_\+adapter}}
+\item 
+class \doxymbox{\hyperlink{classdetail_1_1input__stream__adapter}{input\+\_\+stream\+\_\+adapter}}
+\item 
+class \doxymbox{\hyperlink{classdetail_1_1lexer}{lexer}}
+\begin{DoxyCompactList}\small\item\em lexical analysis \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1json__sax__dom__parser}{json\+\_\+sax\+\_\+dom\+\_\+parser}}
+\begin{DoxyCompactList}\small\item\em SAX implementation to create a JSON value from SAX events. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1binary__reader}{binary\+\_\+reader}}
+\begin{DoxyCompactList}\small\item\em deserialization of CBOR, Message\+Pack, and UBJSON values \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1parser}{parser}}
+\begin{DoxyCompactList}\small\item\em syntax analysis \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{structdetail_1_1internal__iterator}{internal\+\_\+iterator}}
+\begin{DoxyCompactList}\small\item\em an iterator value \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{structdetail_1_1json__default__base}{json\+\_\+default\+\_\+base}}
+\begin{DoxyCompactList}\small\item\em Default base class of the \doxylink{classbasic__json}{basic\+\_\+json} class. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{classdetail_1_1binary__writer}{binary\+\_\+writer}}
+\begin{DoxyCompactList}\small\item\em serialization to CBOR and Message\+Pack values \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum class \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\+\_\+t}} :\+ std::\+uint8\+\_\+t \{ \newline
+\doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{null}}
+, \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{object}}
+, \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{array}}
+, \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{string}}
+, \newline
+\doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{boolean}}
+, \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{number\+\_\+integer}}
+, \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{number\+\_\+unsigned}}
+, \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{number\+\_\+float}}
+, \newline
+\doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{binary}}
+, \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{discarded}}
+ \}
+\begin{DoxyCompactList}\small\item\em the JSON type enumeration \end{DoxyCompactList}\item 
+\Hypertarget{namespacedetail_a0ab3b338d0eadc6890b72cccef0ea04f}\label{namespacedetail_a0ab3b338d0eadc6890b72cccef0ea04f} 
+enum class \doxymbox{\hyperlink{namespacedetail_a0ab3b338d0eadc6890b72cccef0ea04f}{input\+\_\+format\+\_\+t}} 
+\begin{DoxyCompactList}\small\item\em the supported input formats \end{DoxyCompactList}\item 
+enum class \doxymbox{\hyperlink{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592}{cbor\+\_\+tag\+\_\+handler\+\_\+t}} \{ \doxymbox{\hyperlink{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592acb5e100e5a9a3e7f6d1fd97512215282}{error}}
+, \doxymbox{\hyperlink{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592a567bc1d268f135496de3d5b946b691f3}{ignore}}
+, \doxymbox{\hyperlink{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592a8cd892b7b97ef9489ae4479d3f4ef0fc}{store}}
+ \}
+\begin{DoxyCompactList}\small\item\em how to treat CBOR tags \end{DoxyCompactList}\item 
+enum class \doxymbox{\hyperlink{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298}{error\+\_\+handler\+\_\+t}} \{ \doxymbox{\hyperlink{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298a2133fd717402a7966ee88d06f9e0b792}{strict}}
+, \doxymbox{\hyperlink{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298a9dde360102c103867bd2f45872f1129c}{replace}}
+, \doxymbox{\hyperlink{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298a567bc1d268f135496de3d5b946b691f3}{ignore}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{namespacedetail_aac7ca91589afb0bad68baec5949daaa2}{operator$<$}} (const \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\+\_\+t}} lhs, const \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\+\_\+t}} rhs) noexcept
+\begin{DoxyCompactList}\small\item\em comparison operator for JSON types \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename String\+Type$>$ }\\void \doxymbox{\hyperlink{namespacedetail_a6fd295e53b1dd4f46e235e6afee26d5e}{replace\+\_\+substring}} (String\+Type \&s, const String\+Type \&f, const String\+Type \&t)
+\begin{DoxyCompactList}\small\item\em replace all occurrences of a substring by another string \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename String\+Type$>$ }\\String\+Type \doxymbox{\hyperlink{namespacedetail_af2a9ce4740e0b45d33129e2c8e53a0a8}{escape}} (String\+Type s)
+\begin{DoxyCompactList}\small\item\em string escaping as described in RFC 6901 (Sect. 4) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Basic\+Json\+Type$>$ }\\std::\+size\+\_\+t \doxymbox{\hyperlink{namespacedetail_a9dd43d16a6a490b032ceaca358755a29}{hash}} (const Basic\+Json\+Type \&j)
+\begin{DoxyCompactList}\small\item\em hash a JSON value \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Float\+Type$>$ }\\JSON\+\_\+\+HEDLEY\+\_\+\+RETURNS\+\_\+\+NON\+\_\+\+NULL char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{namespacedetail_a3f0588f1a546b169113e6e1e293168f4}{to\+\_\+chars}} (char \texorpdfstring{$\ast$}{*}first, const char \texorpdfstring{$\ast$}{*}last, Float\+Type value)
+\begin{DoxyCompactList}\small\item\em generates a decimal representation of the floating-\/point number value in \+[first, last). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+detail namespace with internal helper functions 
+
+This namespace collects functions that should not be exposed, implementations of some \doxylink{classbasic__json}{basic\+\_\+json} methods, and meta-\/programming helpers.
+
+\begin{DoxySince}{Desde}
+version 2.\+1.\+0 
+\end{DoxySince}
+
+
+\label{doc-enum-members}
+\Hypertarget{namespacedetail_doc-enum-members}
+\doxysubsection{Documentación de enumeraciones}
+\Hypertarget{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592}\index{detail@{detail}!cbor\_tag\_handler\_t@{cbor\_tag\_handler\_t}}
+\index{cbor\_tag\_handler\_t@{cbor\_tag\_handler\_t}!detail@{detail}}
+\doxysubsubsection{\texorpdfstring{cbor\_tag\_handler\_t}{cbor\_tag\_handler\_t}}
+{\footnotesize\ttfamily \label{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592} 
+enum class \doxymbox{\hyperlink{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592}{detail::\+cbor\+\_\+tag\+\_\+handler\+\_\+t}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+how to treat CBOR tags 
+
+\begin{DoxyEnumFields}[2]{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{error@{error}!detail@{detail}}
+\index{detail@{detail}!error@{error}}
+}\Hypertarget{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592acb5e100e5a9a3e7f6d1fd97512215282}\label{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592acb5e100e5a9a3e7f6d1fd97512215282} 
+error&throw a \doxylink{classdetail_1_1parse__error}{parse\+\_\+error} exception in case of a tag \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ignore@{ignore}!detail@{detail}}
+\index{detail@{detail}!ignore@{ignore}}
+}\Hypertarget{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592a567bc1d268f135496de3d5b946b691f3}\label{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592a567bc1d268f135496de3d5b946b691f3} 
+ignore&ignore tags \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{store@{store}!detail@{detail}}
+\index{detail@{detail}!store@{store}}
+}\Hypertarget{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592a8cd892b7b97ef9489ae4479d3f4ef0fc}\label{namespacedetail_a7c070b2bf3d61e3d8b8013f6fb18d592a8cd892b7b97ef9489ae4479d3f4ef0fc} 
+store&store tags as binary type \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298}\index{detail@{detail}!error\_handler\_t@{error\_handler\_t}}
+\index{error\_handler\_t@{error\_handler\_t}!detail@{detail}}
+\doxysubsubsection{\texorpdfstring{error\_handler\_t}{error\_handler\_t}}
+{\footnotesize\ttfamily \label{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298} 
+enum class \doxymbox{\hyperlink{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298}{detail::\+error\+\_\+handler\+\_\+t}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{strict@{strict}!detail@{detail}}
+\index{detail@{detail}!strict@{strict}}
+}\Hypertarget{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298a2133fd717402a7966ee88d06f9e0b792}\label{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298a2133fd717402a7966ee88d06f9e0b792} 
+strict&throw a \doxylink{classdetail_1_1type__error}{type\+\_\+error} exception in case of invalid UTF-\/8 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{replace@{replace}!detail@{detail}}
+\index{detail@{detail}!replace@{replace}}
+}\Hypertarget{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298a9dde360102c103867bd2f45872f1129c}\label{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298a9dde360102c103867bd2f45872f1129c} 
+replace&replace invalid UTF-\/8 sequences with U+\+FFFD \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ignore@{ignore}!detail@{detail}}
+\index{detail@{detail}!ignore@{ignore}}
+}\Hypertarget{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298a567bc1d268f135496de3d5b946b691f3}\label{namespacedetail_abe7cfa1fd8fa706ff4392bff9d1a8298a567bc1d268f135496de3d5b946b691f3} 
+ignore&ignore invalid UTF-\/8 sequences \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}\index{detail@{detail}!value\_t@{value\_t}}
+\index{value\_t@{value\_t}!detail@{detail}}
+\doxysubsubsection{\texorpdfstring{value\_t}{value\_t}}
+{\footnotesize\ttfamily \label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632} 
+enum class \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{detail::\+value\+\_\+t}} :\+ std::\+uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+the JSON type enumeration 
+
+This enumeration collects the different JSON types. It is internally used to distinguish the stored values, and the functions basic\+\_\+json::\+is\+\_\+null(), basic\+\_\+json::\+is\+\_\+object(), basic\+\_\+json::\+is\+\_\+array(), basic\+\_\+json::\+is\+\_\+string(), basic\+\_\+json::\+is\+\_\+boolean(), basic\+\_\+json::\+is\+\_\+number() (with basic\+\_\+json::\+is\+\_\+number\+\_\+integer(), basic\+\_\+json::\+is\+\_\+number\+\_\+unsigned(), and basic\+\_\+json::\+is\+\_\+number\+\_\+float()), basic\+\_\+json::\+is\+\_\+discarded(), basic\+\_\+json::\+is\+\_\+primitive(), and basic\+\_\+json::\+is\+\_\+structured() rely on it.
+
+\begin{DoxyNote}{Nota}
+There are three enumeration entries (number\+\_\+integer, number\+\_\+unsigned, and number\+\_\+float), because the library distinguishes these three types for numbers:\+ basic\+\_\+json::\+number\+\_\+unsigned\+\_\+t is used for unsigned integers, basic\+\_\+json::\+number\+\_\+integer\+\_\+t is used for signed integers, and basic\+\_\+json::\+number\+\_\+float\+\_\+t is used for floating-\/point numbers or to approximate integers which do not fit in the limits of their respective type.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{Ver también}
+see basic\+\_\+json::\+basic\+\_\+json(const value\+\_\+t value\+\_\+type) -- create a JSON value with the default value for a given type
+\end{DoxySeeAlso}
+\begin{DoxySince}{Desde}
+version 1.\+0.\+0 
+\end{DoxySince}
+\begin{DoxyEnumFields}[2]{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{null@{null}!detail@{detail}}
+\index{detail@{detail}!null@{null}}
+}\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}\label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd} 
+null&null value \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{object@{object}!detail@{detail}}
+\index{detail@{detail}!object@{object}}
+}\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}\label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666} 
+object&object (unordered set of name/\+value pairs) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{array@{array}!detail@{detail}}
+\index{detail@{detail}!array@{array}}
+}\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}\label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5} 
+array&array (ordered collection of values) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{string@{string}!detail@{detail}}
+\index{detail@{detail}!string@{string}}
+}\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}\label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21} 
+string&string value \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{boolean@{boolean}!detail@{detail}}
+\index{detail@{detail}!boolean@{boolean}}
+}\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}\label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27} 
+boolean&boolean value \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{number\_integer@{number\_integer}!detail@{detail}}
+\index{detail@{detail}!number\_integer@{number\_integer}}
+}\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}\label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc} 
+number\+\_\+integer&number value (signed integer) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{number\_unsigned@{number\_unsigned}!detail@{detail}}
+\index{detail@{detail}!number\_unsigned@{number\_unsigned}}
+}\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}\label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e} 
+number\+\_\+unsigned&number value (unsigned integer) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{number\_float@{number\_float}!detail@{detail}}
+\index{detail@{detail}!number\_float@{number\_float}}
+}\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}\label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef} 
+number\+\_\+float&number value (floating-\/point) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{binary@{binary}!detail@{detail}}
+\index{detail@{detail}!binary@{binary}}
+}\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}\label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20} 
+binary&binary array (ordered collection of bytes) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{discarded@{discarded}!detail@{detail}}
+\index{detail@{detail}!discarded@{discarded}}
+}\Hypertarget{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}\label{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46} 
+discarded&discarded by the parser callback function \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{namespacedetail_doc-func-members}
+\doxysubsection{Documentación de funciones}
+\Hypertarget{namespacedetail_af2a9ce4740e0b45d33129e2c8e53a0a8}\index{detail@{detail}!escape@{escape}}
+\index{escape@{escape}!detail@{detail}}
+\doxysubsubsection{\texorpdfstring{escape()}{escape()}}
+{\footnotesize\ttfamily \label{namespacedetail_af2a9ce4740e0b45d33129e2c8e53a0a8} 
+template$<$typename String\+Type$>$ \\
+String\+Type detail::\+escape (\begin{DoxyParamCaption}\item[{String\+Type}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+string escaping as described in RFC 6901 (Sect. 4) 
+
+
+\begin{DoxyParams}[1]{Parámetros}
+\doxymbox{\texttt{in}}  & {\em s} & string to escape \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+escaped string
+\end{DoxyReturn}
+Note the order of escaping "{}\texorpdfstring{$\sim$}{\string~}"{} to "{}\texorpdfstring{$\sim$}{\string~}0"{} and "{}/\+"{} to "{}\texorpdfstring{$\sim$}{\string~}1"{} is important. \Hypertarget{namespacedetail_a9dd43d16a6a490b032ceaca358755a29}\index{detail@{detail}!hash@{hash}}
+\index{hash@{hash}!detail@{detail}}
+\doxysubsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily \label{namespacedetail_a9dd43d16a6a490b032ceaca358755a29} 
+template$<$typename Basic\+Json\+Type$>$ \\
+std::\+size\+\_\+t detail::\+hash (\begin{DoxyParamCaption}\item[{const Basic\+Json\+Type \&}]{j}{}\end{DoxyParamCaption})}
+
+
+
+hash a JSON value 
+
+\doxylink{requirements_The}{The} hash function tries to rely on std::\+hash where possible. Furthermore, the type of the JSON value is taken into account to have different hash values for null, 0, 0U, and false, etc.
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em Basic\+Json\+Type} & \doxylink{classbasic__json}{basic\+\_\+json} specialization \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parámetros}
+{\em j} & JSON value to hash \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+hash value of j 
+\end{DoxyReturn}
+\Hypertarget{namespacedetail_aac7ca91589afb0bad68baec5949daaa2}\index{detail@{detail}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!detail@{detail}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily \label{namespacedetail_aac7ca91589afb0bad68baec5949daaa2} 
+bool detail::\+operator$<$ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\+\_\+t}}}]{lhs}{, }\item[{const \doxymbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\+\_\+t}}}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+comparison operator for JSON types 
+
+Returns an ordering that is similar to Python:\+
+\begin{DoxyItemize}
+\item order:\+ null \texorpdfstring{$<$}{<} boolean \texorpdfstring{$<$}{<} number \texorpdfstring{$<$}{<} object \texorpdfstring{$<$}{<} array \texorpdfstring{$<$}{<} string \texorpdfstring{$<$}{<} binary
+\item furthermore, each type is not smaller than itself
+\item discarded values are not comparable
+\item binary is represented as a b"{}"{} string in python and directly comparable to a string; however, making a binary array directly comparable with a string would be surprising behavior in a JSON file.
+\end{DoxyItemize}
+
+\begin{DoxySince}{Desde}
+version 1.\+0.\+0 
+\end{DoxySince}
+\Hypertarget{namespacedetail_a6fd295e53b1dd4f46e235e6afee26d5e}\index{detail@{detail}!replace\_substring@{replace\_substring}}
+\index{replace\_substring@{replace\_substring}!detail@{detail}}
+\doxysubsubsection{\texorpdfstring{replace\_substring()}{replace\_substring()}}
+{\footnotesize\ttfamily \label{namespacedetail_a6fd295e53b1dd4f46e235e6afee26d5e} 
+template$<$typename String\+Type$>$ \\
+void detail::\+replace\+\_\+substring (\begin{DoxyParamCaption}\item[{String\+Type \&}]{s}{, }\item[{const String\+Type \&}]{f}{, }\item[{const String\+Type \&}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+replace all occurrences of a substring by another string 
+
+
+\begin{DoxyParams}[1]{Parámetros}
+\doxymbox{\texttt{in,out}}  & {\em s} & the string to manipulate; changed so that all occurrences of {\itshape f} are replaced with {\itshape t} \\
+\hline
+\doxymbox{\texttt{in}}  & {\em f} & the substring to replace with {\itshape t} \\
+\hline
+\doxymbox{\texttt{in}}  & {\em t} & the string to replace {\itshape f} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+\doxylink{requirements_The}{The} search string {\itshape f} must not be empty. {\bfseries{This precondition is enforced with an assertion.}}
+\end{DoxyPrecond}
+\begin{DoxySince}{Desde}
+version 2.\+0.\+0 
+\end{DoxySince}
+\Hypertarget{namespacedetail_a3f0588f1a546b169113e6e1e293168f4}\index{detail@{detail}!to\_chars@{to\_chars}}
+\index{to\_chars@{to\_chars}!detail@{detail}}
+\doxysubsubsection{\texorpdfstring{to\_chars()}{to\_chars()}}
+{\footnotesize\ttfamily \label{namespacedetail_a3f0588f1a546b169113e6e1e293168f4} 
+template$<$typename Float\+Type$>$ \\
+JSON\+\_\+\+HEDLEY\+\_\+\+RETURNS\+\_\+\+NON\+\_\+\+NULL char \texorpdfstring{$\ast$}{*} detail::\+to\+\_\+chars (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{first}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{last}{, }\item[{Float\+Type}]{value}{}\end{DoxyParamCaption})}
+
+
+
+generates a decimal representation of the floating-\/point number value in \+[first, last). 
+
+\doxylink{requirements_The}{The} format of the resulting decimal representation is similar to printf\textquotesingle{}s g format. Returns an iterator pointing past-\/the-\/end of the decimal representation.
+
+\begin{DoxyNote}{Nota}
+\doxylink{requirements_The}{The} input number must be finite, i.\+e. NaN\textquotesingle{}s and Inf\textquotesingle{}s are not supported. 
+
+\doxylink{requirements_The}{The} buffer must be large enough. 
+
+\doxylink{requirements_The}{The} result is NOT null-\/terminated. 
+\end{DoxyNote}

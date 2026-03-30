@@ -1,6 +1,6 @@
 \chapter{3.\+Shaders }
 \hypertarget{shaders}{}\label{shaders}\index{3.Shaders@{3.Shaders}}
-Vamos a ver como funcionan los shaders programados en GLSL que es un lenguaje parecido a C.\hypertarget{shaders_autotoc_md17}{}\doxysection{\texorpdfstring{3.\+1 GLSL}{3.\+1 GLSL}}\label{shaders_autotoc_md17}
+Vamos a ver como funcionan los shaders programados en GLSL que es un lenguaje parecido a C.\hypertarget{shaders_autotoc_md18}{}\doxysection{\texorpdfstring{3.\+1 GLSL}{3.\+1 GLSL}}\label{shaders_autotoc_md18}
 Como ya he dicho están escritos en algo parecido a C. Siempre se empieza con una declaración de la versión. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#version\ 330\ }\textcolor{comment}{//\ Equivale\ a\ OpenGL\ 3.3}}
@@ -28,8 +28,8 @@ Tiene unas variables para comunicarnos con el shader:\+
 
 \end{DoxyCode}
 
-\end{DoxyItemize}\hypertarget{shaders_autotoc_md18}{}\doxysection{\texorpdfstring{3.\+2 Tipos}{3.\+2 Tipos}}\label{shaders_autotoc_md18}
-Como en c las variables tienen un tipo, ya sea int, float, bool... Pero tambien tiene el tipo vector y matrices.\hypertarget{shaders_autotoc_md19}{}\doxysubsection{\texorpdfstring{Vector}{Vector}}\label{shaders_autotoc_md19}
+\end{DoxyItemize}\hypertarget{shaders_autotoc_md19}{}\doxysection{\texorpdfstring{3.\+2 Tipos}{3.\+2 Tipos}}\label{shaders_autotoc_md19}
+Como en c las variables tienen un tipo, ya sea int, float, bool... Pero tambien tiene el tipo vector y matrices.\hypertarget{shaders_autotoc_md20}{}\doxysubsection{\texorpdfstring{Vector}{Vector}}\label{shaders_autotoc_md20}
 Puedes tener vectores de 1,2,3,4 componentes. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{vecn\ \textcolor{comment}{//\ the\ default\ vector\ of\ n\ floats.}}
@@ -49,10 +49,10 @@ Se pueden construir así
 \DoxyCodeLine{vec4\ otherVec\ =\ someVec.xxxx\ +\ anotherVec.yxzy;}
 
 \end{DoxyCode}
-\hypertarget{shaders_autotoc_md20}{}\doxysection{\texorpdfstring{3.\+3 Comunicación entre Shaders}{3.\+3 Comunicación entre Shaders}}\label{shaders_autotoc_md20}
+\hypertarget{shaders_autotoc_md21}{}\doxysection{\texorpdfstring{3.\+3 Comunicación entre Shaders}{3.\+3 Comunicación entre Shaders}}\label{shaders_autotoc_md21}
 Es posible pasar información del vertex al fragment shader, para ello las variables de out del vertex tienen que coincidir con el in del fragment. Ejemplo
 
-{\bfseries{Vertex \doxylink{class_shader}{Shader}}} 
+{\bfseries{Vertex Shader}} 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#version\ 330\ core\ }}
 \DoxyCodeLine{layout\ (location\ =\ 0)\ in\ vec3\ aPos;\ \textcolor{comment}{//\ position\ tiene\ atributo\ position\ 0\ }}
@@ -66,7 +66,7 @@ Es posible pasar información del vertex al fragment shader, para ello las varia
 \end{DoxyCode}
 
 
-{\bfseries{Fragment \doxylink{class_shader}{Shader}}} 
+{\bfseries{Fragment Shader}} 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#version\ 330\ core\ }}
 \DoxyCodeLine{out\ vec4\ FragColor;\ }
@@ -77,7 +77,7 @@ Es posible pasar información del vertex al fragment shader, para ello las varia
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{shaders_autotoc_md21}{}\doxysection{\texorpdfstring{3.\+4 Uniforms}{3.\+4 Uniforms}}\label{shaders_autotoc_md21}
+\hypertarget{shaders_autotoc_md22}{}\doxysection{\texorpdfstring{3.\+4 Uniforms}{3.\+4 Uniforms}}\label{shaders_autotoc_md22}
 Como ya hemos dicho antes, son variables globales y se pueden declarar en cualquier etapa de los shaders.
 
 Para mandar información al shader, se hace de la siguiente manera 

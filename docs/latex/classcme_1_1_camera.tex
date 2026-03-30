@@ -1,0 +1,115 @@
+\doxysection{Referencia de la clase cme::\+Camera}
+\hypertarget{classcme_1_1_camera}{}\label{classcme_1_1_camera}\index{cme::Camera@{cme::Camera}}
+
+
+Clase que controla el punto de vista del la ventana, almacena la matriz de vista y la de proyeccion. Se puede configurar para que la camara renderice en formato perspectiva u ortografico.  
+
+
+
+
+{\ttfamily \+\#include $<$Camera.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classcme_1_1_camera_ab797f2a8a7c91c5184f84003f86dc362}{upload\+To\+GPU}} (\doxymbox{\hyperlink{classcme_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}m)
+\begin{DoxyCompactList}\small\item\em Manda a la GPU las matrices de proyeccion y vista. \end{DoxyCompactList}\item 
+glm::\+mat4 \doxymbox{\hyperlink{classcme_1_1_camera_a3b0550ce742143e8088c73b9e543615a}{view\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em La matriz de vista de la camara. \end{DoxyCompactList}\item 
+\Hypertarget{classcme_1_1_camera_a5b291fb98c110ea4f37b295d575134d3}\label{classcme_1_1_camera_a5b291fb98c110ea4f37b295d575134d3} 
+void {\bfseries build\+Projection\+Mat} ()
+\begin{DoxyCompactList}\small\item\em Se encarga de construir la matriz de proyeccion de dependiedo de los parametros. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_camera_a3c66c4a47a231dc5ef940dbf0fa5ff49}{set\+View\+Mat}} (glm::\+mat4 view)
+\begin{DoxyCompactList}\small\item\em Establece la matriz de vista. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_camera_a9d25ff410c4044b6651c02ab874b8436}{set\+Camera\+Look\+At}} (float x\+Offset, float y\+Offset)
+\begin{DoxyCompactList}\small\item\em Modifica el yaw y el pitch para que la camara gire, se usa para el movimiento del raton. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_camera_aaf8543c0508f3653f1d593fb4c7c6091}{on\+Resize}} (float w, float h)
+\begin{DoxyCompactList}\small\item\em Cuando se hace resize del viewport. \end{DoxyCompactList}\item 
+\Hypertarget{classcme_1_1_camera_a753ff73795c52e5798632340646885e1}\label{classcme_1_1_camera_a753ff73795c52e5798632340646885e1} 
+void {\bfseries first\+Move} ()
+\begin{DoxyCompactList}\small\item\em Establece que que es la primera vez que se mueve la camara. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase que controla el punto de vista del la ventana, almacena la matriz de vista y la de proyeccion. Se puede configurar para que la camara renderice en formato perspectiva u ortografico. 
+
+\label{doc-func-members}
+\Hypertarget{classcme_1_1_camera_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classcme_1_1_camera_aaf8543c0508f3653f1d593fb4c7c6091}\index{cme::Camera@{cme::Camera}!onResize@{onResize}}
+\index{onResize@{onResize}!cme::Camera@{cme::Camera}}
+\doxysubsubsection{\texorpdfstring{onResize()}{onResize()}}
+{\footnotesize\ttfamily \label{classcme_1_1_camera_aaf8543c0508f3653f1d593fb4c7c6091} 
+void cme::\+\+Camera::\+on\+Resize (\begin{DoxyParamCaption}\item[{float}]{w}{, }\item[{float}]{h}{}\end{DoxyParamCaption})}
+
+
+
+Cuando se hace resize del viewport. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em w} & El nuevo width \\
+\hline
+{\em h} & El nuevo height \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcme_1_1_camera_a9d25ff410c4044b6651c02ab874b8436}\index{cme::Camera@{cme::Camera}!setCameraLookAt@{setCameraLookAt}}
+\index{setCameraLookAt@{setCameraLookAt}!cme::Camera@{cme::Camera}}
+\doxysubsubsection{\texorpdfstring{setCameraLookAt()}{setCameraLookAt()}}
+{\footnotesize\ttfamily \label{classcme_1_1_camera_a9d25ff410c4044b6651c02ab874b8436} 
+void cme::\+\+Camera::\+set\+Camera\+Look\+At (\begin{DoxyParamCaption}\item[{float}]{x\+Offset}{, }\item[{float}]{y\+Offset}{}\end{DoxyParamCaption})}
+
+
+
+Modifica el yaw y el pitch para que la camara gire, se usa para el movimiento del raton. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em x\+Offset} & El desplazamiento en el eje X del raton en ese frame \\
+\hline
+{\em y\+Offset} & El desplazamiento en el eje Y del raton en ese frame \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcme_1_1_camera_a3c66c4a47a231dc5ef940dbf0fa5ff49}\index{cme::Camera@{cme::Camera}!setViewMat@{setViewMat}}
+\index{setViewMat@{setViewMat}!cme::Camera@{cme::Camera}}
+\doxysubsubsection{\texorpdfstring{setViewMat()}{setViewMat()}}
+{\footnotesize\ttfamily \label{classcme_1_1_camera_a3c66c4a47a231dc5ef940dbf0fa5ff49} 
+void cme::\+\+Camera::\+set\+View\+Mat (\begin{DoxyParamCaption}\item[{glm::\+mat4}]{view}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Establece la matriz de vista. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em view} & La nueva matriz \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcme_1_1_camera_ab797f2a8a7c91c5184f84003f86dc362}\index{cme::Camera@{cme::Camera}!uploadToGPU@{uploadToGPU}}
+\index{uploadToGPU@{uploadToGPU}!cme::Camera@{cme::Camera}}
+\doxysubsubsection{\texorpdfstring{uploadToGPU()}{uploadToGPU()}}
+{\footnotesize\ttfamily \label{classcme_1_1_camera_ab797f2a8a7c91c5184f84003f86dc362} 
+void cme::\+\+Camera::\+upload\+To\+GPU (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classcme_1_1_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{m}{}\end{DoxyParamCaption})}
+
+
+
+Manda a la GPU las matrices de proyeccion y vista. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em m} & La mesh objetivo \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcme_1_1_camera_a3b0550ce742143e8088c73b9e543615a}\index{cme::Camera@{cme::Camera}!viewMatrix@{viewMatrix}}
+\index{viewMatrix@{viewMatrix}!cme::Camera@{cme::Camera}}
+\doxysubsubsection{\texorpdfstring{viewMatrix()}{viewMatrix()}}
+{\footnotesize\ttfamily \label{classcme_1_1_camera_a3b0550ce742143e8088c73b9e543615a} 
+glm::\+mat4 cme::\+\+Camera::\+view\+Matrix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+La matriz de vista de la camara. 
+
+\begin{DoxyReturn}{Devuelve}
+La matriz de vista 
+\end{DoxyReturn}

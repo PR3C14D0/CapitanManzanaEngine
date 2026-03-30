@@ -26,41 +26,55 @@ var NAVTREE =
 [
   [ "Motor OpenGL", "index.html", [
     [ "Motor Gráfico C++", "index.html#autotoc_md0", [
-      [ "Capítulos", "index.html#autotoc_md1", null ]
+      [ "Capítulos", "index.html#autotoc_md1", null ],
+      [ "Características del motor", "index.html#autotoc_md2", null ]
     ] ],
+    [ "Serialización", "serialz.html", null ],
     [ "1.Inicialización de Dependencias", "init__dep.html", [
-      [ "1.1 Inicializando GLFW", "init__dep.html#autotoc_md3", [
-        [ "Crear la ventana", "init__dep.html#autotoc_md4", null ]
+      [ "1.1 Inicializando GLFW", "init__dep.html#autotoc_md4", [
+        [ "Crear la ventana", "init__dep.html#autotoc_md5", null ]
       ] ],
-      [ "1.2 Inicializando GLAD", "init__dep.html#autotoc_md5", null ]
+      [ "1.2 Inicializando GLAD", "init__dep.html#autotoc_md6", null ]
     ] ],
     [ "2.Pasos de Renderizado", "pasos_render.html", [
-      [ "2.1 Estructura de las Etapas", "pasos_render.html#autotoc_md6", null ],
-      [ "2.2 Vertex Input", "pasos_render.html#autotoc_md7", [
-        [ "VBO", "pasos_render.html#autotoc_md8", null ]
+      [ "2.1 Estructura de las Etapas", "pasos_render.html#autotoc_md7", null ],
+      [ "2.2 Vertex Input", "pasos_render.html#autotoc_md8", [
+        [ "VBO", "pasos_render.html#autotoc_md9", null ]
       ] ],
-      [ "2.3 Vertex Shader", "pasos_render.html#autotoc_md9", [
-        [ "Copilar un shader", "pasos_render.html#autotoc_md10", null ]
+      [ "2.3 Vertex Shader", "pasos_render.html#autotoc_md10", [
+        [ "Copilar un shader", "pasos_render.html#autotoc_md11", null ]
       ] ],
-      [ "2.4 Fragment Shader", "pasos_render.html#autotoc_md11", [
-        [ "Shader Program", "pasos_render.html#autotoc_md12", null ]
+      [ "2.4 Fragment Shader", "pasos_render.html#autotoc_md12", [
+        [ "Shader Program", "pasos_render.html#autotoc_md13", null ]
       ] ],
-      [ "2.5 Link Vertex Attributes", "pasos_render.html#autotoc_md13", null ],
-      [ "2.6 VAO", "pasos_render.html#autotoc_md15", null ],
-      [ "2.7 EBO", "pasos_render.html#autotoc_md16", null ]
+      [ "2.5 Link Vertex Attributes", "pasos_render.html#autotoc_md14", null ],
+      [ "2.6 VAO", "pasos_render.html#autotoc_md16", null ],
+      [ "2.7 EBO", "pasos_render.html#autotoc_md17", null ]
     ] ],
     [ "3.Shaders", "shaders.html", [
-      [ "3.1 GLSL", "shaders.html#autotoc_md17", null ],
-      [ "3.2 Tipos", "shaders.html#autotoc_md18", [
-        [ "Vector", "shaders.html#autotoc_md19", null ]
+      [ "3.1 GLSL", "shaders.html#autotoc_md18", null ],
+      [ "3.2 Tipos", "shaders.html#autotoc_md19", [
+        [ "Vector", "shaders.html#autotoc_md20", null ]
       ] ],
-      [ "3.3 Comunicación entre Shaders", "shaders.html#autotoc_md20", null ],
-      [ "3.4 Uniforms", "shaders.html#autotoc_md21", null ]
+      [ "3.3 Comunicación entre Shaders", "shaders.html#autotoc_md21", null ],
+      [ "3.4 Uniforms", "shaders.html#autotoc_md22", null ]
     ] ],
     [ "4.Transformaciones Vectoriales", "transf.html", [
-      [ "4.1 Vectores", "transf.html#autotoc_md22", [
-        [ "Producto escalar (dot product)", "transf.html#autotoc_md23", null ],
-        [ "Producto vectorial", "transf.html#autotoc_md24", null ]
+      [ "4.1 Vectores", "transf.html#autotoc_md23", [
+        [ "Producto escalar (dot product)", "transf.html#autotoc_md24", null ],
+        [ "Producto vectorial", "transf.html#autotoc_md25", null ]
+      ] ]
+    ] ],
+    [ "Requirements", "requirements.html", [
+      [ "Unsatisfied Requirements", "requirements.html#missing_satisfies", null ],
+      [ "Unverified Requirements", "requirements.html#missing_verifies", null ]
+    ] ],
+    [ "Espacios de nombres", "namespaces.html", [
+      [ "Lista de espacios de nombres", "namespaces.html", "namespaces_dup" ],
+      [ "Miembros del espacio de nombres ", "namespacemembers.html", [
+        [ "Todos", "namespacemembers.html", null ],
+        [ "Funciones", "namespacemembers_func.html", null ],
+        [ "Enumeraciones", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
     [ "Clases", "annotated.html", [
@@ -78,7 +92,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"annotated.html",
+"structjson__sax.html#a3355ecd7e3e9806dcb80b2f8842b82ce"
 ];
 
 var SYNCONMSG = 'pulsar para deshabilitar sincronización';

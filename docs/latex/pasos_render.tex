@@ -1,20 +1,20 @@
 \chapter{2.\+Pasos de Renderizado }
 \hypertarget{pasos_render}{}\label{pasos_render}\index{2.Pasos de Renderizado@{2.Pasos de Renderizado}}
-En esta página se explican los pasos a seguir para el renderizado de un triangulo.\hypertarget{pasos_render_autotoc_md6}{}\doxysection{\texorpdfstring{2.\+1 Estructura de las Etapas}{2.\+1 Estructura de las Etapas}}\label{pasos_render_autotoc_md6}
+En esta página se explican los pasos a seguir para el renderizado de un triangulo.\hypertarget{pasos_render_autotoc_md7}{}\doxysection{\texorpdfstring{2.\+1 Estructura de las Etapas}{2.\+1 Estructura de las Etapas}}\label{pasos_render_autotoc_md7}
 Las etapas marcadas en {\bfseries{negrita}} son donde se pueden inyectar shaders para modificar el render.
 
 
 \begin{DoxyEnumerate}
 \item Vertex Input
-\item {\bfseries{Vertex \doxylink{class_shader}{Shader}}}
+\item {\bfseries{Vertex Shader}}
 \item Shape Assembly
-\item {\bfseries{Geometry \doxylink{class_shader}{Shader}}}
+\item {\bfseries{Geometry Shader}}
 \item Rasterization
-\item {\bfseries{Fragment \doxylink{class_shader}{Shader}}}
+\item {\bfseries{Fragment Shader}}
 \item Test and Blending
 \end{DoxyEnumerate}
 
-La GPU para renderizar necesita si o si un {\bfseries{Vertex \doxylink{class_shader}{Shader}}} y un {\bfseries{Fragment \doxylink{class_shader}{Shader}}}, el {\bfseries{Geometry \doxylink{class_shader}{Shader}}} es opcional.\hypertarget{pasos_render_autotoc_md7}{}\doxysection{\texorpdfstring{2.\+2 Vertex Input}{2.\+2 Vertex Input}}\label{pasos_render_autotoc_md7}
+La GPU para renderizar necesita si o si un {\bfseries{Vertex Shader}} y un {\bfseries{Fragment Shader}}, el {\bfseries{Geometry Shader}} es opcional.\hypertarget{pasos_render_autotoc_md8}{}\doxysection{\texorpdfstring{2.\+2 Vertex Input}{2.\+2 Vertex Input}}\label{pasos_render_autotoc_md8}
 De momento se pasa un array de vértices. Cada vértice tiene 3 coordenadas x, y, z. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keywordtype}{float}\ vertices[]\ =\ \{\ }
@@ -24,7 +24,7 @@ De momento se pasa un array de vértices. Cada vértice tiene 3 coordenadas x, y
 \DoxyCodeLine{\};}
 
 \end{DoxyCode}
- Para renderizar, las coordenadas tienen que estar en el sistema NDC, que son puntos entre -\/1.\+0 y 1.\+0, todo lo que esté fuera no se ve.\hypertarget{pasos_render_autotoc_md8}{}\doxysubsection{\texorpdfstring{VBO}{VBO}}\label{pasos_render_autotoc_md8}
+ Para renderizar, las coordenadas tienen que estar en el sistema NDC, que son puntos entre -\/1.\+0 y 1.\+0, todo lo que esté fuera no se ve.\hypertarget{pasos_render_autotoc_md9}{}\doxysubsection{\texorpdfstring{VBO}{VBO}}\label{pasos_render_autotoc_md9}
 La memoria se controla mediante el {\bfseries{Vertex Buffer Objects (VBO)}} que guarda una gran cantidad de vértices en la GPU.
 
 Asique hay que crear un objecto de open\+GL 
@@ -58,7 +58,7 @@ Ahora hay que introducir la información al buffer
 \item {\bfseries{GL\+\_\+\+STATIC\+\_\+\+DRAW:\+}} se setea 1 vez y se usa mucho
 \item {\bfseries{GL\+\_\+\+DYNAMIC\+\_\+\+DRAW:\+}} la información cambia mucho y se usa mucho
 \end{DoxyEnumerate}
-\end{DoxyEnumerate}\hypertarget{pasos_render_autotoc_md9}{}\doxysection{\texorpdfstring{2.\+3 Vertex Shader}{2.\+3 Vertex Shader}}\label{pasos_render_autotoc_md9}
+\end{DoxyEnumerate}\hypertarget{pasos_render_autotoc_md10}{}\doxysection{\texorpdfstring{2.\+3 Vertex Shader}{2.\+3 Vertex Shader}}\label{pasos_render_autotoc_md10}
 Este indica a la GPU que hacer con los vértices que se pasan del paso anterior (que hacer con los vértices del VBO). Aquí un pequeño ejemplo que no los modifica solo los transmite al siguiente paso. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#version\ 330\ core}}
@@ -69,7 +69,7 @@ Este indica a la GPU que hacer con los vértices que se pasan del paso anterior 
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{pasos_render_autotoc_md10}{}\doxysubsection{\texorpdfstring{Copilar un shader}{Copilar un shader}}\label{pasos_render_autotoc_md10}
+\hypertarget{pasos_render_autotoc_md11}{}\doxysubsection{\texorpdfstring{Copilar un shader}{Copilar un shader}}\label{pasos_render_autotoc_md11}
 Primero hay que pasarlo a un const char\texorpdfstring{$\ast$}{*} 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vertexShaderSource\ =\ \textcolor{stringliteral}{"{}\#version\ 330\ core\(\backslash\)n"{}}}
@@ -106,7 +106,7 @@ Así se puede comprobar si esta bien compilado y si no lo esta se muestran los e
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{pasos_render_autotoc_md11}{}\doxysection{\texorpdfstring{2.\+4 Fragment Shader}{2.\+4 Fragment Shader}}\label{pasos_render_autotoc_md11}
+\hypertarget{pasos_render_autotoc_md12}{}\doxysection{\texorpdfstring{2.\+4 Fragment Shader}{2.\+4 Fragment Shader}}\label{pasos_render_autotoc_md12}
 Este shader decide cual es el color final de cada vértice. {\itshape (En verdad queda el paso de opacidad y bending, pero el color opaco final se decide aquí)}
 
 Aquí un pequeño ejemplo que solo pone el color a un tono de naranja 
@@ -135,7 +135,7 @@ Y para crearlo se sigue el mismo proceso
 \DoxyCodeLine{glCompileShader(fragmentShader);}
 
 \end{DoxyCode}
-\hypertarget{pasos_render_autotoc_md12}{}\doxysubsection{\texorpdfstring{Shader Program}{Shader Program}}\label{pasos_render_autotoc_md12}
+\hypertarget{pasos_render_autotoc_md13}{}\doxysubsection{\texorpdfstring{Shader Program}{Shader Program}}\label{pasos_render_autotoc_md13}
 Ahora hay que linkear todos los shaders a un programa. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{GLuint\ shaderProgram;}
@@ -162,7 +162,7 @@ Para usar el shader simplemente se llama a esta función
 \DoxyCodeLine{glUseProgram(shaderProgram);}
 
 \end{DoxyCode}
-\hypertarget{pasos_render_autotoc_md13}{}\doxysection{\texorpdfstring{2.\+5 Link Vertex Attributes}{2.\+5 Link Vertex Attributes}}\label{pasos_render_autotoc_md13}
+\hypertarget{pasos_render_autotoc_md14}{}\doxysection{\texorpdfstring{2.\+5 Link Vertex Attributes}{2.\+5 Link Vertex Attributes}}\label{pasos_render_autotoc_md14}
 Una vez creado el programa hay que decirle como interpretar la información.
 
 
@@ -180,7 +180,7 @@ Una vez creado el programa hay que decirle como interpretar la información.
 \begin{DoxyItemize}
 \item {\bfseries{Stride (Salto):\+}} 12 bytes
 \item {\bfseries{Offset (Desplazamiento inicial):\+}} 0 bytes 
-\end{DoxyItemize}\hypertarget{pasos_render_autotoc_md14}{}\doxysubsubsection{\texorpdfstring{Detalles del formato de datos}{Detalles del formato de datos}}\label{pasos_render_autotoc_md14}
+\end{DoxyItemize}\hypertarget{pasos_render_autotoc_md15}{}\doxysubsubsection{\texorpdfstring{Detalles del formato de datos}{Detalles del formato de datos}}\label{pasos_render_autotoc_md15}
 
 \begin{DoxyItemize}
 \item Los datos de posición se almacenan como valores de punto flotante ({\itshape float}) de 32 bits (4 bytes).
@@ -202,7 +202,7 @@ Una vez creado el programa hay que decirle como interpretar la información.
 \item Si queremos la data normalizada o no
 \item Aqui se indica el stride, que distancia hay entre vértices consecutivos (12 = 3 \texorpdfstring{$\ast$}{*} 4Bytes)
 \item El offset de la data de posición (está al principio asique 0)
-\end{DoxyEnumerate}\hypertarget{pasos_render_autotoc_md15}{}\doxysection{\texorpdfstring{2.\+6 VAO}{2.\+6 VAO}}\label{pasos_render_autotoc_md15}
+\end{DoxyEnumerate}\hypertarget{pasos_render_autotoc_md16}{}\doxysection{\texorpdfstring{2.\+6 VAO}{2.\+6 VAO}}\label{pasos_render_autotoc_md16}
 Para hacer el proceso de obtener los atributos de los vértices, lo mejor es utilizar un array
 
  
@@ -231,7 +231,7 @@ Así se genera un VAO
 \DoxyCodeLine{glEnableVertexAttribArray(0);}
 
 \end{DoxyCode}
-\hypertarget{pasos_render_autotoc_md16}{}\doxysection{\texorpdfstring{2.\+7 EBO}{2.\+7 EBO}}\label{pasos_render_autotoc_md16}
+\hypertarget{pasos_render_autotoc_md17}{}\doxysection{\texorpdfstring{2.\+7 EBO}{2.\+7 EBO}}\label{pasos_render_autotoc_md17}
 El EBO sirve para evitar repetición de vértices y va por índices, es decir:\+ 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keywordtype}{float}\ vertices[]\ =\ \{}

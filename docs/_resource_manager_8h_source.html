@@ -105,42 +105,49 @@ $(function(){initNavTree('_resource_manager_8h_source.html','',''); });
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;utils/Singleton.h&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;core/Shader.h&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">class </span><a class="code hl_class" href="class_shader.html">Shader</a>;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span></div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_resource_manager.html">    9</a></span><span class="keyword">class </span>ResourceManager : <span class="keyword">public</span> Singleton&lt;ResourceManager&gt;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">friend</span> <span class="keyword">class </span>Singleton&lt;ResourceManager&gt;;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* SHADERS_PATH = <span class="stringliteral">&quot;assets/shaders&quot;</span>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    std::unordered_map&lt;std::string, std::unique_ptr&lt;Shader&gt;&gt; _shadersMap;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">virtual</span> ~ResourceManager();</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// cannot copy/move</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    ResourceManager(ResourceManager&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    ResourceManager(ResourceManager&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    ResourceManager&amp; operator=(ResourceManager&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    ResourceManager&amp; operator=(ResourceManager&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_class" href="class_shader.html">Shader</a>* <a class="code hl_function" href="class_resource_manager.html#a5375fe2800c5c179ca94bbf529f6afce">getShader</a>(std::string key);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    std::vector&lt;Shader*&gt; <a class="code hl_function" href="class_resource_manager.html#a48ba5a08de8f25e684e9ca00a1855cf7">getAllShaders</a>();</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    ResourceManager() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">bool</span> init();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span>cme {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">class </span><a class="code hl_class" href="classcme_1_1_shader.html">Shader</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classcme_1_1_resource_manager.html">   10</a></span>    <span class="keyword">class </span>ResourceManager : <span class="keyword">public</span> Singleton&lt;ResourceManager&gt;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keyword">friend</span> <span class="keyword">class </span>Singleton&lt;ResourceManager&gt;;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="comment">// ----- SHADERS -----</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* SHADERS_PATH = <span class="stringliteral">&quot;assets/shaders&quot;</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        std::unordered_map&lt;std::string, std::unique_ptr&lt;Shader&gt;&gt; _shadersMap;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        std::vector&lt;Shader*&gt; _shaders;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        std::vector&lt;std::string&gt; _shaderNames;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">virtual</span> ~ResourceManager();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="comment">// cannot copy/move</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        ResourceManager(ResourceManager&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        ResourceManager(ResourceManager&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        ResourceManager&amp; operator=(ResourceManager&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        ResourceManager&amp; operator=(ResourceManager&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_class" href="classcme_1_1_shader.html">Shader</a>* <a class="code hl_function" href="classcme_1_1_resource_manager.html#ab90b916d57ce79aca9c12d4744c9ae8e">getShader</a>(std::string key);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        std::vector&lt;Shader*&gt; <a class="code hl_function" href="classcme_1_1_resource_manager.html#a6072251ff834e962a1352ea6cae6dc5b">getAllShaders</a>();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        std::vector&lt;std::string&gt; <a class="code hl_function" href="classcme_1_1_resource_manager.html#a8f05bb9566673579becae6e3dc78ef76">getAllShaderNames</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        ResourceManager() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">bool</span> init();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    };</div>
 </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">inline</span> <a class="code hl_class" href="class_resource_manager.html">ResourceManager</a>&amp; rscrM() {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">return</span> *ResourceManager::Instance();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
-<div class="ttc" id="aclass_resource_manager_html"><div class="ttname"><a href="class_resource_manager.html">ResourceManager</a></div><div class="ttdoc">Se encarga de la gesiton de recursos del proyecto, desde shaders hasta imagenes. Utiliza el patron Si...</div><div class="ttdef"><b>Definition</b> ResourceManager.h:10</div></div>
-<div class="ttc" id="aclass_resource_manager_html_a48ba5a08de8f25e684e9ca00a1855cf7"><div class="ttname"><a href="class_resource_manager.html#a48ba5a08de8f25e684e9ca00a1855cf7">ResourceManager::getAllShaders</a></div><div class="ttdeci">std::vector&lt; Shader * &gt; getAllShaders()</div><div class="ttdoc">Busca todos los shaders cargados y los almacena en un vector.</div><div class="ttdef"><b>Definition</b> ResourceManager.cpp:64</div></div>
-<div class="ttc" id="aclass_resource_manager_html_a5375fe2800c5c179ca94bbf529f6afce"><div class="ttname"><a href="class_resource_manager.html#a5375fe2800c5c179ca94bbf529f6afce">ResourceManager::getShader</a></div><div class="ttdeci">Shader * getShader(std::string key)</div><div class="ttdoc">Busca en los recursos el shader pedido mediante la key, que es el nombre del archivo sin la extensión.</div><div class="ttdef"><b>Definition</b> ResourceManager.cpp:54</div></div>
-<div class="ttc" id="aclass_shader_html"><div class="ttname"><a href="class_shader.html">Shader</a></div><div class="ttdoc">Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...</div><div class="ttdef"><b>Definition</b> Shader.h:29</div></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">inline</span> <a class="code hl_class" href="classcme_1_1_resource_manager.html">ResourceManager</a>&amp; rscrM() {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span> *ResourceManager::Instance();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+<div class="ttc" id="aclasscme_1_1_resource_manager_html"><div class="ttname"><a href="classcme_1_1_resource_manager.html">cme::ResourceManager</a></div><div class="ttdoc">Se encarga de la gesiton de recursos del proyecto, desde shaders hasta imagenes. Utiliza el patron Si...</div><div class="ttdef"><b>Definition</b> ResourceManager.h:11</div></div>
+<div class="ttc" id="aclasscme_1_1_resource_manager_html_a6072251ff834e962a1352ea6cae6dc5b"><div class="ttname"><a href="classcme_1_1_resource_manager.html#a6072251ff834e962a1352ea6cae6dc5b">cme::ResourceManager::getAllShaders</a></div><div class="ttdeci">std::vector&lt; Shader * &gt; getAllShaders()</div><div class="ttdoc">Busca todos los shaders cargados y los almacena en un vector.</div><div class="ttdef"><b>Definition</b> ResourceManager.cpp:68</div></div>
+<div class="ttc" id="aclasscme_1_1_resource_manager_html_a8f05bb9566673579becae6e3dc78ef76"><div class="ttname"><a href="classcme_1_1_resource_manager.html#a8f05bb9566673579becae6e3dc78ef76">cme::ResourceManager::getAllShaderNames</a></div><div class="ttdeci">std::vector&lt; std::string &gt; getAllShaderNames()</div><div class="ttdoc">Busca el nombre de todos los shader cargados.</div><div class="ttdef"><b>Definition</b> ResourceManager.cpp:72</div></div>
+<div class="ttc" id="aclasscme_1_1_resource_manager_html_ab90b916d57ce79aca9c12d4744c9ae8e"><div class="ttname"><a href="classcme_1_1_resource_manager.html#ab90b916d57ce79aca9c12d4744c9ae8e">cme::ResourceManager::getShader</a></div><div class="ttdeci">Shader * getShader(std::string key)</div><div class="ttdoc">Busca en los recursos el shader pedido mediante la key, que es el nombre del archivo sin la extensión.</div><div class="ttdef"><b>Definition</b> ResourceManager.cpp:58</div></div>
+<div class="ttc" id="aclasscme_1_1_shader_html"><div class="ttname"><a href="classcme_1_1_shader.html">cme::Shader</a></div><div class="ttdoc">Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...</div><div class="ttdef"><b>Definition</b> Shader.h:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

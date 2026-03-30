@@ -101,20 +101,20 @@ $(function(){initNavTree('pasos_render.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>En esta página se explican los pasos a seguir para el renderizado de un triangulo.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
 2.1 Estructura de las Etapas</h1>
 <p>Las etapas marcadas en <b>negrita</b> son donde se pueden inyectar shaders para modificar el render.</p>
 <ol type="1">
 <li>Vertex Input</li>
-<li><b>Vertex <a class="el" href="class_shader.html" title="Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...">Shader</a></b></li>
+<li><b>Vertex Shader</b></li>
 <li>Shape Assembly</li>
-<li><b>Geometry <a class="el" href="class_shader.html" title="Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...">Shader</a></b></li>
+<li><b>Geometry Shader</b></li>
 <li>Rasterization</li>
-<li><b>Fragment <a class="el" href="class_shader.html" title="Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...">Shader</a></b></li>
+<li><b>Fragment Shader</b></li>
 <li>Test and Blending</li>
 </ol>
-<p>La GPU para renderizar necesita si o si un <b>Vertex <a class="el" href="class_shader.html" title="Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...">Shader</a></b> y un <b>Fragment <a class="el" href="class_shader.html" title="Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...">Shader</a></b>, el <b>Geometry <a class="el" href="class_shader.html" title="Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...">Shader</a></b> es opcional.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+<p>La GPU para renderizar necesita si o si un <b>Vertex Shader</b> y un <b>Fragment Shader</b>, el <b>Geometry Shader</b> es opcional.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 2.2 Vertex Input</h1>
 <p>De momento se pasa un array de vértices. Cada vértice tiene 3 coordenadas x, y, z. </p><div class="fragment"><div class="line"><span class="keywordtype">float</span> vertices[] = { </div>
 <div class="line">    -0.5f, -0.5f, 0.0f, <span class="comment">// Inferior izq</span></div>
@@ -122,7 +122,7 @@ $(function(){initNavTree('pasos_render.html','',''); });
 <div class="line">    0.0f, 0.5f, 0.0f    <span class="comment">// Punta</span></div>
 <div class="line">};</div>
 </div><!-- fragment --><p> Para renderizar, las coordenadas tienen que estar en el sistema NDC, que son puntos entre -1.0 y 1.0, todo lo que esté fuera no se ve.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 VBO</h2>
 <p>La memoria se controla mediante el <b>Vertex Buffer Objects (VBO)</b> que guarda una gran cantidad de vértices en la GPU.</p>
 <p>Asique hay que crear un objecto de openGL </p><div class="fragment"><div class="line"><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> VBO; <span class="comment">// Se puede usar tambien GLuint</span></div>
@@ -141,7 +141,7 @@ VBO</h2>
 </ol>
 </li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
 2.3 Vertex Shader</h1>
 <p>Este indica a la GPU que hacer con los vértices que se pasan del paso anterior (que hacer con los vértices del VBO). Aquí un pequeño ejemplo que no los modifica solo los transmite al siguiente paso. </p><div class="fragment"><div class="line"><span class="preprocessor">#version 330 core</span></div>
 <div class="line">layout (location = 0) in vec3 aPos;</div>
@@ -149,7 +149,7 @@ VBO</h2>
 <div class="line"><span class="keywordtype">void</span> main() {</div>
 <div class="line">    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 Copilar un shader</h2>
 <p>Primero hay que pasarlo a un const char* </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span>* vertexShaderSource = <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
 <div class="line">    <span class="stringliteral">&quot;layout (location = 0) in vec3 aPos;\n&quot;</span></div>
@@ -172,7 +172,7 @@ Copilar un shader</h2>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::VERTEX::COMPILATION_FAILED\n&quot;</span> &lt;&lt;</div>
 <div class="line">        infoLog &lt;&lt; std::endl;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 2.4 Fragment Shader</h1>
 <p>Este shader decide cual es el color final de cada vértice. <em>(En verdad queda el paso de opacidad y bending, pero el color opaco final se decide aquí)</em></p>
 <p>Aquí un pequeño ejemplo que solo pone el color a un tono de naranja </p><div class="fragment"><div class="line"><span class="preprocessor">#version 330 core </span></div>
@@ -191,7 +191,7 @@ Copilar un shader</h2>
 <div class="line">fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);</div>
 <div class="line">glShaderSource(fragmentShader, 1, &amp;fragShaderSource, NULL);</div>
 <div class="line">glCompileShader(fragmentShader);</div>
-</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
 Shader Program</h2>
 <p>Ahora hay que linkear todos los shaders a un programa. </p><div class="fragment"><div class="line">GLuint shaderProgram;</div>
 <div class="line">shaderProgram = glCreateProgram(); <span class="comment">// Se crea el programa</span></div>
@@ -209,7 +209,7 @@ Shader Program</h2>
 <div class="line">glDeleteShader(vertexShader);</div>
 <div class="line">glDeleteShader(fragmentShader);</div>
 </div><!-- fragment --><p>Para usar el shader simplemente se llama a esta función </p><div class="fragment"><div class="line">glUseProgram(shaderProgram);</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
 2.5 Link Vertex Attributes</h1>
 <p>Una vez creado el programa hay que decirle como interpretar la información.</p>
 <table class="markdownTable">
@@ -227,7 +227,7 @@ Shader Program</h2>
 <li><b>Stride (Salto):</b> 12 bytes</li>
 <li><b>Offset (Desplazamiento inicial):</b> 0 bytes </li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 Detalles del formato de datos</h3>
 <ul>
 <li>Los datos de posición se almacenan como valores de punto flotante (<em>float</em>) de 32 bits (4 bytes).</li>
@@ -244,7 +244,7 @@ Detalles del formato de datos</h3>
 <li>Aqui se indica el stride, que distancia hay entre vértices consecutivos (12 = 3 * 4Bytes)</li>
 <li>El offset de la data de posición (está al principio asique 0)</li>
 </ol>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 2.6 VAO</h1>
 <p>Para hacer el proceso de obtener los atributos de los vértices, lo mejor es utilizar un array</p>
 <div class="image">
@@ -266,7 +266,7 @@ Flujo del VAO</div></div>
 <div class="line">glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>),</div>
 <div class="line">    (<span class="keywordtype">void</span>*)0);</div>
 <div class="line">glEnableVertexAttribArray(0);</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
 2.7 EBO</h1>
 <p>El EBO sirve para evitar repetición de vértices y va por índices, es decir: </p><div class="fragment"><div class="line"><span class="keywordtype">float</span> vertices[] = {</div>
 <div class="line">    -0.5f,  -0.5f, 0.0f, <span class="comment">// Abajo izq</span></div>

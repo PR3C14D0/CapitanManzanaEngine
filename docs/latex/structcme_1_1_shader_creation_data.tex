@@ -1,0 +1,49 @@
+\doxysection{Referencia de la estructura cme::\+Shader\+Creation\+Data}
+\hypertarget{structcme_1_1_shader_creation_data}{}\label{structcme_1_1_shader_creation_data}\index{cme::ShaderCreationData@{cme::ShaderCreationData}}
+
+
+Contiene la información necesaria para crear un shader, incluyendo las rutas de los archivos de shader de vértices y fragmentos. Esta estructura se utiliza para encapsular los datos necesarios para la creación de un shader en la aplicación.  
+
+
+
+
+{\ttfamily \+\#include $<$Shader.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{structcme_1_1_shader_creation_data_a9737039c2f73594c1467aacf5e1cf3f6}{is\+Valid}} () const
+\begin{DoxyCompactList}\small\item\em Comprueba si la data es valida, que ninguno de los 2 paths esten vacios. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structcme_1_1_shader_creation_data_a5617cd6d650f68e0b2fc05e935bfb99a}\label{structcme_1_1_shader_creation_data_a5617cd6d650f68e0b2fc05e935bfb99a} 
+std::\+string {\bfseries vertex\+Shader\+Path}
+\begin{DoxyCompactList}\small\item\em Path del archivo del shader de vértices. Este archivo contiene el código fuente del shader de vértices que se utilizará para procesar los vértices en la aplicación. \end{DoxyCompactList}\item 
+\Hypertarget{structcme_1_1_shader_creation_data_a22755ec7be02bda9e0da768569dd4c95}\label{structcme_1_1_shader_creation_data_a22755ec7be02bda9e0da768569dd4c95} 
+std::\+string {\bfseries fragment\+Shader\+Path}
+\begin{DoxyCompactList}\small\item\em Path del archivo del shader de fragmentos. Este archivo contiene el código fuente del shader de fragmentos que se utilizará para procesar los fragmentos (píxeles) en la aplicación. \end{DoxyCompactList}\item 
+\Hypertarget{structcme_1_1_shader_creation_data_aa8ac0871d955a5958ff69a59316757e1}\label{structcme_1_1_shader_creation_data_aa8ac0871d955a5958ff69a59316757e1} 
+std::\+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em El nombre del archivo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Contiene la información necesaria para crear un shader, incluyendo las rutas de los archivos de shader de vértices y fragmentos. Esta estructura se utiliza para encapsular los datos necesarios para la creación de un shader en la aplicación. 
+
+\label{doc-func-members}
+\Hypertarget{structcme_1_1_shader_creation_data_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{structcme_1_1_shader_creation_data_a9737039c2f73594c1467aacf5e1cf3f6}\index{cme::ShaderCreationData@{cme::ShaderCreationData}!isValid@{isValid}}
+\index{isValid@{isValid}!cme::ShaderCreationData@{cme::ShaderCreationData}}
+\doxysubsubsection{\texorpdfstring{isValid()}{isValid()}}
+{\footnotesize\ttfamily \label{structcme_1_1_shader_creation_data_a9737039c2f73594c1467aacf5e1cf3f6} 
+bool cme::\+\+Shader\+Creation\+Data::\+is\+Valid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Comprueba si la data es valida, que ninguno de los 2 paths esten vacios. 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve true si es valido 
+\end{DoxyReturn}

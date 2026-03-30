@@ -1,15 +1,12 @@
 var searchData=
 [
-  ['setcameralookat_0',['setCameraLookAt',['../class_camera.html#a4f97f0a1eaa4da72da69c63247387ee4',1,'Camera']]],
-  ['setcontext_1',['setContext',['../classec_1_1_component.html#acd6dbc169b7c2c1de5384eb4d80dd746',1,'ec::Component']]],
-  ['setmodelmatrix_2',['setModelMatrix',['../class_mesh.html#a76f3c728c420cd652a001dd3ec8d99c0',1,'Mesh']]],
-  ['setshader_3',['setShader',['../class_mesh.html#ae2ff02b81d1d2db3b25f0e8126f54a90',1,'Mesh']]],
-  ['setuniform_4',['setUniform',['../class_shader.html#adbd6b3ab91bf9a4991a4778935936703',1,'Shader']]],
-  ['setviewmat_5',['setViewMat',['../class_camera.html#a673ff998420587e5e8ec08fb15732502',1,'Camera']]],
-  ['shader_6',['Shader',['../pasos_render.html#autotoc_md9',1,'2.3 Vertex Shader'],['../pasos_render.html#autotoc_md11',1,'2.4 Fragment Shader'],['../class_shader.html',1,'Shader'],['../class_shader.html#a05dbf99269cecc292a0e07e3cadb6285',1,'Shader::Shader()']]],
-  ['shader_7',['shader',['../pasos_render.html#autotoc_md10',1,'Copilar un shader'],['../class_mesh.html#a923341025dfc51c14392b703b15dcd58',1,'Mesh::shader()']]],
-  ['shader_20program_8',['Shader Program',['../pasos_render.html#autotoc_md12',1,'']]],
-  ['shadercreationdata_9',['ShaderCreationData',['../struct_shader_creation_data.html',1,'']]],
-  ['shaders_10',['Shaders',['../shaders.html#autotoc_md20',1,'3.3 Comunicación entre Shaders'],['../shaders.html',1,'3.Shaders']]],
-  ['start_11',['start',['../class_g_l_application.html#a0927f73e61e1eec59176b3b2a9c1e75b',1,'GLApplication']]]
+  ['parse_0',['parse',['../classdetail_1_1parser.html#a59f4b745d4aa146bf7a60a30060f592f',1,'detail::parser']]],
+  ['parse_5ferror_1',['parse_error',['../classdetail_1_1parse__error.html',1,'detail::parse_error'],['../structjson__sax.html#af165920966b60b78e57a2e4d92a63897',1,'json_sax::parse_error()']]],
+  ['parser_2',['parser',['../classdetail_1_1parser.html',1,'detail']]],
+  ['pasos_20de_20renderizado_3',['2.Pasos de Renderizado',['../pasos_render.html',1,'']]],
+  ['position_5ft_4',['position_t',['../structdetail_1_1position__t.html',1,'detail']]],
+  ['product_5',['Producto escalar (dot product)',['../transf.html#autotoc_md24',1,'']]],
+  ['producto_20escalar_20dot_20product_6',['Producto escalar (dot product)',['../transf.html#autotoc_md24',1,'']]],
+  ['producto_20vectorial_7',['Producto vectorial',['../transf.html#autotoc_md25',1,'']]],
+  ['program_8',['Shader Program',['../pasos_render.html#autotoc_md13',1,'']]]
 ];

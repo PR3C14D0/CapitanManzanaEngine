@@ -101,7 +101,7 @@ $(function(){initNavTree('shaders.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Vamos a ver como funcionan los shaders programados en GLSL que es un lenguaje parecido a C.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 3.1 GLSL</h1>
 <p>Como ya he dicho están escritos en algo parecido a C. Siempre se empieza con una declaración de la versión. </p><div class="fragment"><div class="line"><span class="preprocessor">#version 330 </span><span class="comment">// Equivale a OpenGL 3.3</span></div>
 </div><!-- fragment --><p>Tiene unas variables para comunicarnos con el shader:</p><ul>
@@ -112,10 +112,10 @@ $(function(){initNavTree('shaders.html','',''); });
 <li>Uniforms: son variables globales y que si valor no cambia hasta que se vuelve a enviar otro <div class="fragment"><div class="line">uniform vec4 ourColor;</div>
 </div><!-- fragment --></li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
 3.2 Tipos</h1>
 <p>Como en c las variables tienen un tipo, ya sea int, float, bool... Pero tambien tiene el tipo vector y matrices.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
 Vector</h2>
 <p>Puedes tener vectores de 1,2,3,4 componentes. </p><div class="fragment"><div class="line">vecn <span class="comment">// the default vector of n floats.</span></div>
 <div class="line">bvecn <span class="comment">// a vector of n booleans. </span></div>
@@ -126,10 +126,10 @@ Vector</h2>
 <div class="line">vec4 differentVec = someVec.xyxx; </div>
 <div class="line">vec3 anotherVec = differentVec.zyw;</div>
 <div class="line">vec4 otherVec = someVec.xxxx + anotherVec.yxzy;</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
 3.3 Comunicación entre Shaders</h1>
 <p>Es posible pasar información del vertex al fragment shader, para ello las variables de out del vertex tienen que coincidir con el in del fragment. Ejemplo</p>
-<p><b>Vertex <a class="el" href="class_shader.html" title="Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...">Shader</a></b> </p><div class="fragment"><div class="line"><span class="preprocessor">#version 330 core </span></div>
+<p><b>Vertex Shader</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#version 330 core </span></div>
 <div class="line">layout (location = 0) in vec3 aPos; <span class="comment">// position tiene atributo position 0 </span></div>
 <div class="line">out vec4 vertexColor; <span class="comment">// color de salida</span></div>
 <div class="line"> </div>
@@ -137,14 +137,14 @@ Vector</h2>
 <div class="line">    gl_Position = vec4(aPos, 1.0);</div>
 <div class="line">    vertexColor = vec4(0.5, 0.0, 0.0, 1.0); <span class="comment">// output a rojo oscuro</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><p><b>Fragment <a class="el" href="class_shader.html" title="Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l...">Shader</a></b> </p><div class="fragment"><div class="line"><span class="preprocessor">#version 330 core </span></div>
+</div><!-- fragment --><p><b>Fragment Shader</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#version 330 core </span></div>
 <div class="line">out vec4 FragColor; </div>
 <div class="line">in vec4 vertexColor; <span class="comment">// input con el mismo nombre</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main() { </div>
 <div class="line">    FragColor = vertexColor; </div>
 <div class="line">}</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
 3.4 Uniforms</h1>
 <p>Como ya hemos dicho antes, son variables globales y se pueden declarar en cualquier etapa de los shaders.</p>
 <p>Para mandar información al shader, se hace de la siguiente manera </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> vertexColorLocation = glGetUniformLocation(shaderProgram, <span class="stringliteral">&quot;ourColor&quot;</span>);</div>

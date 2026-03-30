@@ -1,0 +1,70 @@
+\doxysection{Referencia de la estructura cme::\+Shortcut}
+\hypertarget{structcme_1_1_shortcut}{}\label{structcme_1_1_shortcut}\index{cme::Shortcut@{cme::Shortcut}}
+
+
+Estructurra que maneja los atajos de teclado.  
+
+
+
+
+{\ttfamily \+\#include $<$Input\+Manager.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structcme_1_1_shortcut_aa9fc8bf959a6f8487f47982d8f963513}{Shortcut}} (std::\+vector$<$ int $>$ k, shortcut\+Call call, int state=CME\+\_\+\+STATE\+\_\+\+NORMAL, int event\+Trgg=1)
+\begin{DoxyCompactList}\small\item\em Crea un atajo de teclado para el motor. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{structcme_1_1_shortcut_aec899221dfab08bbff09a3ff77e9bb06}{is\+Pressed}} (int curr\+State)
+\begin{DoxyCompactList}\small\item\em Si se cumplen las condiciones para ejecutar el atajo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Estructurra que maneja los atajos de teclado. 
+
+\label{doc-constructors}
+\Hypertarget{structcme_1_1_shortcut_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{structcme_1_1_shortcut_aa9fc8bf959a6f8487f47982d8f963513}\index{cme::Shortcut@{cme::Shortcut}!Shortcut@{Shortcut}}
+\index{Shortcut@{Shortcut}!cme::Shortcut@{cme::Shortcut}}
+\doxysubsubsection{\texorpdfstring{Shortcut()}{Shortcut()}}
+{\footnotesize\ttfamily \label{structcme_1_1_shortcut_aa9fc8bf959a6f8487f47982d8f963513} 
+cme::\+\+Shortcut::\+\+Shortcut (\begin{DoxyParamCaption}\item[{std::\+vector$<$ int $>$}]{k}{, }\item[{shortcut\+Call}]{call}{, }\item[{int}]{state}{ = {\ttfamily CME\+\_\+STATE\+\_\+NORMAL}, }\item[{int}]{event\+Trgg}{ = {\ttfamily 1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Crea un atajo de teclado para el motor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em k} & Las teclas a pulsar \\
+\hline
+{\em call} & La callback a ejecutar tras pulsar las teclas \\
+\hline
+{\em state} & El estado en el que se ejecuta \\
+\hline
+{\em event\+Trgg} & El trigger del evento, cuando se realiza la accion, al soltar, pulsar, mantener... \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{structcme_1_1_shortcut_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{structcme_1_1_shortcut_aec899221dfab08bbff09a3ff77e9bb06}\index{cme::Shortcut@{cme::Shortcut}!isPressed@{isPressed}}
+\index{isPressed@{isPressed}!cme::Shortcut@{cme::Shortcut}}
+\doxysubsubsection{\texorpdfstring{isPressed()}{isPressed()}}
+{\footnotesize\ttfamily \label{structcme_1_1_shortcut_aec899221dfab08bbff09a3ff77e9bb06} 
+bool cme::\+\+Shortcut::\+is\+Pressed (\begin{DoxyParamCaption}\item[{int}]{curr\+State}{}\end{DoxyParamCaption})}
+
+
+
+Si se cumplen las condiciones para ejecutar el atajo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em curr\+State} & El estado actual \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+True si se estan pulsando las tenclas y el estado es el correcto 
+\end{DoxyReturn}

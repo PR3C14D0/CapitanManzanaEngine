@@ -7,35 +7,51 @@
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <functional>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <ec/ec.h>}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_camera}{Camera}};}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }Scene}
-\DoxyCodeLine{00010\ \{}
-\DoxyCodeLine{00011\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00014\ \ \ \ \ std::array<std::vector<ec::entity\_t>,\ ec::ent::maxGroupLayer>\ \_gameObjectsByGroup;}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ init()\ \{\};}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ Camera*\ \_cam\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00021\ \ \ \ \ Scene();}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~Scene();}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <core/serialize/Serializable.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }cme\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classcme_1_1_camera}{Camera}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{class\ }Scene\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classcme_1_1_serializable}{Serializable}}}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ std::array<std::vector<ec::entity\_t>,\ ec::ent::maxGroupLayer>\ \_gameObjectsByGroup;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::vector<ec::entity\_t>\ \_gizmos;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ init()\ \{\};}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ render()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Camera*\ \_cam\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::string\ \_name\ =\ \textcolor{stringliteral}{"{}Scene"{}};}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ update();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ Scene(std::string\ name);}
 \DoxyCodeLine{00030\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ refresh();}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ createGrid();}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00039\ \ \ \ \ ec::entity\_t\ addGameObject(Scene*\ scene,\ ec::ent::groupID\ grID\ =\ ec::ent::None);}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{const}\ std::array<std::vector<ec::entity\_t>,\ ec::ent::maxGroupLayer>\&\ getSceneObjects()\ \{\ \textcolor{keywordflow}{return}\ \_gameObjectsByGroup;\ \}}
-\DoxyCodeLine{00042\ \ \ \ \ Camera*\ getCamera()\ \{\ \textcolor{keywordflow}{return}\ \_cam;\ \}}
-\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \string~Scene();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ render()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ update();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ refresh();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ createGrid();}
 \DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ addCubeToScene();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::shared\_ptr<ec::Entity>\ addGameObject(Scene*\ scene,\ std::string\ name,\ ec::ent::groupID\ grID\ =\ ec::ent::None);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ ec::entity\_t\ addGizmos();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::array<std::vector<ec::entity\_t>,\ ec::ent::maxGroupLayer>\&\ getSceneObjects()\ \{\ \textcolor{keywordflow}{return}\ \_gameObjectsByGroup;\ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ Camera*\ getCamera()\ \{\ \textcolor{keywordflow}{return}\ \_cam;\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ std::string\ name()\ \{\ \textcolor{keywordflow}{return}\ \_name;\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ serialize(JsonSerializer\&\ s)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ deserialize(JsonSerializer\&\ s)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00059\ \ \ \ \ \};}
+\DoxyCodeLine{00060\ \}}
 
 \end{DoxyCode}

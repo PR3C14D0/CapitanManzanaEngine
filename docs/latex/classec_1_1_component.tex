@@ -9,6 +9,16 @@ Declaracion adelantada, para evitar dependencia circular.
 
 {\ttfamily \+\#include $<$component.\+h$>$}
 
+
+
+Diagrama de herencia de ec::\+Component
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{classec_1_1_component__inherit__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Métodos públicos}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,7 +28,7 @@ Declaracion adelantada, para evitar dependencia circular.
 \Hypertarget{classec_1_1_component_a610d8a5de51e1a42e22f9eb471d01c9e}\label{classec_1_1_component_a610d8a5de51e1a42e22f9eb471d01c9e} 
 virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Component} ()
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{classec_1_1_component_acd6dbc169b7c2c1de5384eb4d80dd746}{set\+Context}} (ec::\+entity\+\_\+t ent)
+void \doxymbox{\hyperlink{classec_1_1_component_a1a29a746857860f81159450b3ecdad92}{set\+Context}} (std::\+weak\+\_\+ptr$<$ ec::\+\+Entity $>$ ent)
 \begin{DoxyCompactList}\small\item\em Hacer saber al componente quien le controla. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -28,11 +38,11 @@ Declaracion adelantada, para evitar dependencia circular.
 \label{doc-func-members}
 \Hypertarget{classec_1_1_component_doc-func-members}
 \doxysubsection{Documentación de funciones miembro}
-\Hypertarget{classec_1_1_component_acd6dbc169b7c2c1de5384eb4d80dd746}\index{ec::Component@{ec::Component}!setContext@{setContext}}
+\Hypertarget{classec_1_1_component_a1a29a746857860f81159450b3ecdad92}\index{ec::Component@{ec::Component}!setContext@{setContext}}
 \index{setContext@{setContext}!ec::Component@{ec::Component}}
 \doxysubsubsection{\texorpdfstring{setContext()}{setContext()}}
-{\footnotesize\ttfamily \label{classec_1_1_component_acd6dbc169b7c2c1de5384eb4d80dd746} 
-void ec::\+\+Component::\+set\+Context (\begin{DoxyParamCaption}\item[{ec::\+entity\+\_\+t}]{ent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{classec_1_1_component_a1a29a746857860f81159450b3ecdad92} 
+void ec::\+\+Component::\+set\+Context (\begin{DoxyParamCaption}\item[{std::\+weak\+\_\+ptr$<$ ec::\+\+Entity $>$}]{ent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

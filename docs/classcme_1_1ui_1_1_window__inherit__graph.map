@@ -1,0 +1,5 @@
+<map id="cme::ui::Window" name="cme::ui::Window">
+<area shape="rect" id="Node000001" title="Interfaz para crear ventanas y añadirlas al render del CoreUI." alt="" coords="31,5,150,32"/>
+<area shape="rect" id="Node000002" href="$classcme_1_1ui_1_1_viewport_window.html" title="Ventana que se encarga de renderizar el viewport." alt="" coords="5,80,176,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,46,93,81,88,79,89,50"/>
+</map>

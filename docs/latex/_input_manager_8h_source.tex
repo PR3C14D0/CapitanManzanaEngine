@@ -1,0 +1,108 @@
+\doxysection{Input\+Manager.\+h}
+\hypertarget{_input_manager_8h_source}{}\label{_input_manager_8h_source}\index{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/managers/InputManager.h@{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/managers/InputManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <utils/Singleton.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ CME\_STATE\_NORMAL\ 0}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ CME\_STATE\_VIEWPORT\_MOVING\ 1}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ std::function<void()>\ shortcutCall;}
+\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }GLFWwindow;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }cme\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structcme_1_1_shortcut_aa9fc8bf959a6f8487f47982d8f963513}{Shortcut}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::vector<int>\ keys;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vector\ de\ teclas\ a\ pulsar}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ eventTrigger\ =\ 1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cuando\ se\ ejecuta\ el\ shortcut,\ al\ pulsar,\ soltar...\ (Default\ 1\ =\ GLFW\_PRESS)}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ state\ =\ CME\_STATE\_NORMAL;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ El\ estado\ de\ cuando\ se\ tiene\ que\ ejecutar\ (Default\ CME\_STATE\_NORMAL)}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ shortcutCall\ callback;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ callback\ para\ cuando\ se\ pulsa}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structcme_1_1_shortcut_aa9fc8bf959a6f8487f47982d8f963513}{Shortcut}}(std::vector<int>\ k,\ shortcutCall\ call,\ \textcolor{keywordtype}{int}\ state\ =\ CME\_STATE\_NORMAL,\ \textcolor{keywordtype}{int}\ eventTrgg\ =\ 1)\ :}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ keys(k),\ callback(call),\ state(state),\ eventTrigger(eventTrgg)\ \{\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{structcme_1_1_shortcut_aec899221dfab08bbff09a3ff77e9bb06}{isPressed}}(\textcolor{keywordtype}{int}\ currState);}
+\DoxyCodeLine{00032\ \ \ \ \ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{struct\ \ }MouseEvent\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::function<bool()>\ condition;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Condicion\ a\ ocurrir}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ std::function<void()>\ call;\ \ \ \ \ \textcolor{comment}{//\ Callback\ con\ las\ coordenadas\ del\ raton}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ pressed\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mouseButton\ =\ 0;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ MouseEvent(std::function<\textcolor{keywordtype}{bool}()>\ condition,\ std::function<\textcolor{keywordtype}{void}()>\ call,\ \textcolor{keywordtype}{int}\ button)\ :}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ condition(condition),\ call(call),\ mouseButton(button)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{struct\ }StateChanger\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::function<bool()>\ condition;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::function<void()>\ call;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ state;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ StateChanger(std::function<\textcolor{keywordtype}{bool}()>\ condition,\ \textcolor{keywordtype}{int}\ state,\ std::function<\textcolor{keywordtype}{void}()>\ call\ =\ []()\ \{\})\ :}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ condition(condition),\ state(state),\ call(call)\ \{\}}
+\DoxyCodeLine{00053\ \ \ \ \ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{class\ }InputManager\ :\ \textcolor{keyword}{public}\ Singleton<InputManager>}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }Singleton<InputManager>;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_currentState\ =\ CME\_STATE\_NORMAL;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ std::vector<Shortcut>\ \_shortcuts;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::vector<StateChanger>\ \_stateChangers;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ std::vector<MouseEvent>\ \_mouseEvents;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_isViewportHovered\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_mouseX\ =\ 0.0f;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_mouseY\ =\ 0.0f;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_viewportMouseX\ =\ 0.0f;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_viewportMouseY\ =\ 0.0f;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \string~InputManager();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ proccessInput();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ addShortcut(Shortcut\ shortC)\ \{\ \_shortcuts.push\_back(shortC);\ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ addStateChanger(StateChanger\ changer)\ \{\ \_stateChangers.push\_back(changer);\ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ addMouseEvent(MouseEvent\ evt)\ \{\ \_mouseEvents.push\_back(evt);\ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ mouseCallback(GLFWwindow*\ window,\ \textcolor{keywordtype}{double}\ xpos,\ \textcolor{keywordtype}{double}\ ypos);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setViewportHovered(\textcolor{keywordtype}{bool}\ hovered)\ \{\ \_isViewportHovered\ =\ hovered;\ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isViewportHovered()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_isViewportHovered;\ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cannot\ copy/move}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ InputManager(InputManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ InputManager(InputManager\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ InputManager\&\ operator=(InputManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ InputManager\&\ operator=(InputManager\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ getMouseX()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_mouseX;\ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ getMouseY()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_mouseY;\ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ getViewportMouseX()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_viewportMouseX;\ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ getViewportMouseY()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_viewportMouseY;\ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setViewportMouseX(\textcolor{keywordtype}{float}\ mouse)\ \{\ \_viewportMouseX\ =\ mouse;\ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setViewportMouseY(\textcolor{keywordtype}{float}\ mouse)\ \{\ \_viewportMouseY\ =\ mouse;\ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ InputManager();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ createShortcuts();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ init();}
+\DoxyCodeLine{00110\ \ \ \ \ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{inline}\ InputManager\&\ inpM()\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *InputManager::Instance();}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \}}
+\DoxyCodeLine{00116\ }
+
+\end{DoxyCode}

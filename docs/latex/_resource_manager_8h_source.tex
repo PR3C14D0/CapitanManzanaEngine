@@ -7,35 +7,41 @@
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <utils/Singleton.h>}}
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <core/Shader.h>}}
 \DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_shader}{Shader}};}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }ResourceManager\ :\ \textcolor{keyword}{public}\ Singleton<ResourceManager>}
-\DoxyCodeLine{00010\ \{}
-\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }Singleton<ResourceManager>;}
-\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ SHADERS\_PATH\ =\ \textcolor{stringliteral}{"{}assets/shaders"{}};}
-\DoxyCodeLine{00014\ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<Shader>>\ \_shadersMap;}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~ResourceManager();}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ cannot\ copy/move}}
-\DoxyCodeLine{00020\ \ \ \ \ ResourceManager(ResourceManager\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00021\ \ \ \ \ ResourceManager(ResourceManager\&\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00022\ \ \ \ \ ResourceManager\&\ operator=(ResourceManager\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00023\ \ \ \ \ ResourceManager\&\ operator=(ResourceManager\&\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00028\ \ \ \ \ \doxymbox{\hyperlink{class_shader}{Shader}}*\ \doxymbox{\hyperlink{class_resource_manager_a5375fe2800c5c179ca94bbf529f6afce}{getShader}}(std::string\ key);}
-\DoxyCodeLine{00031\ \ \ \ \ std::vector<Shader*>\ \doxymbox{\hyperlink{class_resource_manager_a48ba5a08de8f25e684e9ca00a1855cf7}{getAllShaders}}();}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00034\ \ \ \ \ ResourceManager()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ init();}
-\DoxyCodeLine{00039\ \};}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_resource_manager}{ResourceManager}}\&\ rscrM()\ \{}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{return}\ *ResourceManager::Instance();}
-\DoxyCodeLine{00045\ \}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }cme\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classcme_1_1_shader}{Shader}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{class\ }ResourceManager\ :\ \textcolor{keyword}{public}\ Singleton<ResourceManager>}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }Singleton<ResourceManager>;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/\ SHADERS\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ SHADERS\_PATH\ =\ \textcolor{stringliteral}{"{}assets/shaders"{}};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<Shader>>\ \_shadersMap;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ std::vector<Shader*>\ \_shaders;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \_shaderNames;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \string~ResourceManager();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cannot\ copy/move}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ ResourceManager(ResourceManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ ResourceManager(ResourceManager\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ ResourceManager\&\ operator=(ResourceManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ ResourceManager\&\ operator=(ResourceManager\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classcme_1_1_shader}{Shader}}*\ \doxymbox{\hyperlink{classcme_1_1_resource_manager_ab90b916d57ce79aca9c12d4744c9ae8e}{getShader}}(std::string\ key);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::vector<Shader*>\ \doxymbox{\hyperlink{classcme_1_1_resource_manager_a6072251ff834e962a1352ea6cae6dc5b}{getAllShaders}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{classcme_1_1_resource_manager_a8f05bb9566673579becae6e3dc78ef76}{getAllShaderNames}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ ResourceManager()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ init();}
+\DoxyCodeLine{00046\ \ \ \ \ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{classcme_1_1_resource_manager}{ResourceManager}}\&\ rscrM()\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *ResourceManager::Instance();}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \}}
 
 \end{DoxyCode}

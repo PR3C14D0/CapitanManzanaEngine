@@ -1,0 +1,24 @@
+\doxysection{Mesh\+ID.\+h}
+\hypertarget{_mesh_i_d_8h_source}{}\label{_mesh_i_d_8h_source}\index{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/core/mesh/MeshID.h@{C:/Users/manza/Desktop/UNIVERSIDAD/GitHub/MotorC++/Proyecto/IG1App/src/core/mesh/MeshID.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ MESH\_TYPES\_ID\ TRIANGLE,\ QUAD,\ CUBE}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ MESH\_TYPES\_NAMES\ "{}TRIANGLE"{},\ "{}QUAD"{},\ "{}CUBE"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }cme\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{using\ }meshID\_t\ =\ uint8\_t;}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{enum}\ meshID\ :\ meshID\_t}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ None\ =\ 0,}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ MESH\_TYPES\_ID,}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ MESH\_COUNT}
+\DoxyCodeLine{00015\ \ \ \ \ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{const}\ std::array<const\ char*,\ MESH\_COUNT>\ MESH\_T\_NAMES\ =\ \{\ \textcolor{stringliteral}{"{}None"{}},\ MESH\_TYPES\_NAMES\};}
+\DoxyCodeLine{00018\ \}}
+
+\end{DoxyCode}

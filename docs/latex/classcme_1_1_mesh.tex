@@ -1,0 +1,105 @@
+\doxysection{Referencia de la clase cme::\+Mesh}
+\hypertarget{classcme_1_1_mesh}{}\label{classcme_1_1_mesh}\index{cme::Mesh@{cme::Mesh}}
+
+
+Clase abstracta que sirve como padre para crear todo tipo de mallas distintas.  
+
+
+
+
+{\ttfamily \+\#include $<$Mesh.\+h$>$}
+
+
+
+Diagrama de herencia de cme::\+Mesh
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcme_1_1_mesh__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classcme_1_1_mesh_acd6ada4c6b4c00b75180873181d5fbb3}\label{classcme_1_1_mesh_acd6ada4c6b4c00b75180873181d5fbb3} 
+{\bfseries Mesh} ()=default
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+\Hypertarget{classcme_1_1_mesh_a27931d5c2000f53ad647965726de319c}\label{classcme_1_1_mesh_a27931d5c2000f53ad647965726de319c} 
+virtual void {\bfseries generate\+Mesh} ()=0
+\begin{DoxyCompactList}\small\item\em Genera el mesh colocando los v�rtices, colores, etc... \end{DoxyCompactList}\item 
+\Hypertarget{classcme_1_1_mesh_a3f2cfc7adc49736979f3e0bb3fb93549}\label{classcme_1_1_mesh_a3f2cfc7adc49736979f3e0bb3fb93549} 
+virtual void {\bfseries render} () const
+\begin{DoxyCompactList}\small\item\em Renderiza el mesh. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_mesh_a0d763a98b0c123c7af6effca4d37e204}{set\+Shader}} (\doxymbox{\hyperlink{classcme_1_1_shader}{Shader}} \texorpdfstring{$\ast$}{*}\doxymbox{\hyperlink{classcme_1_1_mesh_ad318c761840b29a41309a781748cd530}{shader}})
+\begin{DoxyCompactList}\small\item\em Cambia el shader que utiliza la mesh. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_mesh_acd59fe28509df1ae051b8d33f1493b07}{set\+Model\+Matrix}} (glm::\+mat4 model)
+\begin{DoxyCompactList}\small\item\em Establece la matriz de modelado de la malla. \end{DoxyCompactList}\item 
+glm::\+mat4 \doxymbox{\hyperlink{classcme_1_1_mesh_a51b6d1291fd924e1e9632ca014a9a259}{model\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em La matriz de modelado del mesh, que guarda su posici�n rotacion y escala en el mundo. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classcme_1_1_shader}{Shader}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classcme_1_1_mesh_ad318c761840b29a41309a781748cd530}{shader}} ()
+\begin{DoxyCompactList}\small\item\em El shader que esta usando la mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase abstracta que sirve como padre para crear todo tipo de mallas distintas. 
+
+\label{doc-func-members}
+\Hypertarget{classcme_1_1_mesh_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classcme_1_1_mesh_a51b6d1291fd924e1e9632ca014a9a259}\index{cme::Mesh@{cme::Mesh}!modelMatrix@{modelMatrix}}
+\index{modelMatrix@{modelMatrix}!cme::Mesh@{cme::Mesh}}
+\doxysubsubsection{\texorpdfstring{modelMatrix()}{modelMatrix()}}
+{\footnotesize\ttfamily \label{classcme_1_1_mesh_a51b6d1291fd924e1e9632ca014a9a259} 
+glm::\+mat4 cme::\+\+Mesh::\+model\+Matrix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+La matriz de modelado del mesh, que guarda su posici�n rotacion y escala en el mundo. 
+
+\begin{DoxyReturn}{Devuelve}
+La matriz de modelado 
+\end{DoxyReturn}
+\Hypertarget{classcme_1_1_mesh_acd59fe28509df1ae051b8d33f1493b07}\index{cme::Mesh@{cme::Mesh}!setModelMatrix@{setModelMatrix}}
+\index{setModelMatrix@{setModelMatrix}!cme::Mesh@{cme::Mesh}}
+\doxysubsubsection{\texorpdfstring{setModelMatrix()}{setModelMatrix()}}
+{\footnotesize\ttfamily \label{classcme_1_1_mesh_acd59fe28509df1ae051b8d33f1493b07} 
+void cme::\+\+Mesh::\+set\+Model\+Matrix (\begin{DoxyParamCaption}\item[{glm::\+mat4}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Establece la matriz de modelado de la malla. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em model} & La nueva matriz \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcme_1_1_mesh_a0d763a98b0c123c7af6effca4d37e204}\index{cme::Mesh@{cme::Mesh}!setShader@{setShader}}
+\index{setShader@{setShader}!cme::Mesh@{cme::Mesh}}
+\doxysubsubsection{\texorpdfstring{setShader()}{setShader()}}
+{\footnotesize\ttfamily \label{classcme_1_1_mesh_a0d763a98b0c123c7af6effca4d37e204} 
+void cme::\+\+Mesh::\+set\+Shader (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classcme_1_1_shader}{Shader}} \texorpdfstring{$\ast$}{*}}]{shader}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cambia el shader que utiliza la mesh. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \doxylink{classcme_1_1_mesh_ad318c761840b29a41309a781748cd530}{shader}} & El shader a poner \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcme_1_1_mesh_ad318c761840b29a41309a781748cd530}\index{cme::Mesh@{cme::Mesh}!shader@{shader}}
+\index{shader@{shader}!cme::Mesh@{cme::Mesh}}
+\doxysubsubsection{\texorpdfstring{shader()}{shader()}}
+{\footnotesize\ttfamily \label{classcme_1_1_mesh_ad318c761840b29a41309a781748cd530} 
+\doxymbox{\hyperlink{classcme_1_1_shader}{Shader}} \texorpdfstring{$\ast$}{*} cme::\+\+Mesh::\+shader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+El shader que esta usando la mesh. 
+
+\begin{DoxyReturn}{Devuelve}
+Un puntero al shader 
+\end{DoxyReturn}

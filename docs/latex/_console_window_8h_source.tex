@@ -4,19 +4,30 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <core/ui/Window.h>}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }capiEngine::ui\ \{}
-\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{class\ }ConsoleWindow\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classcapi_engine_1_1ui_1_1_window}{Window}}}
-\DoxyCodeLine{00006\ \ \ \ \ \{}
-\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ WINDOW\_ID(capiEngine::ui::windowGroupID::CONSOLE)}
-\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ ConsoleWindow(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ ImGuiWindowFlags\ flags\ =\ ImGuiWindowFlags\_NoCollapse)\ :}
-\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ Window(name,\ flags)\ \{\ \}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ renderWindowContent()\ \textcolor{keyword}{const\ override};}
-\DoxyCodeLine{00014\ \ \ \ \ \};}
-\DoxyCodeLine{00015\ \}}
-\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }cme::ui\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{class\ }ConsoleWindow\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classcme_1_1ui_1_1_window}{Window}}}
+\DoxyCodeLine{00008\ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \_logs;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ WINDOW\_ID(ui::windowGroupID::CONSOLE)}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ ConsoleWindow(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ ImGuiWindowFlags\ flags\ =\ ImGuiWindowFlags\_NoCollapse)\ :}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ Window(name,\ flags)\ \{\ \}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \string~ConsoleWindow()\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>().swap(\_logs);}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \_logs.clear();}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ addLog(std::string\ log)\ \{\ \_logs.push\_back(log);\ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ renderWindowContent()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ \ \ \ \ \};}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
 
 \end{DoxyCode}

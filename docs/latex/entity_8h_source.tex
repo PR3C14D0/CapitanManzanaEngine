@@ -11,167 +11,243 @@
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_DEBUG}}
 \DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }Scene;}
-\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }ec}
-\DoxyCodeLine{00012\ \{}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{class\ }EntityManager;}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }Entity}
-\DoxyCodeLine{00015\ \ \ \ \ \{}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ Entity(ent::groupID\ groupID,\ Scene*\ \_scenePtr)}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \_alive(true)}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_active(true)}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_groupID(ec::ent::None)}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_scene(\_scenePtr)}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_updateComponents(0,\ nullptr)}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_renderComponents(0,\ nullptr)}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_components(ec::comp::NUM\_COMPONENTS,\ nullptr)}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#ifdef\ \_DEBUG}}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Creating\ entity"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_DEBUG}}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \_groupID\ =\ groupID;}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \string~Entity()}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ c\ :\ \_components)\ \{\ \textcolor{keyword}{delete}\ c;\ \}}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_updateComponents.clear();}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_renderComponents.clear();}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \_components.clear();}
-\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#ifdef\ \_DEBUG}}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}deleting\ entity"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_DEBUG}}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ Entity(\textcolor{keyword}{const}\ Entity\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ Entity\&\ operator=(\textcolor{keyword}{const}\ Entity\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ ec::ent::groupID\ \_groupID;}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_alive;}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_active;}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ Scene*\ \_scene;}
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::vector<UpdateComponent*>\ \_updateComponents;}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ std::vector<RenderComponent*>\ \_renderComponents;}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ std::vector<Component*>\ \_components;}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <core/serialize/JsonSerializer.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <core/serialize/Serializable.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <core/register/ComponentRegistry.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }cme\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }Scene;}
+\DoxyCodeLine{00016\ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }ec}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{class\ }EntityManager;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{class\ }Entity\ :\ \textcolor{keyword}{public}\ cme::Serializable,\ \textcolor{keyword}{public}\ std::enable\_shared\_from\_this<Entity>}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ Entity(ent::groupID\ groupID,\ cme::Scene*\ \_scenePtr,\ std::string\ name)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \_alive(true)}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_active(true)}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_groupID(ec::ent::None)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_scene(\_scenePtr)}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_updateComponents(0,\ nullptr)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_renderComponents(0,\ nullptr)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_components(ec::comp::NUM\_COMPONENTS,\ nullptr)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \_name(name)}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#ifdef\ \_DEBUG}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_INFO(\textcolor{stringliteral}{"{}Creating\ entity"{}});}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_DEBUG}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_groupID\ =\ groupID;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \string~Entity()}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ c\ :\ \_components)\ \{\ \textcolor{keyword}{delete}\ c;\ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \_updateComponents.clear();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \_renderComponents.clear();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \_components.clear();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ Entity(\textcolor{keyword}{const}\ Entity\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ Entity\&\ operator=(\textcolor{keyword}{const}\ Entity\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ ec::ent::groupID\ \_groupID;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_alive;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_active;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ cme::Scene*\ \_scene;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ std::string\ \_name;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ std::vector<UpdateComponent*>\ \_updateComponents;}
 \DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ update()\ \{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}*\ comp\ :\ \_updateComponents)\ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comp-\/>update();}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ std::vector<RenderComponent*>\ \_renderComponents;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ std::vector<Component*>\ \_components;}
 \DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ render()\ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}*\ comp\ :\ \_renderComponents)\ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comp-\/>render();}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Ts>}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ T*\ addComponent(Ts\&\&...\ args)}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Comprobar\ en\ tiempo\ de\ ejecucion\ si\ T\ es\ un\ componente}}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<Component,\ T>::value,\ \textcolor{stringliteral}{"{}No\ es\ un\ componente"{}});\ \textcolor{comment}{//\ La\ putada\ es\ que\ no\ te\ dice\ donde\ has\ puesto\ mal...}}
-\DoxyCodeLine{00092\ }
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtener\ el\ ID\ del\ componente\ T,\ si\ no\ esta\ registrado\ }}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ comp::cmpID\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{static\_cast<}comp::cmpID\textcolor{keyword}{>}(ec::getComponentID<T>);}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Quitar\ el\ componente}}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ removeComponent<T>();}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Crear\ el\ componente\ y\ asignarlo\ en\ el\ vector\ del\ componentes}}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ T*\ component\ =\ \textcolor{keyword}{new}\ T(std::forward<Ts>(args)...);}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \_components[id]\ =\ component;}
-\DoxyCodeLine{00102\ }
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//se\ comprueba\ si\ es\ un\ componente\ de\ render\ para\ meterlo\ en\ el\ vector\ correspondiente}}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_base\_of\_v<RenderComponent,\ T>)\ \{}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_renderComponents.push\_back(\textcolor{keyword}{static\_cast<}RenderComponent*\textcolor{keyword}{>}(component));}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_base\_of\_v<UpdateComponent,\ T>)\ \{}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_updateComponents.push\_back(\textcolor{keyword}{static\_cast<}UpdateComponent*\textcolor{keyword}{>}(component));}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ component-\/>setUpdateIterator(std::prev(\_updateComponents.end()));}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ std::string\&\ name()\ \{\ \textcolor{keywordflow}{return}\ \_name;\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ update()\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}*\ comp\ :\ \_updateComponents)\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comp-\/>update();}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ render()\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}*\ comp\ :\ \_renderComponents)\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comp-\/>render();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ serialize(cme::JsonSerializer\&\ s)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ Añadimos\ una\ nueva\ entidad\ al\ array\ de\ entidades}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ s.pushObjectToArray();}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2.\ Guardamos\ sus\ datos\ básicos}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a9951c97669acc5b47d925e4b755635c8}{write}}(\textcolor{stringliteral}{"{}name"{}},\ this-\/>\_name);\ \textcolor{comment}{//\ Asumiendo\ que\ tu\ entidad\ tiene\ nombre}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3.\ Abrimos\ el\ array\ de\ componentes}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ s.beginArray(\textcolor{stringliteral}{"{}components"{}});}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ component\ :\ \_components)\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!component)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Por\ cada\ componente,\ metemos\ un\ nuevo\ objeto\ en\ el\ array}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.pushObjectToArray();}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a9951c97669acc5b47d925e4b755635c8}{write}}(\textcolor{stringliteral}{"{}type"{}},\ component-\/>serializeID());}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a2befc932ccda5827d7fc0c154d361f84}{beginScope}}(\textcolor{stringliteral}{"{}data"{}});}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ component-\/>serialize(s);\ \textcolor{comment}{//\ Aquí\ llama\ al\ Transform,\ MeshRenderer,\ etc.}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd}{endScope}}();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd}{endScope}}();\ \textcolor{comment}{//\ Cerramos\ el\ objeto\ de\ este\ componente}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd}{endScope}}();\ \textcolor{comment}{//\ Cerramos\ el\ array\ "{}components"{}}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd}{endScope}}();\ \textcolor{comment}{//\ Cerramos\ el\ objeto\ de\ la\ entidad}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00112\ }
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Asignar\ el\ owner\ del\ componente}}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ component-\/>setContext(\textcolor{keyword}{this});}
-\DoxyCodeLine{00116\ }
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Inicializar\ el\ componente}}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ component-\/>initComponent();}
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Devolver\ el\ componente}}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ component;}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00123\ }
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ removeComponent()}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Comprobar\ en\ tiempo\ de\ ejecucion\ si\ T\ es\ un\ componente}}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<Component,\ T>::value,\ \textcolor{stringliteral}{"{}No\ es\ un\ componente"{}});}
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtener\ el\ ID\ del\ componente\ T,\ si\ no\ esta\ registrado}}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ comp::cmpID\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{static\_cast<}comp::cmpID\textcolor{keyword}{>}(ec::getComponentID<T>);}
-\DoxyCodeLine{00134\ }
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ component\ =\ \_components[id];}
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00137\ }
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
-\DoxyCodeLine{00139\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Aqui\ deberia\ poder\ comprobar\ que\ componente\ especial\ es,\ y\ borrarlo\ de\ su\ lista\ correspondiente\ mediante\ el\ iterador,\ pero\ no\ me\ sale...}}
-\DoxyCodeLine{00140\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ */}}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ constexpr\ (std::is\_base\_of\_v<UpdateComponent,\ T>)}}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ static\_cast<UpdateComponent*>(component);}}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \_updateComponents.erase(component-\/>getUpdateIterator());}}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \_components[id];}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \_components[id]\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00151\ }
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ hasComponent()}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<Component,\ T>::value,\ \textcolor{stringliteral}{"{}No\ es\ un\ componente"{}});}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ comp::cmpID\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{static\_cast<}comp::cmpID\textcolor{keyword}{>}(ec::getComponentID<T>);}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_components[id]\ !=\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ T*\ getComponent()}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<Component,\ T>::value,\ \textcolor{stringliteral}{"{}No\ es\ un\ componente"{}});}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ comp::cmpID\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{static\_cast<}comp::cmpID\textcolor{keyword}{>}(ec::getComponentID<T>);}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}T*\textcolor{keyword}{>}(\_components[id]);}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ deserialize(cme::JsonSerializer\&\ s)\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ s.beginArray(\textcolor{stringliteral}{"{}components"{}});}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ numComp\ =\ s.getArraySize();}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ k\ =\ 0;\ k\ <\ numComp;\ k++)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.enterElement(k);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ compKey\ =\ s.readString(\textcolor{stringliteral}{"{}type"{}});}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ comp\ =\ \doxymbox{\hyperlink{classcme_1_1_component_registry_ae76b8d13ffea0206992d5c3c70257314}{cme::ComponentRegistry::create}}(compKey);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!comp)\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(std::format(\textcolor{stringliteral}{"{}El\ componente\ es\ nulo,\ la\ key\ no\ existe.\ KEY:\ \{\}"{}},\ compKey));}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>addComponent(comp);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a2befc932ccda5827d7fc0c154d361f84}{beginScope}}(\textcolor{stringliteral}{"{}data"{}});}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comp-\/>deserialize(s);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd}{endScope}}();}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd}{endScope}}();}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd}{endScope}}();\ \textcolor{comment}{//\ Salimos\ de\ los\ componentes}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Ts>}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ T*\ addComponent(Ts\&\&...\ args)}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Comprobar\ en\ tiempo\ de\ ejecucion\ si\ T\ es\ un\ componente}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<Component,\ T>::value,\ \textcolor{stringliteral}{"{}No\ es\ un\ componente"{}});\ \textcolor{comment}{//\ La\ putada\ es\ que\ no\ te\ dice\ donde\ has\ puesto\ mal...}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtener\ el\ ID\ del\ componente\ T,\ si\ no\ esta\ registrado\ }}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ comp::cmpID\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{static\_cast<}comp::cmpID\textcolor{keyword}{>}(ec::getComponentID<T>);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Quitar\ el\ componente}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ removeComponent<T>();}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Crear\ el\ componente\ y\ asignarlo\ en\ el\ vector\ del\ componentes}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ T*\ component\ =\ \textcolor{keyword}{new}\ T(std::forward<Ts>(args)...);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \_components[id]\ =\ component;}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//se\ comprueba\ si\ es\ un\ componente\ de\ render\ para\ meterlo\ en\ el\ vector\ correspondiente}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_base\_of\_v<RenderComponent,\ T>)\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_renderComponents.push\_back(\textcolor{keyword}{static\_cast<}RenderComponent*\textcolor{keyword}{>}(component));}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_base\_of\_v<UpdateComponent,\ T>)\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_updateComponents.push\_back(\textcolor{keyword}{static\_cast<}UpdateComponent*\textcolor{keyword}{>}(component));}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ component-\/>setUpdateIterator(std::prev(\_updateComponents.end()));}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Asignar\ el\ owner\ del\ componente}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ component-\/>setContext(shared\_from\_this());}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Inicializar\ el\ componente}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ component-\/>initComponent();}
 \DoxyCodeLine{00173\ }
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ setGroup(ec::ent::groupID\ \textcolor{keywordtype}{id})\ \{\ \_groupID\ =\ id;\ \}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Devolver\ el\ componente}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ component;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00177\ }
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ Scene*\ getScene()\ \{}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_scene;}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00181\ }
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isAlive()\ \{\ \textcolor{keywordflow}{return}\ \_alive;\ \}}
-\DoxyCodeLine{00185\ }
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isActive()\ \{\ \textcolor{keywordflow}{return}\ \_active;\ \}}
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ std::vector<UpdateComponent*>\&\ getUpdateComponent()\ \{}
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_updateComponents;}
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00195\ }
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ std::vector<RenderComponent*>\&\ getRenderComponent()\ \{}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_renderComponents;}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ addComponent(ec::Component*\ component)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!component)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ ec::cmpID\_t\ \textcolor{keywordtype}{id}\ =\ component-\/>getID();}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Borrar\ si\ ya\ existe}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \_components[id];}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \_components[id]\ =\ component;}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Registrar\ en\ render/update\ si\ aplica}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}*\ r\ =\ component-\/>getAsRender())\ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_renderComponents.push\_back(r);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}*\ u\ =\ component-\/>getAsUpdate())\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_updateComponents.push\_back(u);}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u-\/>setUpdateIterator(std::prev(\_updateComponents.end()));}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ component-\/>\doxymbox{\hyperlink{classec_1_1_component_a1a29a746857860f81159450b3ecdad92}{setContext}}(shared\_from\_this());}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ component-\/>initComponent();}
 \DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00201\ \ \ \ \ \};}
-\DoxyCodeLine{00202\ \};\ \textcolor{comment}{//\ namespace\ ec}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ removeComponent()}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Comprobar\ en\ tiempo\ de\ ejecucion\ si\ T\ es\ un\ componente}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<Component,\ T>::value,\ \textcolor{stringliteral}{"{}No\ es\ un\ componente"{}});}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtener\ el\ ID\ del\ componente\ T,\ si\ no\ esta\ registrado}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ comp::cmpID\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{static\_cast<}comp::cmpID\textcolor{keyword}{>}(ec::getComponentID<T>);}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ component\ =\ \_components[id];}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00217\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Aqui\ deberia\ poder\ comprobar\ que\ componente\ especial\ es,\ y\ borrarlo\ de\ su\ lista\ correspondiente\ mediante\ el\ iterador,\ pero\ no\ me\ sale...}}
+\DoxyCodeLine{00218\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ constexpr\ (std::is\_base\_of\_v<UpdateComponent,\ T>)}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ static\_cast<UpdateComponent*>(component);}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \_updateComponents.erase(component-\/>getUpdateIterator());}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \_components[id];}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \_components[id]\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ hasComponent()}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<Component,\ T>::value,\ \textcolor{stringliteral}{"{}No\ es\ un\ componente"{}});}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ comp::cmpID\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{static\_cast<}comp::cmpID\textcolor{keyword}{>}(ec::getComponentID<T>);}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_components[id]\ !=\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ T*\ getComponent()}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<Component,\ T>::value,\ \textcolor{stringliteral}{"{}No\ es\ un\ componente"{}});}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ comp::cmpID\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{static\_cast<}comp::cmpID\textcolor{keyword}{>}(ec::getComponentID<T>);}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}T*\textcolor{keyword}{>}(\_components[id]);}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ setGroup(ec::ent::groupID\ \textcolor{keywordtype}{id})\ \{\ \_groupID\ =\ id;\ \}}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ cme::Scene*\ getScene()\ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_scene;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isAlive()\ \{\ \textcolor{keywordflow}{return}\ \_alive;\ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\&\ active()\ \{\ \textcolor{keywordflow}{return}\ \_active;\ \}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ std::vector<UpdateComponent*>\&\ getUpdateComponent()\ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_updateComponents;}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ std::vector<RenderComponent*>\&\ getRenderComponent()\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_renderComponents;}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00279\ \ \ \ \ \};}
+\DoxyCodeLine{00280\ \};\ \textcolor{comment}{//\ namespace\ ec}}
 
 \end{DoxyCode}

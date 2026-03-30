@@ -1,0 +1,105 @@
+\doxysection{Referencia de la clase cme::\+GLApplication}
+\hypertarget{classcme_1_1_g_l_application}{}\label{classcme_1_1_g_l_application}\index{cme::GLApplication@{cme::GLApplication}}
+
+
+Clase principal que maneja el ciclo de vida de la aplicación.  
+
+
+
+
+{\ttfamily \+\#include $<$GLApplication.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classcme_1_1_g_l_application_af575ac167185120d420520493ea14721}\label{classcme_1_1_g_l_application_af575ac167185120d420520493ea14721} 
+void {\bfseries start} ()
+\begin{DoxyCompactList}\small\item\em Inicializa el bucle de la applicación. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{classcme_1_1_g_l_application_ac01db75884921438cf5f53423ca9b9c2}{width}} ()
+\begin{DoxyCompactList}\small\item\em El ancho de la pantalla. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{classcme_1_1_g_l_application_a543dd7c00987dd95b9fa68c6d9007208}{height}} ()
+\begin{DoxyCompactList}\small\item\em El alto de la pantalla. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{classcme_1_1_g_l_application_afd6f504f53e277b80d4bd80fb6a0bb91}{viewport\+Width}} ()
+\begin{DoxyCompactList}\small\item\em El ancho del viewport. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{classcme_1_1_g_l_application_a442abe2f784a1bbb285173b5b96ab68b}{viewport\+Height}} ()
+\begin{DoxyCompactList}\small\item\em El alto del viewport. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{classcme_1_1_g_l_application_aa39cae4cc1cb2dace9d2d71b07aeb8f6}{delta\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve la diferencia de tiempo entre frames. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase principal que maneja el ciclo de vida de la aplicación. 
+
+
+\begin{DoxyItemize}
+\item Utiliza el patrón Singleton para asegurar que solo exista una instancia de la ventana de GLFW en todo el proyecto Open\+GL. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{classcme_1_1_g_l_application_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classcme_1_1_g_l_application_aa39cae4cc1cb2dace9d2d71b07aeb8f6}\index{cme::GLApplication@{cme::GLApplication}!deltaTime@{deltaTime}}
+\index{deltaTime@{deltaTime}!cme::GLApplication@{cme::GLApplication}}
+\doxysubsubsection{\texorpdfstring{deltaTime()}{deltaTime()}}
+{\footnotesize\ttfamily \label{classcme_1_1_g_l_application_aa39cae4cc1cb2dace9d2d71b07aeb8f6} 
+float cme::\+\+GLApplication::\+delta\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve la diferencia de tiempo entre frames. 
+
+\begin{DoxyReturn}{Devuelve}
+El delta time 
+\end{DoxyReturn}
+\Hypertarget{classcme_1_1_g_l_application_a543dd7c00987dd95b9fa68c6d9007208}\index{cme::GLApplication@{cme::GLApplication}!height@{height}}
+\index{height@{height}!cme::GLApplication@{cme::GLApplication}}
+\doxysubsubsection{\texorpdfstring{height()}{height()}}
+{\footnotesize\ttfamily \label{classcme_1_1_g_l_application_a543dd7c00987dd95b9fa68c6d9007208} 
+float cme::\+\+GLApplication::\+height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+El alto de la pantalla. 
+
+\begin{DoxyReturn}{Devuelve}
+El alto de la pantalla 
+\end{DoxyReturn}
+\Hypertarget{classcme_1_1_g_l_application_a442abe2f784a1bbb285173b5b96ab68b}\index{cme::GLApplication@{cme::GLApplication}!viewportHeight@{viewportHeight}}
+\index{viewportHeight@{viewportHeight}!cme::GLApplication@{cme::GLApplication}}
+\doxysubsubsection{\texorpdfstring{viewportHeight()}{viewportHeight()}}
+{\footnotesize\ttfamily \label{classcme_1_1_g_l_application_a442abe2f784a1bbb285173b5b96ab68b} 
+float cme::\+\+GLApplication::\+viewport\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+El alto del viewport. 
+
+\begin{DoxyReturn}{Devuelve}
+El alto del viewport 
+\end{DoxyReturn}
+\Hypertarget{classcme_1_1_g_l_application_afd6f504f53e277b80d4bd80fb6a0bb91}\index{cme::GLApplication@{cme::GLApplication}!viewportWidth@{viewportWidth}}
+\index{viewportWidth@{viewportWidth}!cme::GLApplication@{cme::GLApplication}}
+\doxysubsubsection{\texorpdfstring{viewportWidth()}{viewportWidth()}}
+{\footnotesize\ttfamily \label{classcme_1_1_g_l_application_afd6f504f53e277b80d4bd80fb6a0bb91} 
+float cme::\+\+GLApplication::\+viewport\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+El ancho del viewport. 
+
+\begin{DoxyReturn}{Devuelve}
+El ancho del viewport 
+\end{DoxyReturn}
+\Hypertarget{classcme_1_1_g_l_application_ac01db75884921438cf5f53423ca9b9c2}\index{cme::GLApplication@{cme::GLApplication}!width@{width}}
+\index{width@{width}!cme::GLApplication@{cme::GLApplication}}
+\doxysubsubsection{\texorpdfstring{width()}{width()}}
+{\footnotesize\ttfamily \label{classcme_1_1_g_l_application_ac01db75884921438cf5f53423ca9b9c2} 
+float cme::\+\+GLApplication::\+width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+El ancho de la pantalla. 
+
+\begin{DoxyReturn}{Devuelve}
+El ancho de la pantalla 
+\end{DoxyReturn}

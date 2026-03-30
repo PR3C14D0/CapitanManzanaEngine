@@ -1,0 +1,95 @@
+\doxysection{Referencia de la clase cme::\+Json\+Serializer}
+\hypertarget{classcme_1_1_json_serializer}{}\label{classcme_1_1_json_serializer}\index{cme::JsonSerializer@{cme::JsonSerializer}}
+
+
+Se encarga de serializar en un JSON lo que sea de tipo \doxylink{classcme_1_1_serializable}{Serializable}.  
+
+
+
+
+{\ttfamily \+\#include $<$Json\+Serializer.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classcme_1_1_json_serializer_a9951c97669acc5b47d925e4b755635c8}{write}} (const std::\+string \&key, float value)
+\begin{DoxyCompactList}\small\item\em Escribe un valor en el scope actual. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_json_serializer_a2befc932ccda5827d7fc0c154d361f84}{begin\+Scope}} (const std::\+string \&key)
+\begin{DoxyCompactList}\small\item\em Cambia de scope para leer o escribir en el json. \end{DoxyCompactList}\item 
+\Hypertarget{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd}\label{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd} 
+void {\bfseries end\+Scope} ()
+\begin{DoxyCompactList}\small\item\em Vuelve al scope anterior. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_json_serializer_aa7a8f67e688e77b7e3be1ad1bd1b9f55}{save}} (const std::\+string \&path) const
+\begin{DoxyCompactList}\small\item\em Guarda el json en el lugar definido. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_json_serializer_a110e5f3ea97ae5b2c222585f4d789c5a}{load}} (const std::\+string \&path)
+\begin{DoxyCompactList}\small\item\em Carga la infoormaci�n de un archivo json. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Se encarga de serializar en un JSON lo que sea de tipo \doxylink{classcme_1_1_serializable}{Serializable}. 
+
+\label{doc-func-members}
+\Hypertarget{classcme_1_1_json_serializer_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classcme_1_1_json_serializer_a2befc932ccda5827d7fc0c154d361f84}\index{cme::JsonSerializer@{cme::JsonSerializer}!beginScope@{beginScope}}
+\index{beginScope@{beginScope}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{beginScope()}{beginScope()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_a2befc932ccda5827d7fc0c154d361f84} 
+void cme::\+\+Json\+Serializer::\+begin\+Scope (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Cambia de scope para leer o escribir en el json. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & La clave del scope \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcme_1_1_json_serializer_a110e5f3ea97ae5b2c222585f4d789c5a}\index{cme::JsonSerializer@{cme::JsonSerializer}!load@{load}}
+\index{load@{load}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_a110e5f3ea97ae5b2c222585f4d789c5a} 
+void cme::\+\+Json\+Serializer::\+load (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Carga la infoormaci�n de un archivo json. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em path} & La ubicacion del archivo \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcme_1_1_json_serializer_aa7a8f67e688e77b7e3be1ad1bd1b9f55}\index{cme::JsonSerializer@{cme::JsonSerializer}!save@{save}}
+\index{save@{save}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_aa7a8f67e688e77b7e3be1ad1bd1b9f55} 
+void cme::\+\+Json\+Serializer::\+save (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption}) const}
+
+
+
+Guarda el json en el lugar definido. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em path} & Donde guardar el archivo \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcme_1_1_json_serializer_a9951c97669acc5b47d925e4b755635c8}\index{cme::JsonSerializer@{cme::JsonSerializer}!write@{write}}
+\index{write@{write}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_a9951c97669acc5b47d925e4b755635c8} 
+void cme::\+\+Json\+Serializer::\+write (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{, }\item[{float}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Escribe un valor en el scope actual. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & La clave del json \\
+\hline
+{\em value} & El valor par la clave \\
+\hline
+\end{DoxyParams}

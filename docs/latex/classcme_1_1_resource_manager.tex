@@ -1,0 +1,72 @@
+\doxysection{Referencia de la clase cme::\+Resource\+Manager}
+\hypertarget{classcme_1_1_resource_manager}{}\label{classcme_1_1_resource_manager}\index{cme::ResourceManager@{cme::ResourceManager}}
+
+
+Se encarga de la gesiton de recursos del proyecto, desde shaders hasta imagenes. Utiliza el patron Singleton y se puede acceder a su instancia con rscr\+M().  
+
+
+
+
+{\ttfamily \+\#include $<$Resource\+Manager.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classcme_1_1_shader}{Shader}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classcme_1_1_resource_manager_ab90b916d57ce79aca9c12d4744c9ae8e}{get\+Shader}} (std::\+string key)
+\begin{DoxyCompactList}\small\item\em Busca en los recursos el shader pedido mediante la key, que es el nombre del archivo sin la extensi�n. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{classcme_1_1_shader}{Shader}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classcme_1_1_resource_manager_a6072251ff834e962a1352ea6cae6dc5b}{get\+All\+Shaders}} ()
+\begin{DoxyCompactList}\small\item\em Busca todos los shaders cargados y los almacena en un vector. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classcme_1_1_resource_manager_a8f05bb9566673579becae6e3dc78ef76}{get\+All\+Shader\+Names}} ()
+\begin{DoxyCompactList}\small\item\em Busca el nombre de todos los shader cargados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Se encarga de la gesiton de recursos del proyecto, desde shaders hasta imagenes. Utiliza el patron Singleton y se puede acceder a su instancia con rscr\+M(). 
+
+\label{doc-func-members}
+\Hypertarget{classcme_1_1_resource_manager_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classcme_1_1_resource_manager_a8f05bb9566673579becae6e3dc78ef76}\index{cme::ResourceManager@{cme::ResourceManager}!getAllShaderNames@{getAllShaderNames}}
+\index{getAllShaderNames@{getAllShaderNames}!cme::ResourceManager@{cme::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getAllShaderNames()}{getAllShaderNames()}}
+{\footnotesize\ttfamily \label{classcme_1_1_resource_manager_a8f05bb9566673579becae6e3dc78ef76} 
+std::\+vector$<$ std::\+string $>$ cme::\+\+Resource\+Manager::\+get\+All\+Shader\+Names (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Busca el nombre de todos los shader cargados. 
+
+\begin{DoxyReturn}{Devuelve}
+Un vector de nombres 
+\end{DoxyReturn}
+\Hypertarget{classcme_1_1_resource_manager_a6072251ff834e962a1352ea6cae6dc5b}\index{cme::ResourceManager@{cme::ResourceManager}!getAllShaders@{getAllShaders}}
+\index{getAllShaders@{getAllShaders}!cme::ResourceManager@{cme::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getAllShaders()}{getAllShaders()}}
+{\footnotesize\ttfamily \label{classcme_1_1_resource_manager_a6072251ff834e962a1352ea6cae6dc5b} 
+std::\+vector$<$ \doxymbox{\hyperlink{classcme_1_1_shader}{Shader}} \texorpdfstring{$\ast$}{*} $>$ cme::\+\+Resource\+Manager::\+get\+All\+Shaders (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Busca todos los shaders cargados y los almacena en un vector. 
+
+\begin{DoxyReturn}{Devuelve}
+Un vector de shaders 
+\end{DoxyReturn}
+\Hypertarget{classcme_1_1_resource_manager_ab90b916d57ce79aca9c12d4744c9ae8e}\index{cme::ResourceManager@{cme::ResourceManager}!getShader@{getShader}}
+\index{getShader@{getShader}!cme::ResourceManager@{cme::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getShader()}{getShader()}}
+{\footnotesize\ttfamily \label{classcme_1_1_resource_manager_ab90b916d57ce79aca9c12d4744c9ae8e} 
+\doxymbox{\hyperlink{classcme_1_1_shader}{Shader}} \texorpdfstring{$\ast$}{*} cme::\+\+Resource\+Manager::\+get\+Shader (\begin{DoxyParamCaption}\item[{std::\+string}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Busca en los recursos el shader pedido mediante la key, que es el nombre del archivo sin la extensi�n. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em key} & La clave del shader \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Devuelve un puntero inteligente al shader 
+\end{DoxyReturn}

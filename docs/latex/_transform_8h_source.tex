@@ -9,38 +9,39 @@
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <glm/vec4.hpp>}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <glm/gtc/type\_ptr.hpp>}}
 \DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }Transform\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classec_1_1_component}{ec::Component}}\{}
-\DoxyCodeLine{00009\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00010\ \ \ \ \ glm::vec3\ \_position\ =\ glm::vec3(0.0f);}
-\DoxyCodeLine{00011\ \ \ \ \ glm::vec3\ \_scale\ =\ glm::vec3(1.0f);}
-\DoxyCodeLine{00012\ \ \ \ \ glm::vec3\ \_rotation\ =\ glm::vec3(0.0f);}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00015\ \ \ \ \ \_\_CMPID\_DECL\_\_(ec::comp::TRANSFORM)}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \ \ }
-\DoxyCodeLine{00019\ \ \ \ \ glm::mat4\ getModelMatrix()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ glm::mat4\ model\ =\ glm::mat4(1.0f);}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Escala}}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ model\ =\ glm::scale(model,\ \_scale);}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rotación}}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ model\ =\ glm::rotate(model,\ glm::radians(\_rotation.x),\ glm::vec3(1,\ 0,\ 0));}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ model\ =\ glm::rotate(model,\ glm::radians(\_rotation.y),\ glm::vec3(0,\ 1,\ 0));}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ model\ =\ glm::rotate(model,\ glm::radians(\_rotation.z),\ glm::vec3(0,\ 0,\ 1));}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Traslacion}}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ model\ =\ glm::translate(model,\ \_position);}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ model;}
-\DoxyCodeLine{00030\ \ \ \ \ \}}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ GETTERS\ -\/-\/-\/}}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ getPosition()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_position;\ \}}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ getScale()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_scale;\ \}}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ getRotation()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_rotation;\ \}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }cme\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }Transform\ :\ \textcolor{keyword}{public}\ ec::Component\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ glm::vec3\ \_position\ =\ glm::vec3(0.0f);}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ glm::vec3\ \_scale\ =\ glm::vec3(1.0f);}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ glm::vec3\ \_rotation\ =\ glm::vec3(0.0f);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \_\_CMPID\_DECL\_\_(ec::comp::TRANSFORM)}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ glm::mat4\ getModelMatrix()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ GETTERS\ -\/-\/-\/}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ getPosition()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_position;\ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ glm::vec3\&\ getPosition()\ \{\ \textcolor{keywordflow}{return}\ \_position;\ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ getScale()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_scale;\ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ glm::vec3\&\ getScale()\ \{\ \textcolor{keywordflow}{return}\ \_scale;\ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ getRotation()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_rotation;\ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ glm::vec3\&\ getRotation()\ \{\ \textcolor{keywordflow}{return}\ \_rotation;\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ SETTERS\ -\/-\/-\/}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setPosition(\textcolor{keyword}{const}\ glm::vec3\&\ pos)\ \{\ \_position\ =\ pos;\ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setScale(\textcolor{keyword}{const}\ glm::vec3\&\ scale)\ \{\ \_scale\ =\ scale;\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setRotation(\textcolor{keyword}{const}\ glm::vec3\&\ rot)\ \{\ \_rotation\ =\ rot;\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ drawOnInspector()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ SETTERS\ -\/-\/-\/}}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ setPosition(\textcolor{keyword}{const}\ glm::vec3\&\ pos)\ \{\ \_position\ =\ pos;\ \}}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ setScale(\textcolor{keyword}{const}\ glm::vec3\&\ scale)\ \{\ \_scale\ =\ scale;\ \}}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ setRotation(\textcolor{keyword}{const}\ glm::vec3\&\ rot)\ \{\ \_rotation\ =\ rot;\ \}}
-\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ serialize(JsonSerializer\&\ s)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ deserialize(JsonSerializer\&\ s)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ std::string\ serializeID()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Transform"{}};\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \};}
+\DoxyCodeLine{00042\ \}}
 
 \end{DoxyCode}

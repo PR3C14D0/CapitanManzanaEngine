@@ -1,0 +1,5 @@
+<map id="ec::Component" name="ec::Component">
+<area shape="rect" id="Node000001" title="Declaracion adelantada, para evitar dependencia circular." alt="" coords="11,80,121,107"/>
+<area shape="rect" id="Node000002" href="$classcme_1_1_serializable.html" title="Interfaz que hace que los objetos se vuelvan serializables." alt="" coords="5,5,127,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,46,69,80,63,79,64,50"/>
+</map>

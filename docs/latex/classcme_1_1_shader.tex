@@ -1,0 +1,69 @@
+\doxysection{Referencia de la clase cme::\+Shader}
+\hypertarget{classcme_1_1_shader}{}\label{classcme_1_1_shader}\index{cme::Shader@{cme::Shader}}
+
+
+Clase que representa un shader de Open\+GL. Se encarga de cargar, compilar y gestionar los shaders en la aplicación.  
+
+
+
+
+{\ttfamily \+\#include $<$Shader.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classcme_1_1_shader_ae421a6a87c9434721948f1d3640c4c7e}{Shader}} (\doxymbox{\hyperlink{structcme_1_1_shader_creation_data}{Shader\+Creation\+Data}} ctx)
+\begin{DoxyCompactList}\small\item\em Constructor que carga el shader desde un archivo. El shader se compila y se prepara para su uso. \end{DoxyCompactList}\item 
+\Hypertarget{classcme_1_1_shader_a3a7f6d63a55acf97876228d90c070c0e}\label{classcme_1_1_shader_a3a7f6d63a55acf97876228d90c070c0e} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Shader} ()
+\begin{DoxyCompactList}\small\item\em Destruye el shader y libera los recursos asociados. \end{DoxyCompactList}\item 
+\Hypertarget{classcme_1_1_shader_ae8a3cc5e60e8c244505be5a2a0fabc61}\label{classcme_1_1_shader_ae8a3cc5e60e8c244505be5a2a0fabc61} 
+void {\bfseries use} () const
+\begin{DoxyCompactList}\small\item\em Activa el shader para su uso en la aplicación. Esto hace que el shader sea el programa de shader activo en Open\+GL. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_shader_a407a5352ca660603e447788d26fbc0db}{set\+Uniform}} (const std::\+string \&name, float value)
+\begin{DoxyCompactList}\small\item\em Establece un valor a una variable uniform del shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase que representa un shader de Open\+GL. Se encarga de cargar, compilar y gestionar los shaders en la aplicación. 
+
+\label{doc-constructors}
+\Hypertarget{classcme_1_1_shader_doc-constructors}
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classcme_1_1_shader_ae421a6a87c9434721948f1d3640c4c7e}\index{cme::Shader@{cme::Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!cme::Shader@{cme::Shader}}
+\doxysubsubsection{\texorpdfstring{Shader()}{Shader()}}
+{\footnotesize\ttfamily \label{classcme_1_1_shader_ae421a6a87c9434721948f1d3640c4c7e} 
+cme::\+\+Shader::\+\+Shader (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcme_1_1_shader_creation_data}{Shader\+Creation\+Data}}}]{ctx}{}\end{DoxyParamCaption})}
+
+
+
+Constructor que carga el shader desde un archivo. El shader se compila y se prepara para su uso. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ctx} & Contexto para la cración de los shaders \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classcme_1_1_shader_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classcme_1_1_shader_a407a5352ca660603e447788d26fbc0db}\index{cme::Shader@{cme::Shader}!setUniform@{setUniform}}
+\index{setUniform@{setUniform}!cme::Shader@{cme::Shader}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}}
+{\footnotesize\ttfamily \label{classcme_1_1_shader_a407a5352ca660603e447788d26fbc0db} 
+void cme::\+\+Shader::\+set\+Uniform (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{float}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Establece un valor a una variable uniform del shader. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em name} & Nombre de la variable \\
+\hline
+{\em value} & Valor de la variable \\
+\hline
+\end{DoxyParams}
