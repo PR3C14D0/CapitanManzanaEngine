@@ -1,0 +1,5 @@
+<map id="cme::ui::SceneWindow" name="cme::ui::SceneWindow">
+<area shape="rect" id="Node000001" title="Ventana que se encarga de mostrar la jerarquia de entidades de la escena y permite seleccionar una en..." alt="" coords="5,80,162,107"/>
+<area shape="rect" id="Node000002" href="$classcme_1_1ui_1_1_window.html" title="Interfaz para crear ventanas y añadirlas al render del CoreUI." alt="" coords="24,5,143,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,46,86,81,81,79,82,50"/>
+</map>

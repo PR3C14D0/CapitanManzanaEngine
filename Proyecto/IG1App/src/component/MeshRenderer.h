@@ -8,6 +8,7 @@ namespace cme {
 	class Camera;
 	class Transform;
 
+	/// @brief Componente que se encarga de renderizar a partir de una malla dada
 	class MeshRenderer : public ec::Component, public ec::RenderComponent {
 	private:
 		Mesh* _mesh = nullptr;

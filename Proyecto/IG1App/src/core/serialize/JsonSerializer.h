@@ -25,14 +25,33 @@ namespace cme {
 		void write(const std::string& key, const glm::vec3& value);
 		void write(const std::string& key, const std::string& value);
 
+		/// @brief Lee y devuelve un valor de punto flotante asociado a la clave especificada.
+		/// @param key Clave cuyo valor float se desea leer.
+		/// @return El valor de tipo float asociado a la clave.
 		float readFloat(const std::string& key) const;
+		/// @brief Lee y devuelve un valor entero asociado a la clave especificada.
+		/// @param key Clave cuyo valor entero se desea leer.
+		/// @return El valor de tipo entero asociado a la clave.
 		int readInt(const std::string& key) const;
+		/// @brief Lee y devuelve un valor de tipo glm::vec3 asociado a la clave especificada.
+		/// @param key Clave cuyo valor glm::vec3 se desea leer.
+		/// @return El valor de tipo glm::vec3 asociado a la clave.
 		glm::vec3 readVec3(const std::string& key) const;
+		/// @brief Lee y devuelve un valor de tipo string asociado a la clave especificada.
+		/// @param key Clave cuyo valor string se desea leer.
+		/// @return El valor de tipo string asociado a la clave.
 		std::string readString(const std::string& key) const;
 
+		/// @brief Inicia un nuevo array en el scope actual con la clave dada, permitiendo agregar elementos a ese array posteriormente.
+		/// @param key Clave del array que se desea iniciar.
 		void beginArray(const std::string& key);
+		/// @brief Obtiene el tamaño del array en el scope actual.
+		/// @return El tamaño del array.
 		size_t getArraySize() const;
+		/// @brief Entra en un elemento específico del array en el scope actual.
+		/// @param index Índice del elemento al que se desea entrar.
 		void enterElement(size_t index);
+		/// @brief Agrega un nuevo objeto al array en el scope actual y entra en ese nuevo objeto, permitiendo agregar propiedades a ese objeto posteriormente.
 		void pushObjectToArray();
 
 		/// @brief Cambia de scope para leer o escribir en el json

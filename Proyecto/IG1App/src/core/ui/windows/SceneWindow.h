@@ -3,6 +3,7 @@
 #include <ec/entity.h>
 
 namespace cme::ui {
+	/// @brief Ventana que se encarga de mostrar la jerarquia de entidades de la escena y permite seleccionar una entidad para mostrarla en el inspector
 	class SceneWindow : public Window
 	{
 	private:

@@ -110,6 +110,23 @@ $(function(){initNavTree('classcme_1_1_json_serializer.html','','classcme_1_1_js
 Métodos públicos</h2></td></tr>
 <tr class="memitem:a9951c97669acc5b47d925e4b755635c8" id="r_a9951c97669acc5b47d925e4b755635c8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9951c97669acc5b47d925e4b755635c8">write</a> (const std::string &amp;key, float value)</td></tr>
 <tr class="memdesc:a9951c97669acc5b47d925e4b755635c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escribe un valor en el scope actual.  <br /></td></tr>
+<tr class="memitem:afc1c32387da4a0f7fca92cd687803478" id="r_afc1c32387da4a0f7fca92cd687803478"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#afc1c32387da4a0f7fca92cd687803478">readFloat</a> (const std::string &amp;key) const</td></tr>
+<tr class="memdesc:afc1c32387da4a0f7fca92cd687803478"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee y devuelve un valor de punto flotante asociado a la clave especificada.  <br /></td></tr>
+<tr class="memitem:a944a33f85cb1e40ce520ac1709e1adad" id="r_a944a33f85cb1e40ce520ac1709e1adad"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a944a33f85cb1e40ce520ac1709e1adad">readInt</a> (const std::string &amp;key) const</td></tr>
+<tr class="memdesc:a944a33f85cb1e40ce520ac1709e1adad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee y devuelve un valor entero asociado a la clave especificada.  <br /></td></tr>
+<tr class="memitem:a9c3b7c1e0e8fd20674756bf937a4cc62" id="r_a9c3b7c1e0e8fd20674756bf937a4cc62"><td class="memItemLeft">glm::vec3&#160;</td><td class="memItemRight"><a class="el" href="#a9c3b7c1e0e8fd20674756bf937a4cc62">readVec3</a> (const std::string &amp;key) const</td></tr>
+<tr class="memdesc:a9c3b7c1e0e8fd20674756bf937a4cc62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee y devuelve un valor de tipo glm::vec3 asociado a la clave especificada.  <br /></td></tr>
+<tr class="memitem:a47612d040058863ded279a6f1a557fd2" id="r_a47612d040058863ded279a6f1a557fd2"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a47612d040058863ded279a6f1a557fd2">readString</a> (const std::string &amp;key) const</td></tr>
+<tr class="memdesc:a47612d040058863ded279a6f1a557fd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee y devuelve un valor de tipo string asociado a la clave especificada.  <br /></td></tr>
+<tr class="memitem:aa8adc735f2918f2bbeea8e82c1573f38" id="r_aa8adc735f2918f2bbeea8e82c1573f38"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa8adc735f2918f2bbeea8e82c1573f38">beginArray</a> (const std::string &amp;key)</td></tr>
+<tr class="memdesc:aa8adc735f2918f2bbeea8e82c1573f38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicia un nuevo array en el scope actual con la clave dada, permitiendo agregar elementos a ese array posteriormente.  <br /></td></tr>
+<tr class="memitem:aebe915b222dbdc731e516005fa34db10" id="r_aebe915b222dbdc731e516005fa34db10"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#aebe915b222dbdc731e516005fa34db10">getArraySize</a> () const</td></tr>
+<tr class="memdesc:aebe915b222dbdc731e516005fa34db10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el tama�o del array en el scope actual.  <br /></td></tr>
+<tr class="memitem:a593a6dfdc03c62ba829570b42d134053" id="r_a593a6dfdc03c62ba829570b42d134053"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a593a6dfdc03c62ba829570b42d134053">enterElement</a> (size_t index)</td></tr>
+<tr class="memdesc:a593a6dfdc03c62ba829570b42d134053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entra en un elemento espec�fico del array en el scope actual.  <br /></td></tr>
+<tr class="memitem:a30efd7c547d9256093f5f28bad019382" id="r_a30efd7c547d9256093f5f28bad019382"><td class="memItemLeft"><a id="a30efd7c547d9256093f5f28bad019382" name="a30efd7c547d9256093f5f28bad019382"></a>
+void&#160;</td><td class="memItemRight"><b>pushObjectToArray</b> ()</td></tr>
+<tr class="memdesc:a30efd7c547d9256093f5f28bad019382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un nuevo objeto al array en el scope actual y entra en ese nuevo objeto, permitiendo agregar propiedades a ese objeto posteriormente. <br /></td></tr>
 <tr class="memitem:a2befc932ccda5827d7fc0c154d361f84" id="r_a2befc932ccda5827d7fc0c154d361f84"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2befc932ccda5827d7fc0c154d361f84">beginScope</a> (const std::string &amp;key)</td></tr>
 <tr class="memdesc:a2befc932ccda5827d7fc0c154d361f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia de scope para leer o escribir en el json.  <br /></td></tr>
 <tr class="memitem:a81c96675170a44e600817073c392dcfd" id="r_a81c96675170a44e600817073c392dcfd"><td class="memItemLeft"><a id="a81c96675170a44e600817073c392dcfd" name="a81c96675170a44e600817073c392dcfd"></a>
@@ -123,6 +140,31 @@ void&#160;</td><td class="memItemRight"><b>endScope</b> ()</td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Se encarga de serializar en un JSON lo que sea de tipo <a class="el" href="classcme_1_1_serializable.html" title="Interfaz que hace que los objetos se vuelvan serializables.">Serializable</a>. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="aa8adc735f2918f2bbeea8e82c1573f38" name="aa8adc735f2918f2bbeea8e82c1573f38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8adc735f2918f2bbeea8e82c1573f38">&#9670;&#160;</a></span>beginArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cme::JsonSerializer::beginArray </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicia un nuevo array en el scope actual con la clave dada, permitiendo agregar elementos a ese array posteriormente. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Clave del array que se desea iniciar. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a2befc932ccda5827d7fc0c154d361f84" name="a2befc932ccda5827d7fc0c154d361f84"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2befc932ccda5827d7fc0c154d361f84">&#9670;&#160;</a></span>beginScope()</h2>
 
@@ -148,6 +190,51 @@ void&#160;</td><td class="memItemRight"><b>endScope</b> ()</td></tr>
 
 </div>
 </div>
+<a id="a593a6dfdc03c62ba829570b42d134053" name="a593a6dfdc03c62ba829570b42d134053"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a593a6dfdc03c62ba829570b42d134053">&#9670;&#160;</a></span>enterElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cme::JsonSerializer::enterElement </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Entra en un elemento espec�fico del array en el scope actual. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>�ndice del elemento al que se desea entrar. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aebe915b222dbdc731e516005fa34db10" name="aebe915b222dbdc731e516005fa34db10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebe915b222dbdc731e516005fa34db10">&#9670;&#160;</a></span>getArraySize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t cme::JsonSerializer::getArraySize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el tama�o del array en el scope actual. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>El tama�o del array. </dd></dl>
+
+</div>
+</div>
 <a id="a110e5f3ea97ae5b2c222585f4d789c5a" name="a110e5f3ea97ae5b2c222585f4d789c5a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a110e5f3ea97ae5b2c222585f4d789c5a">&#9670;&#160;</a></span>load()</h2>
 
@@ -170,6 +257,110 @@ void&#160;</td><td class="memItemRight"><b>endScope</b> ()</td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="afc1c32387da4a0f7fca92cd687803478" name="afc1c32387da4a0f7fca92cd687803478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc1c32387da4a0f7fca92cd687803478">&#9670;&#160;</a></span>readFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float cme::JsonSerializer::readFloat </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lee y devuelve un valor de punto flotante asociado a la clave especificada. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Clave cuyo valor float se desea leer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>El valor de tipo float asociado a la clave. </dd></dl>
+
+</div>
+</div>
+<a id="a944a33f85cb1e40ce520ac1709e1adad" name="a944a33f85cb1e40ce520ac1709e1adad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a944a33f85cb1e40ce520ac1709e1adad">&#9670;&#160;</a></span>readInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cme::JsonSerializer::readInt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lee y devuelve un valor entero asociado a la clave especificada. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Clave cuyo valor entero se desea leer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>El valor de tipo entero asociado a la clave. </dd></dl>
+
+</div>
+</div>
+<a id="a47612d040058863ded279a6f1a557fd2" name="a47612d040058863ded279a6f1a557fd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47612d040058863ded279a6f1a557fd2">&#9670;&#160;</a></span>readString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string cme::JsonSerializer::readString </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lee y devuelve un valor de tipo string asociado a la clave especificada. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Clave cuyo valor string se desea leer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>El valor de tipo string asociado a la clave. </dd></dl>
+
+</div>
+</div>
+<a id="a9c3b7c1e0e8fd20674756bf937a4cc62" name="a9c3b7c1e0e8fd20674756bf937a4cc62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c3b7c1e0e8fd20674756bf937a4cc62">&#9670;&#160;</a></span>readVec3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 cme::JsonSerializer::readVec3 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lee y devuelve un valor de tipo glm::vec3 asociado a la clave especificada. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Clave cuyo valor glm::vec3 se desea leer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>El valor de tipo glm::vec3 asociado a la clave. </dd></dl>
 
 </div>
 </div>

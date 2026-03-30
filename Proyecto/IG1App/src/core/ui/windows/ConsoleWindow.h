@@ -4,6 +4,7 @@
 #include <vector>
 
 namespace cme::ui {
+	/// @brief Ventana que sirve para mostrar los logs del motor.
 	class ConsoleWindow : public Window
 	{
 	private:

@@ -85,15 +85,15 @@
 \DoxyCodeLine{00088\ }
 \DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ serialize(cme::JsonSerializer\&\ s)\textcolor{keyword}{\ const\ }\{}
 \DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ Añadimos\ una\ nueva\ entidad\ al\ array\ de\ entidades}}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ s.pushObjectToArray();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a30efd7c547d9256093f5f28bad019382}{pushObjectToArray}}();}
 \DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2.\ Guardamos\ sus\ datos\ básicos}}
 \DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a9951c97669acc5b47d925e4b755635c8}{write}}(\textcolor{stringliteral}{"{}name"{}},\ this-\/>\_name);\ \textcolor{comment}{//\ Asumiendo\ que\ tu\ entidad\ tiene\ nombre}}
 \DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3.\ Abrimos\ el\ array\ de\ componentes}}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ s.beginArray(\textcolor{stringliteral}{"{}components"{}});}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_aa8adc735f2918f2bbeea8e82c1573f38}{beginArray}}(\textcolor{stringliteral}{"{}components"{}});}
 \DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ component\ :\ \_components)\ \{}
 \DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!component)\ \textcolor{keywordflow}{continue};}
 \DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Por\ cada\ componente,\ metemos\ un\ nuevo\ objeto\ en\ el\ array}}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.pushObjectToArray();}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a30efd7c547d9256093f5f28bad019382}{pushObjectToArray}}();}
 \DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a9951c97669acc5b47d925e4b755635c8}{write}}(\textcolor{stringliteral}{"{}type"{}},\ component-\/>serializeID());}
 \DoxyCodeLine{00101\ }
 \DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a2befc932ccda5827d7fc0c154d361f84}{beginScope}}(\textcolor{stringliteral}{"{}data"{}});}
@@ -108,11 +108,11 @@
 \DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00112\ }
 \DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ deserialize(cme::JsonSerializer\&\ s)\ \{}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ s.beginArray(\textcolor{stringliteral}{"{}components"{}});}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ numComp\ =\ s.getArraySize();}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_aa8adc735f2918f2bbeea8e82c1573f38}{beginArray}}(\textcolor{stringliteral}{"{}components"{}});}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ numComp\ =\ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_aebe915b222dbdc731e516005fa34db10}{getArraySize}}();}
 \DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ k\ =\ 0;\ k\ <\ numComp;\ k++)\ \{}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.enterElement(k);}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ compKey\ =\ s.readString(\textcolor{stringliteral}{"{}type"{}});}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a593a6dfdc03c62ba829570b42d134053}{enterElement}}(k);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ compKey\ =\ s.\doxymbox{\hyperlink{classcme_1_1_json_serializer_a47612d040058863ded279a6f1a557fd2}{readString}}(\textcolor{stringliteral}{"{}type"{}});}
 \DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ comp\ =\ \doxymbox{\hyperlink{classcme_1_1_component_registry_ae76b8d13ffea0206992d5c3c70257314}{cme::ComponentRegistry::create}}(compKey);}
 \DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!comp)\ \{}
 \DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(std::format(\textcolor{stringliteral}{"{}El\ componente\ es\ nulo,\ la\ key\ no\ existe.\ KEY:\ \{\}"{}},\ compKey));}

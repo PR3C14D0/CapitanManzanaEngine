@@ -1,0 +1,83 @@
+\doxysection{Referencia de la clase cme::\+Mesh\+Renderer}
+\hypertarget{classcme_1_1_mesh_renderer}{}\label{classcme_1_1_mesh_renderer}\index{cme::MeshRenderer@{cme::MeshRenderer}}
+
+
+Componente que se encarga de renderizar a partir de una malla dada.  
+
+
+
+
+{\ttfamily \+\#include $<$Mesh\+Renderer.\+h$>$}
+
+
+
+Diagrama de herencia de cme::\+Mesh\+Renderer
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcme_1_1_mesh_renderer__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classcme_1_1_mesh_renderer_acdb86b864c4f9cafd72eda264664feb2}{serialize}} (\doxymbox{\hyperlink{classcme_1_1_json_serializer}{Json\+Serializer}} \&s) const override
+\begin{DoxyCompactList}\small\item\em Serializa el objeto en un JSON utilizando el \doxylink{classcme_1_1_json_serializer}{Json\+Serializer} proporcionado. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_mesh_renderer_af4dd9e16623e013edda5868ff9e2220e}{deserialize}} (\doxymbox{\hyperlink{classcme_1_1_json_serializer}{Json\+Serializer}} \&s) override
+\begin{DoxyCompactList}\small\item\em Deserializa el objeto desde un JSON utilizando el \doxylink{classcme_1_1_json_serializer}{Json\+Serializer} proporcionado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \doxymbox{\hyperlink{classec_1_1_component}{ec::\+\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Component} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Component} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classec_1_1_component_a1a29a746857860f81159450b3ecdad92}{set\+Context}} (std::\+weak\+\_\+ptr$<$ ec::\+\+Entity $>$ ent)
+\begin{DoxyCompactList}\small\item\em Hacer saber al componente quien le controla. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Componente que se encarga de renderizar a partir de una malla dada. 
+
+\label{doc-func-members}
+\Hypertarget{classcme_1_1_mesh_renderer_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classcme_1_1_mesh_renderer_af4dd9e16623e013edda5868ff9e2220e}\index{cme::MeshRenderer@{cme::MeshRenderer}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!cme::MeshRenderer@{cme::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily \label{classcme_1_1_mesh_renderer_af4dd9e16623e013edda5868ff9e2220e} 
+void cme::\+\+Mesh\+Renderer::\+deserialize (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classcme_1_1_json_serializer}{Json\+Serializer}} \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Deserializa el objeto desde un JSON utilizando el \doxylink{classcme_1_1_json_serializer}{Json\+Serializer} proporcionado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em s} & El \doxylink{classcme_1_1_json_serializer}{Json\+Serializer} que se utilizar� para deserializar el objeto \\
+\hline
+\end{DoxyParams}
+
+
+Reimplementado de \doxymbox{\hyperlink{classec_1_1_component_a98f8ea17a2d216260fe83d593b125aa7}{ec::\+\+Component}}.
+
+\Hypertarget{classcme_1_1_mesh_renderer_acdb86b864c4f9cafd72eda264664feb2}\index{cme::MeshRenderer@{cme::MeshRenderer}!serialize@{serialize}}
+\index{serialize@{serialize}!cme::MeshRenderer@{cme::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily \label{classcme_1_1_mesh_renderer_acdb86b864c4f9cafd72eda264664feb2} 
+void cme::\+\+Mesh\+Renderer::\+serialize (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classcme_1_1_json_serializer}{Json\+Serializer}} \&}]{s}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Serializa el objeto en un JSON utilizando el \doxylink{classcme_1_1_json_serializer}{Json\+Serializer} proporcionado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em s} & El \doxylink{classcme_1_1_json_serializer}{Json\+Serializer} que se utilizar� para serializar el objeto \\
+\hline
+\end{DoxyParams}
+
+
+Reimplementado de \doxymbox{\hyperlink{classec_1_1_component_a0bd89ceffe9c016ec93986a5688601a8}{ec::\+\+Component}}.
+

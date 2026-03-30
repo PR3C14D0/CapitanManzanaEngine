@@ -14,6 +14,23 @@ Se encarga de serializar en un JSON lo que sea de tipo \doxylink{classcme_1_1_se
 \item 
 void \doxymbox{\hyperlink{classcme_1_1_json_serializer_a9951c97669acc5b47d925e4b755635c8}{write}} (const std::\+string \&key, float value)
 \begin{DoxyCompactList}\small\item\em Escribe un valor en el scope actual. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{classcme_1_1_json_serializer_afc1c32387da4a0f7fca92cd687803478}{read\+Float}} (const std::\+string \&key) const
+\begin{DoxyCompactList}\small\item\em Lee y devuelve un valor de punto flotante asociado a la clave especificada. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classcme_1_1_json_serializer_a944a33f85cb1e40ce520ac1709e1adad}{read\+Int}} (const std::\+string \&key) const
+\begin{DoxyCompactList}\small\item\em Lee y devuelve un valor entero asociado a la clave especificada. \end{DoxyCompactList}\item 
+glm::\+vec3 \doxymbox{\hyperlink{classcme_1_1_json_serializer_a9c3b7c1e0e8fd20674756bf937a4cc62}{read\+Vec3}} (const std::\+string \&key) const
+\begin{DoxyCompactList}\small\item\em Lee y devuelve un valor de tipo glm::\+vec3 asociado a la clave especificada. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{classcme_1_1_json_serializer_a47612d040058863ded279a6f1a557fd2}{read\+String}} (const std::\+string \&key) const
+\begin{DoxyCompactList}\small\item\em Lee y devuelve un valor de tipo string asociado a la clave especificada. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_json_serializer_aa8adc735f2918f2bbeea8e82c1573f38}{begin\+Array}} (const std::\+string \&key)
+\begin{DoxyCompactList}\small\item\em Inicia un nuevo array en el scope actual con la clave dada, permitiendo agregar elementos a ese array posteriormente. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classcme_1_1_json_serializer_aebe915b222dbdc731e516005fa34db10}{get\+Array\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el tamaño del array en el scope actual. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classcme_1_1_json_serializer_a593a6dfdc03c62ba829570b42d134053}{enter\+Element}} (size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Entra en un elemento específico del array en el scope actual. \end{DoxyCompactList}\item 
+\Hypertarget{classcme_1_1_json_serializer_a30efd7c547d9256093f5f28bad019382}\label{classcme_1_1_json_serializer_a30efd7c547d9256093f5f28bad019382} 
+void {\bfseries push\+Object\+To\+Array} ()
+\begin{DoxyCompactList}\small\item\em Agrega un nuevo objeto al array en el scope actual y entra en ese nuevo objeto, permitiendo agregar propiedades a ese objeto posteriormente. \end{DoxyCompactList}\item 
 void \doxymbox{\hyperlink{classcme_1_1_json_serializer_a2befc932ccda5827d7fc0c154d361f84}{begin\+Scope}} (const std::\+string \&key)
 \begin{DoxyCompactList}\small\item\em Cambia de scope para leer o escribir en el json. \end{DoxyCompactList}\item 
 \Hypertarget{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd}\label{classcme_1_1_json_serializer_a81c96675170a44e600817073c392dcfd} 
@@ -31,6 +48,21 @@ Se encarga de serializar en un JSON lo que sea de tipo \doxylink{classcme_1_1_se
 \label{doc-func-members}
 \Hypertarget{classcme_1_1_json_serializer_doc-func-members}
 \doxysubsection{DocumentaciÃ³n de funciones miembro}
+\Hypertarget{classcme_1_1_json_serializer_aa8adc735f2918f2bbeea8e82c1573f38}\index{cme::JsonSerializer@{cme::JsonSerializer}!beginArray@{beginArray}}
+\index{beginArray@{beginArray}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{beginArray()}{beginArray()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_aa8adc735f2918f2bbeea8e82c1573f38} 
+void cme::\+\+Json\+Serializer::\+begin\+Array (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Inicia un nuevo array en el scope actual con la clave dada, permitiendo agregar elementos a ese array posteriormente. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em key} & Clave del array que se desea iniciar. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classcme_1_1_json_serializer_a2befc932ccda5827d7fc0c154d361f84}\index{cme::JsonSerializer@{cme::JsonSerializer}!beginScope@{beginScope}}
 \index{beginScope@{beginScope}!cme::JsonSerializer@{cme::JsonSerializer}}
 \doxysubsubsection{\texorpdfstring{beginScope()}{beginScope()}}
@@ -46,6 +78,34 @@ Cambia de scope para leer o escribir en el json.
 {\em key} & La clave del scope \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classcme_1_1_json_serializer_a593a6dfdc03c62ba829570b42d134053}\index{cme::JsonSerializer@{cme::JsonSerializer}!enterElement@{enterElement}}
+\index{enterElement@{enterElement}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{enterElement()}{enterElement()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_a593a6dfdc03c62ba829570b42d134053} 
+void cme::\+\+Json\+Serializer::\+enter\+Element (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Entra en un elemento específico del array en el scope actual. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em index} & Índice del elemento al que se desea entrar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcme_1_1_json_serializer_aebe915b222dbdc731e516005fa34db10}\index{cme::JsonSerializer@{cme::JsonSerializer}!getArraySize@{getArraySize}}
+\index{getArraySize@{getArraySize}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{getArraySize()}{getArraySize()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_aebe915b222dbdc731e516005fa34db10} 
+size\+\_\+t cme::\+\+Json\+Serializer::\+get\+Array\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el tamaño del array en el scope actual. 
+
+\begin{DoxyReturn}{Devuelve}
+El tamaño del array. 
+\end{DoxyReturn}
 \Hypertarget{classcme_1_1_json_serializer_a110e5f3ea97ae5b2c222585f4d789c5a}\index{cme::JsonSerializer@{cme::JsonSerializer}!load@{load}}
 \index{load@{load}!cme::JsonSerializer@{cme::JsonSerializer}}
 \doxysubsubsection{\texorpdfstring{load()}{load()}}
@@ -61,6 +121,78 @@ Carga la infoormación de un archivo json.
 {\em path} & La ubicacion del archivo \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classcme_1_1_json_serializer_afc1c32387da4a0f7fca92cd687803478}\index{cme::JsonSerializer@{cme::JsonSerializer}!readFloat@{readFloat}}
+\index{readFloat@{readFloat}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{readFloat()}{readFloat()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_afc1c32387da4a0f7fca92cd687803478} 
+float cme::\+\+Json\+Serializer::\+read\+Float (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption}) const}
+
+
+
+Lee y devuelve un valor de punto flotante asociado a la clave especificada. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em key} & Clave cuyo valor float se desea leer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+El valor de tipo float asociado a la clave. 
+\end{DoxyReturn}
+\Hypertarget{classcme_1_1_json_serializer_a944a33f85cb1e40ce520ac1709e1adad}\index{cme::JsonSerializer@{cme::JsonSerializer}!readInt@{readInt}}
+\index{readInt@{readInt}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{readInt()}{readInt()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_a944a33f85cb1e40ce520ac1709e1adad} 
+int cme::\+\+Json\+Serializer::\+read\+Int (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption}) const}
+
+
+
+Lee y devuelve un valor entero asociado a la clave especificada. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em key} & Clave cuyo valor entero se desea leer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+El valor de tipo entero asociado a la clave. 
+\end{DoxyReturn}
+\Hypertarget{classcme_1_1_json_serializer_a47612d040058863ded279a6f1a557fd2}\index{cme::JsonSerializer@{cme::JsonSerializer}!readString@{readString}}
+\index{readString@{readString}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{readString()}{readString()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_a47612d040058863ded279a6f1a557fd2} 
+std::\+string cme::\+\+Json\+Serializer::\+read\+String (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption}) const}
+
+
+
+Lee y devuelve un valor de tipo string asociado a la clave especificada. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em key} & Clave cuyo valor string se desea leer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+El valor de tipo string asociado a la clave. 
+\end{DoxyReturn}
+\Hypertarget{classcme_1_1_json_serializer_a9c3b7c1e0e8fd20674756bf937a4cc62}\index{cme::JsonSerializer@{cme::JsonSerializer}!readVec3@{readVec3}}
+\index{readVec3@{readVec3}!cme::JsonSerializer@{cme::JsonSerializer}}
+\doxysubsubsection{\texorpdfstring{readVec3()}{readVec3()}}
+{\footnotesize\ttfamily \label{classcme_1_1_json_serializer_a9c3b7c1e0e8fd20674756bf937a4cc62} 
+glm::\+vec3 cme::\+\+Json\+Serializer::\+read\+Vec3 (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption}) const}
+
+
+
+Lee y devuelve un valor de tipo glm::\+vec3 asociado a la clave especificada. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em key} & Clave cuyo valor glm::\+vec3 se desea leer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+El valor de tipo glm::\+vec3 asociado a la clave. 
+\end{DoxyReturn}
 \Hypertarget{classcme_1_1_json_serializer_aa7a8f67e688e77b7e3be1ad1bd1b9f55}\index{cme::JsonSerializer@{cme::JsonSerializer}!save@{save}}
 \index{save@{save}!cme::JsonSerializer@{cme::JsonSerializer}}
 \doxysubsubsection{\texorpdfstring{save()}{save()}}

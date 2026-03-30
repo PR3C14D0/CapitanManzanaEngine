@@ -1,5 +1,9 @@
 <map id="cme::Serializable" name="cme::Serializable">
-<area shape="rect" id="Node000001" title="Interfaz que hace que los objetos se vuelvan serializables." alt="" coords="5,5,127,32"/>
-<area shape="rect" id="Node000002" href="$classec_1_1_component.html" title="Declaracion adelantada, para evitar dependencia circular." alt="" coords="11,80,121,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,46,69,80,63,79,64,50"/>
+<area shape="rect" id="Node000001" title="Interfaz que hace que los objetos se vuelvan serializables." alt="" coords="89,5,210,32"/>
+<area shape="rect" id="Node000002" href="$classec_1_1_component.html" title="Declaracion adelantada, para evitar dependencia circular." alt="" coords="94,80,205,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,46,152,81,147,79,148,50"/>
+<area shape="rect" id="Node000003" href="$classcme_1_1_mesh_renderer.html" title="Componente que se encarga de renderizar a partir de una malla dada." alt="" coords="5,155,145,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="129,117,90,156,86,152,123,118"/>
+<area shape="rect" id="Node000004" href="$classcme_1_1_transform.html" title="Componente que controla la posición, rotacion y escala en el mundo de la entidad." alt="" coords="169,155,282,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="175,115,215,154,210,154,173,120"/>
 </map>

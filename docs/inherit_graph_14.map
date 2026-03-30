@@ -1,3 +1,3 @@
 <map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
-<area shape="rect" id="Node000000" href="$structcme_1_1_shader_creation_data.html" title="Contiene la información necesaria para crear un shader, incluyendo las rutas de los archivos de shade..." alt="" coords="5,5,178,32"/>
+<area shape="rect" id="Node000000" href="$classcme_1_1_resource_manager.html" title="Se encarga de la gesiton de recursos del proyecto, desde shaders hasta imagenes. Utiliza el patron Si..." alt="" coords="5,5,166,32"/>
 </map>

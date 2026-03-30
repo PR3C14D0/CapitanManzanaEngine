@@ -16,7 +16,7 @@ Diagrama de herencia de ec::\+Component
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=171pt]{classec_1_1_component__inherit__graph}
+\includegraphics[width=289pt]{classec_1_1_component__inherit__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Métodos públicos}
@@ -29,7 +29,11 @@ Diagrama de herencia de ec::\+Component
 virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Component} ()
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 void \doxymbox{\hyperlink{classec_1_1_component_a1a29a746857860f81159450b3ecdad92}{set\+Context}} (std::\+weak\+\_\+ptr$<$ ec::\+\+Entity $>$ ent)
-\begin{DoxyCompactList}\small\item\em Hacer saber al componente quien le controla. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Hacer saber al componente quien le controla. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classec_1_1_component_a0bd89ceffe9c016ec93986a5688601a8}{serialize}} (\doxymbox{\hyperlink{classcme_1_1_json_serializer}{cme::\+\+Json\+Serializer}} \&s) const override
+\begin{DoxyCompactList}\small\item\em Serializa el objeto en un JSON utilizando el Json\+Serializer proporcionado. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classec_1_1_component_a98f8ea17a2d216260fe83d593b125aa7}{deserialize}} (\doxymbox{\hyperlink{classcme_1_1_json_serializer}{cme::\+\+Json\+Serializer}} \&s) override
+\begin{DoxyCompactList}\small\item\em Deserializa el objeto desde un JSON utilizando el Json\+Serializer proporcionado. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descripción detallada}
@@ -38,6 +42,52 @@ Declaracion adelantada, para evitar dependencia circular.
 \label{doc-func-members}
 \Hypertarget{classec_1_1_component_doc-func-members}
 \doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classec_1_1_component_a98f8ea17a2d216260fe83d593b125aa7}\index{ec::Component@{ec::Component}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!ec::Component@{ec::Component}}
+\doxysubsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily \label{classec_1_1_component_a98f8ea17a2d216260fe83d593b125aa7} 
+virtual void ec::\+\+Component::\+deserialize (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classcme_1_1_json_serializer}{cme::\+\+Json\+Serializer}} \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Deserializa el objeto desde un JSON utilizando el Json\+Serializer proporcionado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em s} & El Json\+Serializer que se utilizar� para deserializar el objeto \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{classcme_1_1_serializable_a717e86e937ea520be63dcaed4244c18d}{cme::\+\+Serializable}}.
+
+
+
+Reimplementado en \doxymbox{\hyperlink{classcme_1_1_mesh_renderer_af4dd9e16623e013edda5868ff9e2220e}{cme::\+\+Mesh\+Renderer}} y \doxymbox{\hyperlink{classcme_1_1_transform_aa0ae3789b5be49ca7d78cf6fe6e9cec6}{cme::\+\+Transform}}.
+
+\Hypertarget{classec_1_1_component_a0bd89ceffe9c016ec93986a5688601a8}\index{ec::Component@{ec::Component}!serialize@{serialize}}
+\index{serialize@{serialize}!ec::Component@{ec::Component}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily \label{classec_1_1_component_a0bd89ceffe9c016ec93986a5688601a8} 
+virtual void ec::\+\+Component::\+serialize (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classcme_1_1_json_serializer}{cme::\+\+Json\+Serializer}} \&}]{s}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Serializa el objeto en un JSON utilizando el Json\+Serializer proporcionado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em s} & El Json\+Serializer que se utilizar� para serializar el objeto \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \doxymbox{\hyperlink{classcme_1_1_serializable_aa0ba356b5b7e7ce78263ab400b260578}{cme::\+\+Serializable}}.
+
+
+
+Reimplementado en \doxymbox{\hyperlink{classcme_1_1_mesh_renderer_acdb86b864c4f9cafd72eda264664feb2}{cme::\+\+Mesh\+Renderer}} y \doxymbox{\hyperlink{classcme_1_1_transform_a4ff565838099a741e80a0b0e1d2a3457}{cme::\+\+Transform}}.
+
 \Hypertarget{classec_1_1_component_a1a29a746857860f81159450b3ecdad92}\index{ec::Component@{ec::Component}!setContext@{setContext}}
 \index{setContext@{setContext}!ec::Component@{ec::Component}}
 \doxysubsubsection{\texorpdfstring{setContext()}{setContext()}}

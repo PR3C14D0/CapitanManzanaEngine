@@ -10,36 +10,36 @@
 \DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }cme\ \{}
 \DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classcme_1_1_mesh}{Mesh}};}
 \DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classcme_1_1_camera}{Camera}};}
-\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }Transform;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classcme_1_1_transform}{Transform}};}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{class\ }MeshRenderer\ :\ \textcolor{keyword}{public}\ ec::Component,\ \textcolor{keyword}{public}\ ec::RenderComponent\ \{}
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ Mesh*\ \_mesh\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ Camera*\ \_cam\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ Transform*\ \_tr\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ std::string\ \_shaderName;}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ std::string\ \_currentMeshType;}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \_\_CMPID\_DECL\_\_(ec::comp::MESH\_RENDERER)}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ MeshRenderer()\ :\ \_mesh(nullptr)\ \{\}}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ MeshRenderer(Mesh*\ mesh)\ :\ \_mesh(mesh)\ \{\}}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \string~MeshRenderer();}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ render()\ \textcolor{keyword}{const\ override};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ initComponent()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ getLocalAABB(glm::vec3\&\ outMin,\ glm::vec3\&\ outMax)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ drawOnInspector()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ serialize(JsonSerializer\&\ s)\ \textcolor{keyword}{const\ override};}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ deserialize(JsonSerializer\&\ s)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::string\ serializeID()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}MeshRenderer"{}};\ \}}
-\DoxyCodeLine{00038\ \ \ \ \ \};}
-\DoxyCodeLine{00039\ \}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{class\ }MeshRenderer\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classec_1_1_component}{ec::Component}},\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classec_1_1_render_component}{ec::RenderComponent}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classcme_1_1_mesh}{Mesh}}*\ \_mesh\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classcme_1_1_camera}{Camera}}*\ \_cam\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classcme_1_1_transform}{Transform}}*\ \_tr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ std::string\ \_shaderName;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::string\ \_currentMeshType;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \_\_CMPID\_DECL\_\_(ec::comp::MESH\_RENDERER)}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ MeshRenderer()\ :\ \_mesh(\textcolor{keyword}{nullptr})\ \{\}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ MeshRenderer(\doxymbox{\hyperlink{classcme_1_1_mesh}{Mesh}}*\ mesh)\ :\ \_mesh(mesh)\ \{\}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \string~MeshRenderer();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ render()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ initComponent()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ getLocalAABB(glm::vec3\&\ outMin,\ glm::vec3\&\ outMax)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ drawOnInspector()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classcme_1_1_mesh_renderer_acdb86b864c4f9cafd72eda264664feb2}{serialize}}(\doxymbox{\hyperlink{classcme_1_1_json_serializer}{JsonSerializer}}\&\ s)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classcme_1_1_mesh_renderer_af4dd9e16623e013edda5868ff9e2220e}{deserialize}}(\doxymbox{\hyperlink{classcme_1_1_json_serializer}{JsonSerializer}}\&\ s)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::string\ serializeID()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}MeshRenderer"{}};\ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \};}
+\DoxyCodeLine{00040\ \}}
 
 \end{DoxyCode}

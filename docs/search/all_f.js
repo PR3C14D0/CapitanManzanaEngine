@@ -8,10 +8,13 @@ var searchData=
   ['input_5',['2.2 Vertex Input',['../pasos_render.html#autotoc_md8',1,'']]],
   ['input_5fformat_5ft_6',['input_format_t',['../namespacedetail.html#a0ab3b338d0eadc6890b72cccef0ea04f',1,'detail']]],
   ['input_5fstream_5fadapter_7',['input_stream_adapter',['../classdetail_1_1input__stream__adapter.html',1,'detail']]],
-  ['internal_5fiterator_8',['internal_iterator',['../structdetail_1_1internal__iterator.html',1,'detail']]],
-  ['internal_5fiterator_3c_20typename_20std_3a_3aremove_5fconst_3c_20basicjsontype_20_3e_3a_3atype_20_3e_9',['internal_iterator&lt; typename std::remove_const&lt; BasicJsonType &gt;::type &gt;',['../structdetail_1_1internal__iterator.html',1,'detail']]],
-  ['invalid_5fiterator_10',['invalid_iterator',['../classdetail_1_1invalid__iterator.html',1,'detail']]],
-  ['ispressed_11',['isPressed',['../structcme_1_1_shortcut.html#aec899221dfab08bbff09a3ff77e9bb06',1,'cme::Shortcut']]],
-  ['isvalid_12',['isValid',['../structcme_1_1_shader_creation_data.html#a9737039c2f73594c1467aacf5e1cf3f6',1,'cme::ShaderCreationData']]],
-  ['iteration_5fproxy_13',['iteration_proxy',['../classdetail_1_1iteration__proxy.html',1,'detail::iteration_proxy&lt; IteratorType &gt;'],['../classdetail_1_1iteration__proxy.html#abc711365efc12210a983fba0e39b5811',1,'detail::iteration_proxy::iteration_proxy()']]]
+  ['inputmanager_8',['InputManager',['../classcme_1_1_input_manager.html',1,'cme']]],
+  ['inspectable_9',['Inspectable',['../classcme_1_1_inspectable.html',1,'cme']]],
+  ['inspectorwindow_10',['InspectorWindow',['../classcme_1_1ui_1_1_inspector_window.html',1,'cme::ui']]],
+  ['internal_5fiterator_11',['internal_iterator',['../structdetail_1_1internal__iterator.html',1,'detail']]],
+  ['internal_5fiterator_3c_20typename_20std_3a_3aremove_5fconst_3c_20basicjsontype_20_3e_3a_3atype_20_3e_12',['internal_iterator&lt; typename std::remove_const&lt; BasicJsonType &gt;::type &gt;',['../structdetail_1_1internal__iterator.html',1,'detail']]],
+  ['invalid_5fiterator_13',['invalid_iterator',['../classdetail_1_1invalid__iterator.html',1,'detail']]],
+  ['ispressed_14',['isPressed',['../structcme_1_1_shortcut.html#aec899221dfab08bbff09a3ff77e9bb06',1,'cme::Shortcut']]],
+  ['isvalid_15',['isValid',['../structcme_1_1_shader_creation_data.html#a9737039c2f73594c1467aacf5e1cf3f6',1,'cme::ShaderCreationData']]],
+  ['iteration_5fproxy_16',['iteration_proxy',['../classdetail_1_1iteration__proxy.html',1,'detail::iteration_proxy&lt; IteratorType &gt;'],['../classdetail_1_1iteration__proxy.html#abc711365efc12210a983fba0e39b5811',1,'detail::iteration_proxy::iteration_proxy()']]]
 ];

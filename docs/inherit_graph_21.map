@@ -1,3 +1,11 @@
 <map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
-<area shape="rect" id="Node000000" href="$classdetail_1_1file__input__adapter.html" title=" " alt="" coords="5,5,118,48"/>
+<area shape="rect" id="Node000000" href="$classcme_1_1ui_1_1_window.html" title="Interfaz para crear ventanas y añadirlas al render del CoreUI." alt="" coords="5,81,125,108"/>
+<area shape="rect" id="Node000001" href="$classcme_1_1ui_1_1_console_window.html" title="Ventana que sirve para mostrar los logs del motor." alt="" coords="176,5,343,32"/>
+<area shape="poly" id="edge9_Node000000_Node000001" title=" " alt="" coords="105,72,172,42,208,31,204,34,174,46,107,76"/>
+<area shape="rect" id="Node000002" href="$classcme_1_1ui_1_1_inspector_window.html" title="Ventana que se encarga de mostrar la información de una entidad seleccionada." alt="" coords="173,56,346,83"/>
+<area shape="poly" id="edge10_Node000000_Node000002" title=" " alt="" coords="139,82,175,80,170,82,141,87"/>
+<area shape="rect" id="Node000003" href="$classcme_1_1ui_1_1_scene_window.html" title="Ventana que se encarga de mostrar la jerarquia de entidades de la escena y permite seleccionar una en..." alt="" coords="181,107,338,133"/>
+<area shape="poly" id="edge11_Node000000_Node000003" title=" " alt="" coords="139,102,183,109,178,111,140,107"/>
+<area shape="rect" id="Node000004" href="$classcme_1_1ui_1_1_viewport_window.html" title="Ventana que se encarga de renderizar el viewport." alt="" coords="174,157,344,184"/>
+<area shape="poly" id="edge12_Node000000_Node000004" title=" " alt="" coords="106,113,174,143,209,157,203,157,172,148,105,118"/>
 </map>

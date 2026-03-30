@@ -127,87 +127,99 @@ $(function(){initNavTree('_input_manager_8h_source.html','',''); });
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structcme_1_1_shortcut.html#aec899221dfab08bbff09a3ff77e9bb06">isPressed</a>(<span class="keywordtype">int</span> currState);</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    };</div>
 </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">struct  </span>MouseEvent {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        std::function&lt;bool()&gt; condition;            <span class="comment">// Condicion a ocurrir</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        std::function&lt;void()&gt; call;     <span class="comment">// Callback con las coordenadas del raton</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">bool</span> pressed = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">int</span> mouseButton = 0;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        MouseEvent(std::function&lt;<span class="keywordtype">bool</span>()&gt; condition, std::function&lt;<span class="keywordtype">void</span>()&gt; call, <span class="keywordtype">int</span> button) :</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            condition(condition), call(call), mouseButton(button) {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    };</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">struct </span>StateChanger {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        std::function&lt;bool()&gt; condition;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        std::function&lt;void()&gt; call;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordtype">int</span> state;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        StateChanger(std::function&lt;<span class="keywordtype">bool</span>()&gt; condition, <span class="keywordtype">int</span> state, std::function&lt;<span class="keywordtype">void</span>()&gt; call = []() {}) :</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            condition(condition), state(state), call(call) {}</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    };</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">class </span>InputManager : <span class="keyword">public</span> Singleton&lt;InputManager&gt;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">friend</span> <span class="keyword">class </span>Singleton&lt;InputManager&gt;;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">int</span> _currentState = CME_STATE_NORMAL;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        std::vector&lt;Shortcut&gt; _shortcuts;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        std::vector&lt;StateChanger&gt; _stateChangers;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        std::vector&lt;MouseEvent&gt; _mouseEvents;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordtype">bool</span> _isViewportHovered = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordtype">float</span> _mouseX = 0.0f;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordtype">float</span> _mouseY = 0.0f;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structcme_1_1_mouse_event.html">   35</a></span>    <span class="keyword">struct  </span>MouseEvent {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        std::function&lt;bool()&gt; condition;            <span class="comment">// Condicion a ocurrir</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        std::function&lt;void()&gt; call;     <span class="comment">// Callback con las coordenadas del raton</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">bool</span> pressed = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">int</span> mouseButton = 0;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        MouseEvent(std::function&lt;<span class="keywordtype">bool</span>()&gt; condition, std::function&lt;<span class="keywordtype">void</span>()&gt; call, <span class="keywordtype">int</span> button) :</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            condition(condition), call(call), mouseButton(button) {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    };</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span></div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="};">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structcme_1_1_state_changer.html">   48</a></span>    <span class="keyword">struct </span>StateChanger {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        std::function&lt;bool()&gt; condition;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        std::function&lt;void()&gt; call;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">int</span> state;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        StateChanger(std::function&lt;<span class="keywordtype">bool</span>()&gt; condition, <span class="keywordtype">int</span> state, std::function&lt;<span class="keywordtype">void</span>()&gt; call = []() {}) :</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            condition(condition), state(state), call(call) {}</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    };</div>
+</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="};">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classcme_1_1_input_manager.html">   58</a></span>    <span class="keyword">class </span>InputManager : <span class="keyword">public</span> Singleton&lt;InputManager&gt;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">friend</span> <span class="keyword">class </span>Singleton&lt;InputManager&gt;;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">int</span> _currentState = CME_STATE_NORMAL;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        std::vector&lt;Shortcut&gt; _shortcuts;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        std::vector&lt;StateChanger&gt; _stateChangers;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        std::vector&lt;MouseEvent&gt; _mouseEvents;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordtype">bool</span> _isViewportHovered = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordtype">float</span> _viewportMouseX = 0.0f;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordtype">float</span> _viewportMouseY = 0.0f;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordtype">float</span> _mouseX = 0.0f;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordtype">float</span> _mouseY = 0.0f;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        ~InputManager();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>       <span class="keywordtype">void</span> proccessInput();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordtype">void</span> addShortcut(Shortcut shortC) { _shortcuts.push_back(shortC); }</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordtype">void</span> addStateChanger(StateChanger changer) { _stateChangers.push_back(changer); }</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordtype">void</span> addMouseEvent(MouseEvent evt) { _mouseEvents.push_back(evt); }</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keyword">static</span> <span class="keywordtype">void</span> mouseCallback(GLFWwindow* window, <span class="keywordtype">double</span> xpos, <span class="keywordtype">double</span> ypos);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordtype">void</span> setViewportHovered(<span class="keywordtype">bool</span> hovered) { _isViewportHovered = hovered; }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordtype">bool</span> isViewportHovered()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _isViewportHovered; }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordtype">float</span> _viewportMouseX = 0.0f;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordtype">float</span> _viewportMouseY = 0.0f;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        ~InputManager();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>       <span class="keywordtype">void</span> <a class="code hl_function" href="classcme_1_1_input_manager.html#a39ded45837ad40cdf6c7cc8f9a316e9c">proccessInput</a>();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordtype">void</span> addShortcut(<a class="code hl_struct" href="structcme_1_1_shortcut.html">Shortcut</a> shortC) { _shortcuts.push_back(shortC); }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordtype">void</span> addStateChanger(<a class="code hl_struct" href="structcme_1_1_state_changer.html">StateChanger</a> changer) { _stateChangers.push_back(changer); }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordtype">void</span> addMouseEvent(<a class="code hl_struct" href="structcme_1_1_mouse_event.html">MouseEvent</a> evt) { _mouseEvents.push_back(evt); }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcme_1_1_input_manager.html#aef44a98b096cba7c3302a108ad8ab387">mouseCallback</a>(GLFWwindow* window, <span class="keywordtype">double</span> xpos, <span class="keywordtype">double</span> ypos);</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="comment">// cannot copy/move</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        InputManager(InputManager&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        InputManager(InputManager&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        InputManager&amp; operator=(InputManager&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        InputManager&amp; operator=(InputManager&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordtype">float</span> getMouseX()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _mouseX; }</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordtype">float</span> getMouseY()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _mouseY; }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordtype">void</span> setViewportHovered(<span class="keywordtype">bool</span> hovered) { _isViewportHovered = hovered; }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordtype">bool</span> isViewportHovered()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _isViewportHovered; }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="comment">// cannot copy/move</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        InputManager(InputManager&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        InputManager(InputManager&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        InputManager&amp; operator=(InputManager&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        InputManager&amp; operator=(InputManager&amp;&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordtype">float</span> getViewportMouseX()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _viewportMouseX; }</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordtype">float</span> getViewportMouseY()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _viewportMouseY; }</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordtype">void</span> setViewportMouseX(<span class="keywordtype">float</span> mouse) { _viewportMouseX = mouse; }</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordtype">void</span> setViewportMouseY(<span class="keywordtype">float</span> mouse) { _viewportMouseY = mouse; }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        InputManager();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordtype">float</span> getMouseX()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _mouseX; }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordtype">float</span> getMouseY()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _mouseY; }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordtype">float</span> getViewportMouseX()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _viewportMouseX; }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordtype">float</span> getViewportMouseY()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _viewportMouseY; }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordtype">void</span> setViewportMouseX(<span class="keywordtype">float</span> mouse) { _viewportMouseX = mouse; }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordtype">void</span> setViewportMouseY(<span class="keywordtype">float</span> mouse) { _viewportMouseY = mouse; }</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordtype">void</span> createShortcuts();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordtype">bool</span> init();</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    };</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keyword">inline</span> InputManager&amp; inpM() {</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">return</span> *InputManager::Instance();</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    }</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        InputManager();</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordtype">void</span> createShortcuts();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordtype">bool</span> init();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    };</div>
+</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keyword">inline</span> <a class="code hl_class" href="classcme_1_1_input_manager.html">InputManager</a>&amp; inpM() {</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">return</span> *InputManager::Instance();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>}</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="ttc" id="aclasscme_1_1_input_manager_html"><div class="ttname"><a href="classcme_1_1_input_manager.html">cme::InputManager</a></div><div class="ttdoc">Singleton que se encarga de manejar los inputs del motor, desde atajos de teclado hasta eventos del r...</div><div class="ttdef"><b>Definition</b> InputManager.h:59</div></div>
+<div class="ttc" id="aclasscme_1_1_input_manager_html_a39ded45837ad40cdf6c7cc8f9a316e9c"><div class="ttname"><a href="classcme_1_1_input_manager.html#a39ded45837ad40cdf6c7cc8f9a316e9c">cme::InputManager::proccessInput</a></div><div class="ttdeci">void proccessInput()</div><div class="ttdoc">Procesa los inputs durante la ejecución.</div><div class="ttdef"><b>Definition</b> InputManager.cpp:72</div></div>
+<div class="ttc" id="aclasscme_1_1_input_manager_html_aef44a98b096cba7c3302a108ad8ab387"><div class="ttname"><a href="classcme_1_1_input_manager.html#aef44a98b096cba7c3302a108ad8ab387">cme::InputManager::mouseCallback</a></div><div class="ttdeci">static void mouseCallback(GLFWwindow *window, double xpos, double ypos)</div><div class="ttdoc">Procesa el input del raton, se llama omo callback.</div><div class="ttdef"><b>Definition</b> InputManager.cpp:103</div></div>
+<div class="ttc" id="astructcme_1_1_mouse_event_html"><div class="ttname"><a href="structcme_1_1_mouse_event.html">cme::MouseEvent</a></div><div class="ttdoc">Estructura que maneja los eventos del raton.</div><div class="ttdef"><b>Definition</b> InputManager.h:35</div></div>
+<div class="ttc" id="astructcme_1_1_shortcut_html"><div class="ttname"><a href="structcme_1_1_shortcut.html">cme::Shortcut</a></div><div class="ttdoc">Estructurra que maneja los atajos de teclado.</div><div class="ttdef"><b>Definition</b> InputManager.h:14</div></div>
 <div class="ttc" id="astructcme_1_1_shortcut_html_aa9fc8bf959a6f8487f47982d8f963513"><div class="ttname"><a href="structcme_1_1_shortcut.html#aa9fc8bf959a6f8487f47982d8f963513">cme::Shortcut::Shortcut</a></div><div class="ttdeci">Shortcut(std::vector&lt; int &gt; k, shortcutCall call, int state=CME_STATE_NORMAL, int eventTrgg=1)</div><div class="ttdoc">Crea un atajo de teclado para el motor.</div><div class="ttdef"><b>Definition</b> InputManager.h:25</div></div>
 <div class="ttc" id="astructcme_1_1_shortcut_html_aec899221dfab08bbff09a3ff77e9bb06"><div class="ttname"><a href="structcme_1_1_shortcut.html#aec899221dfab08bbff09a3ff77e9bb06">cme::Shortcut::isPressed</a></div><div class="ttdeci">bool isPressed(int currState)</div><div class="ttdoc">Si se cumplen las condiciones para ejecutar el atajo.</div><div class="ttdef"><b>Definition</b> InputManager.cpp:61</div></div>
+<div class="ttc" id="astructcme_1_1_state_changer_html"><div class="ttname"><a href="structcme_1_1_state_changer.html">cme::StateChanger</a></div><div class="ttdoc">Estructura que maneja los cambios de estado del motor.</div><div class="ttdef"><b>Definition</b> InputManager.h:48</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

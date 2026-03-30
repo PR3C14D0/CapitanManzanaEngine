@@ -19,7 +19,7 @@
 \DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classec_1_1_render_component}{RenderComponent}};}
 \DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classec_1_1_update_component}{UpdateComponent}};}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classec_1_1_component_a269f3b4724b1e3f08c8eb7dc1bb0419b}{Component}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classcme_1_1_serializable}{cme::Serializable}},\ \textcolor{keyword}{public}\ cme::Inspectable}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classec_1_1_component_a269f3b4724b1e3f08c8eb7dc1bb0419b}{Component}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classcme_1_1_serializable}{cme::Serializable}},\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classcme_1_1_inspectable}{cme::Inspectable}}}
 \DoxyCodeLine{00020\ \ \ \ \ \{}
 \DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Iterator\ =\ std::vector<Component*>::iterator;}
 \DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{public}:}
@@ -51,10 +51,10 @@
 \DoxyCodeLine{00052\ }
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ drawOnInspector()\textcolor{keyword}{\ override\ }\{\}}
 \DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ serialize(cme::JsonSerializer\&\ s)\textcolor{keyword}{\ const\ override\ }\{\}}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ deserialize(cme::JsonSerializer\&\ s)\textcolor{keyword}{\ override\ }\{\}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classec_1_1_component_a0bd89ceffe9c016ec93986a5688601a8}{serialize}}(\doxymbox{\hyperlink{classcme_1_1_json_serializer}{cme::JsonSerializer}}\&\ s)\textcolor{keyword}{\ const\ override\ }\{\}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classec_1_1_component_a98f8ea17a2d216260fe83d593b125aa7}{deserialize}}(\doxymbox{\hyperlink{classcme_1_1_json_serializer}{cme::JsonSerializer}}\&\ s)\textcolor{keyword}{\ override\ }\{\}}
 \DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ RenderComponent*\ getAsRender()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classec_1_1_render_component}{RenderComponent}}*\ getAsRender()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ UpdateComponent*\ getAsUpdate()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
 \DoxyCodeLine{00060\ \ \ \ \ \};}
 \DoxyCodeLine{00061\ }

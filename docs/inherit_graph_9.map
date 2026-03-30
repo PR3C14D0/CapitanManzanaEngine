@@ -1,3 +1,13 @@
 <map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
-<area shape="rect" id="Node000000" href="$classcme_1_1_logger.html" title="Se encarga de mandar mensajes a la consola y a la ventana &quot;ConsoleWindow&quot; del motor." alt="" coords="5,5,99,32"/>
+<area shape="rect" id="Node000000" href="$classcme_1_1_inspectable.html" title="Interfaz para que las clases se puedan ver en el inspector." alt="" coords="5,31,127,57"/>
+<area shape="rect" id="Node000001" href="$classec_1_1_component.html" title="Declaracion adelantada, para evitar dependencia circular." alt="" coords="196,56,306,83"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="142,52,198,61,193,62,142,57"/>
+<area shape="rect" id="Node000002" href="$classcme_1_1_mesh_renderer.html" title="Componente que se encarga de renderizar a partir de una malla dada." alt="" coords="375,5,514,32"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="319,49,388,33,393,32,320,54"/>
+<area shape="rect" id="Node000004" href="$classcme_1_1_transform.html" title="Componente que controla la posición, rotacion y escala en el mundo de la entidad." alt="" coords="388,56,501,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="321,67,390,69,385,70,321,72"/>
+<area shape="rect" id="Node000003" href="$classec_1_1_render_component.html" title="Componente de render." alt="" coords="175,5,327,32"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="342,16,377,18,372,19,343,21"/>
+<area shape="rect" id="Node000005" href="$classcme_1_1_serializable.html" title="Interfaz que hace que los objetos se vuelvan serializables." alt="" coords="5,81,127,108"/>
+<area shape="poly" id="edge5_Node000005_Node000001" title=" " alt="" coords="141,82,198,76,193,77,142,87"/>
 </map>

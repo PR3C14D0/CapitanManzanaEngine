@@ -4,6 +4,7 @@
 
 namespace cme::ui {
 	using windowGroupID_t = uint8_t;
+	/// @brief Clasificación de los distintos grupos de ventanas que hay en la interfaz, se pueden usar para acceder a las ventanas desde el UIManager
 	enum windowGroupID : windowGroupID_t
 	{
 		None = 0,

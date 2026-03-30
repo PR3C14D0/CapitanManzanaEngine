@@ -19,6 +19,13 @@ var hierarchy =
     [ "cme::FileExplorer", "classcme_1_1_file_explorer.html", null ],
     [ "cme::GLApplication", "classcme_1_1_g_l_application.html", null ],
     [ "detail::input_stream_adapter", "classdetail_1_1input__stream__adapter.html", null ],
+    [ "cme::InputManager", "classcme_1_1_input_manager.html", null ],
+    [ "cme::Inspectable", "classcme_1_1_inspectable.html", [
+      [ "ec::Component", "classec_1_1_component.html", [
+        [ "cme::MeshRenderer", "classcme_1_1_mesh_renderer.html", null ],
+        [ "cme::Transform", "classcme_1_1_transform.html", null ]
+      ] ]
+    ] ],
     [ "detail::internal_iterator&lt; BasicJsonType &gt;", "structdetail_1_1internal__iterator.html", null ],
     [ "detail::iteration_proxy&lt; IteratorType &gt;", "classdetail_1_1iteration__proxy.html", null ],
     [ "detail::json_default_base", "structdetail_1_1json__default__base.html", null ],
@@ -33,20 +40,28 @@ var hierarchy =
       [ "cme::QuadMesh", "classcme_1_1_quad_mesh.html", null ],
       [ "cme::TriangleMesh", "classcme_1_1_triangle_mesh.html", null ]
     ] ],
+    [ "cme::MouseEvent", "structcme_1_1_mouse_event.html", null ],
     [ "ordered_map&lt; Key, T, IgnoredLess, Allocator &gt;", "structordered__map.html", null ],
     [ "detail::parser&lt; BasicJsonType, InputAdapterType &gt;", "classdetail_1_1parser.html", null ],
     [ "detail::position_t", "structdetail_1_1position__t.html", null ],
-    [ "ec::RenderComponent", "classec_1_1_render_component.html", null ],
+    [ "ec::RenderComponent", "classec_1_1_render_component.html", [
+      [ "cme::MeshRenderer", "classcme_1_1_mesh_renderer.html", null ]
+    ] ],
     [ "cme::ResourceManager", "classcme_1_1_resource_manager.html", null ],
+    [ "cme::SceneManager", "classcme_1_1_scene_manager.html", null ],
     [ "cme::Serializable", "classcme_1_1_serializable.html", [
       [ "ec::Component", "classec_1_1_component.html", null ]
     ] ],
     [ "cme::Shader", "classcme_1_1_shader.html", null ],
     [ "cme::ShaderCreationData", "structcme_1_1_shader_creation_data.html", null ],
     [ "cme::Shortcut", "structcme_1_1_shortcut.html", null ],
+    [ "cme::StateChanger", "structcme_1_1_state_changer.html", null ],
     [ "cme::ui::UIManager", "classcme_1_1ui_1_1_u_i_manager.html", null ],
     [ "ec::UpdateComponent", "classec_1_1_update_component.html", null ],
     [ "cme::ui::Window", "classcme_1_1ui_1_1_window.html", [
+      [ "cme::ui::ConsoleWindow", "classcme_1_1ui_1_1_console_window.html", null ],
+      [ "cme::ui::InspectorWindow", "classcme_1_1ui_1_1_inspector_window.html", null ],
+      [ "cme::ui::SceneWindow", "classcme_1_1ui_1_1_scene_window.html", null ],
       [ "cme::ui::ViewportWindow", "classcme_1_1ui_1_1_viewport_window.html", null ]
     ] ]
 ];

@@ -110,14 +110,97 @@ Diagrama de herencia de cme::Serializable</div>
 <div class="dyncontent">
 <div class="center"><img src="classcme_1_1_serializable__inherit__graph.png" border="0" usemap="#acme_1_1_serializable_inherit__map" loading="lazy" alt="Inheritance graph"/></div>
 <map name="acme_1_1_serializable_inherit__map" id="acme_1_1_serializable_inherit__map">
-<area shape="rect" title="Interfaz que hace que los objetos se vuelvan serializables." alt="" coords="5,5,127,32"/>
-<area shape="rect" href="classec_1_1_component.html" title="Declaracion adelantada, para evitar dependencia circular." alt="" coords="11,80,121,107"/>
-<area shape="poly" title=" " alt="" coords="68,46,69,80,63,79,64,50"/>
+<area shape="rect" title="Interfaz que hace que los objetos se vuelvan serializables." alt="" coords="89,5,210,32"/>
+<area shape="rect" href="classec_1_1_component.html" title="Declaracion adelantada, para evitar dependencia circular." alt="" coords="94,80,205,107"/>
+<area shape="poly" title=" " alt="" coords="151,46,152,81,147,79,148,50"/>
+<area shape="rect" href="classcme_1_1_mesh_renderer.html" title="Componente que se encarga de renderizar a partir de una malla dada." alt="" coords="5,155,145,181"/>
+<area shape="poly" title=" " alt="" coords="129,117,90,156,86,152,123,118"/>
+<area shape="rect" href="classcme_1_1_transform.html" title="Componente que controla la posición, rotacion y escala en el mundo de la entidad." alt="" coords="169,155,282,181"/>
+<area shape="poly" title=" " alt="" coords="175,115,215,154,210,154,173,120"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">leyenda</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:aa0ba356b5b7e7ce78263ab400b260578" id="r_aa0ba356b5b7e7ce78263ab400b260578"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#aa0ba356b5b7e7ce78263ab400b260578">serialize</a> (<a class="el" href="classcme_1_1_json_serializer.html">JsonSerializer</a> &amp;s) const =0</td></tr>
+<tr class="memdesc:aa0ba356b5b7e7ce78263ab400b260578"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializa el objeto en un JSON utilizando el <a class="el" href="classcme_1_1_json_serializer.html" title="Se encarga de serializar en un JSON lo que sea de tipo Serializable.">JsonSerializer</a> proporcionado.  <br /></td></tr>
+<tr class="memitem:a717e86e937ea520be63dcaed4244c18d" id="r_a717e86e937ea520be63dcaed4244c18d"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a717e86e937ea520be63dcaed4244c18d">deserialize</a> (<a class="el" href="classcme_1_1_json_serializer.html">JsonSerializer</a> &amp;s)=0</td></tr>
+<tr class="memdesc:a717e86e937ea520be63dcaed4244c18d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializa el objeto desde un JSON utilizando el <a class="el" href="classcme_1_1_json_serializer.html" title="Se encarga de serializar en un JSON lo que sea de tipo Serializable.">JsonSerializer</a> proporcionado.  <br /></td></tr>
+</table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Interfaz que hace que los objetos se vuelvan serializables. </p>
-</div></div><!-- contents -->
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="a717e86e937ea520be63dcaed4244c18d" name="a717e86e937ea520be63dcaed4244c18d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a717e86e937ea520be63dcaed4244c18d">&#9670;&#160;</a></span>deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void cme::Serializable::deserialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcme_1_1_json_serializer.html">JsonSerializer</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deserializa el objeto desde un JSON utilizando el <a class="el" href="classcme_1_1_json_serializer.html" title="Se encarga de serializar en un JSON lo que sea de tipo Serializable.">JsonSerializer</a> proporcionado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>El <a class="el" href="classcme_1_1_json_serializer.html" title="Se encarga de serializar en un JSON lo que sea de tipo Serializable.">JsonSerializer</a> que se utilizar� para deserializar el objeto </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementado en <a class="el" href="classcme_1_1_mesh_renderer.html#af4dd9e16623e013edda5868ff9e2220e">cme::MeshRenderer</a>, <a class="el" href="classcme_1_1_transform.html#aa0ae3789b5be49ca7d78cf6fe6e9cec6">cme::Transform</a> y <a class="el" href="classec_1_1_component.html#a98f8ea17a2d216260fe83d593b125aa7">ec::Component</a>.</p>
+
+</div>
+</div>
+<a id="aa0ba356b5b7e7ce78263ab400b260578" name="aa0ba356b5b7e7ce78263ab400b260578"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0ba356b5b7e7ce78263ab400b260578">&#9670;&#160;</a></span>serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void cme::Serializable::serialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcme_1_1_json_serializer.html">JsonSerializer</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Serializa el objeto en un JSON utilizando el <a class="el" href="classcme_1_1_json_serializer.html" title="Se encarga de serializar en un JSON lo que sea de tipo Serializable.">JsonSerializer</a> proporcionado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>El <a class="el" href="classcme_1_1_json_serializer.html" title="Se encarga de serializar en un JSON lo que sea de tipo Serializable.">JsonSerializer</a> que se utilizar� para serializar el objeto </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementado en <a class="el" href="classcme_1_1_mesh_renderer.html#acdb86b864c4f9cafd72eda264664feb2">cme::MeshRenderer</a>, <a class="el" href="classcme_1_1_transform.html#a4ff565838099a741e80a0b0e1d2a3457">cme::Transform</a> y <a class="el" href="classec_1_1_component.html#a0bd89ceffe9c016ec93986a5688601a8">ec::Component</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

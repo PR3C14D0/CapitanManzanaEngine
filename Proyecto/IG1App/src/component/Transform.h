@@ -6,6 +6,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 namespace cme {
+    /// @brief Componente que controla la posición, rotacion y escala en el mundo de la entidad
     class Transform : public ec::Component {
     private:
         glm::vec3 _position = glm::vec3(0.0f);

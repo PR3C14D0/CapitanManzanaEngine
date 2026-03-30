@@ -3,6 +3,7 @@
 #include <ec/entity.h>
 
 namespace cme::ui {
+	/// @brief Ventana que se encarga de mostrar la información de una entidad seleccionada
 	class InspectorWindow : public Window
 	{
 	private:

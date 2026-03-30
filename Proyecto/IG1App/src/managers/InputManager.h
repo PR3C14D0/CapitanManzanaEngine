@@ -31,6 +31,7 @@ namespace cme {
 		bool isPressed(int currState);
 	};
 
+	/// @brief Estructura que maneja los eventos del raton
 	struct  MouseEvent {
 		std::function<bool()> condition;			// Condicion a ocurrir
 		std::function<void()> call;		// Callback con las coordenadas del raton
@@ -43,6 +44,7 @@ namespace cme {
 		}
 	};
 
+	/// @brief Estructura que maneja los cambios de estado del motor
 	struct StateChanger {
 		std::function<bool()> condition;
 		std::function<void()> call;
@@ -52,6 +54,7 @@ namespace cme {
 			condition(condition), state(state), call(call) {}
 	};
 
+	/// @brief Singleton que se encarga de manejar los inputs del motor, desde atajos de teclado hasta eventos del raton. Se puede acceder a su instancia con inpM()
 	class InputManager : public Singleton<InputManager>
 	{
 		friend class Singleton<InputManager>;

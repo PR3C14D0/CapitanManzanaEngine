@@ -143,17 +143,37 @@ $(function(){initNavTree('hierarchy.html','',''); });
 <area shape="rect" href="classcme_1_1_g_l_application.html" title="Clase principal que maneja el ciclo de vida de la aplicación." alt="" coords="5,5,141,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_8.png" border="0" usemap="#acme_1_1_json_serializer" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_8.png" border="0" usemap="#acme_1_1_input_manager" loading="lazy" alt=""/>
+<map name="acme_1_1_input_manager" id="acme_1_1_input_manager">
+<area shape="rect" href="classcme_1_1_input_manager.html" title="Singleton que se encarga de manejar los inputs del motor, desde atajos de teclado hasta eventos del r..." alt="" coords="5,5,139,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_9.png" border="0" usemap="#acme_1_1_inspectable" loading="lazy" alt=""/>
+<map name="acme_1_1_inspectable" id="acme_1_1_inspectable">
+<area shape="rect" href="classcme_1_1_inspectable.html" title="Interfaz para que las clases se puedan ver en el inspector." alt="" coords="5,31,127,57"/>
+<area shape="rect" href="classec_1_1_component.html" title="Declaracion adelantada, para evitar dependencia circular." alt="" coords="196,56,306,83"/>
+<area shape="poly" title=" " alt="" coords="142,52,198,61,193,62,142,57"/>
+<area shape="rect" href="classcme_1_1_mesh_renderer.html" title="Componente que se encarga de renderizar a partir de una malla dada." alt="" coords="375,5,514,32"/>
+<area shape="poly" title=" " alt="" coords="319,49,388,33,393,32,320,54"/>
+<area shape="rect" href="classcme_1_1_transform.html" title="Componente que controla la posición, rotacion y escala en el mundo de la entidad." alt="" coords="388,56,501,83"/>
+<area shape="poly" title=" " alt="" coords="321,67,390,69,385,70,321,72"/>
+<area shape="rect" href="classec_1_1_render_component.html" title="Componente de render." alt="" coords="175,5,327,32"/>
+<area shape="poly" title=" " alt="" coords="342,16,377,18,372,19,343,21"/>
+<area shape="rect" href="classcme_1_1_serializable.html" title="Interfaz que hace que los objetos se vuelvan serializables." alt="" coords="5,81,127,108"/>
+<area shape="poly" title=" " alt="" coords="141,82,198,76,193,77,142,87"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_10.png" border="0" usemap="#acme_1_1_json_serializer" loading="lazy" alt=""/>
 <map name="acme_1_1_json_serializer" id="acme_1_1_json_serializer">
 <area shape="rect" href="classcme_1_1_json_serializer.html" title="Se encarga de serializar en un JSON lo que sea de tipo Serializable." alt="" coords="5,5,142,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_9.png" border="0" usemap="#acme_1_1_logger" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_11.png" border="0" usemap="#acme_1_1_logger" loading="lazy" alt=""/>
 <map name="acme_1_1_logger" id="acme_1_1_logger">
 <area shape="rect" href="classcme_1_1_logger.html" title="Se encarga de mandar mensajes a la consola y a la ventana &quot;ConsoleWindow&quot; del motor." alt="" coords="5,5,99,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_10.png" border="0" usemap="#acme_1_1_mesh" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_12.png" border="0" usemap="#acme_1_1_mesh" loading="lazy" alt=""/>
 <map name="acme_1_1_mesh" id="acme_1_1_mesh">
 <area shape="rect" href="classcme_1_1_mesh.html" title="Clase abstracta que sirve como padre para crear todo tipo de mallas distintas." alt="" coords="5,56,92,83"/>
 <area shape="rect" href="classcme_1_1_cube_mesh.html" title="Genera una mesh de tipo cubo." alt="" coords="147,5,264,32"/>
@@ -164,56 +184,70 @@ $(function(){initNavTree('hierarchy.html','',''); });
 <area shape="poly" title=" " alt="" coords="107,85,165,105,160,107,106,91"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_11.png" border="0" usemap="#acme_1_1_resource_manager" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_13.png" border="0" usemap="#acme_1_1_mouse_event" loading="lazy" alt=""/>
+<map name="acme_1_1_mouse_event" id="acme_1_1_mouse_event">
+<area shape="rect" href="structcme_1_1_mouse_event.html" title="Estructura que maneja los eventos del raton." alt="" coords="5,5,133,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_14.png" border="0" usemap="#acme_1_1_resource_manager" loading="lazy" alt=""/>
 <map name="acme_1_1_resource_manager" id="acme_1_1_resource_manager">
 <area shape="rect" href="classcme_1_1_resource_manager.html" title="Se encarga de la gesiton de recursos del proyecto, desde shaders hasta imagenes. Utiliza el patron Si..." alt="" coords="5,5,166,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_12.png" border="0" usemap="#acme_1_1_serializable" loading="lazy" alt=""/>
-<map name="acme_1_1_serializable" id="acme_1_1_serializable">
-<area shape="rect" href="classcme_1_1_serializable.html" title="Interfaz que hace que los objetos se vuelvan serializables." alt="" coords="5,5,127,32"/>
-<area shape="rect" href="classec_1_1_component.html" title="Declaracion adelantada, para evitar dependencia circular." alt="" coords="175,5,285,32"/>
-<area shape="poly" title=" " alt="" coords="142,16,177,18,172,19,142,21"/>
+<tr><td><img src="inherit_graph_15.png" border="0" usemap="#acme_1_1_scene_manager" loading="lazy" alt=""/>
+<map name="acme_1_1_scene_manager" id="acme_1_1_scene_manager">
+<area shape="rect" href="classcme_1_1_scene_manager.html" title="Singleton que se encarga de gestionar la escena activa, permitiendo cargar y guardar escenas,..." alt="" coords="5,5,147,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_13.png" border="0" usemap="#acme_1_1_shader" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_16.png" border="0" usemap="#acme_1_1_shader" loading="lazy" alt=""/>
 <map name="acme_1_1_shader" id="acme_1_1_shader">
 <area shape="rect" href="classcme_1_1_shader.html" title="Clase que representa un shader de OpenGL. Se encarga de cargar, compilar y gestionar los shaders en l..." alt="" coords="5,5,101,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_14.png" border="0" usemap="#acme_1_1_shader_creation_data" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_17.png" border="0" usemap="#acme_1_1_shader_creation_data" loading="lazy" alt=""/>
 <map name="acme_1_1_shader_creation_data" id="acme_1_1_shader_creation_data">
 <area shape="rect" href="structcme_1_1_shader_creation_data.html" title="Contiene la información necesaria para crear un shader, incluyendo las rutas de los archivos de shade..." alt="" coords="5,5,178,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_15.png" border="0" usemap="#acme_1_1_shortcut" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_18.png" border="0" usemap="#acme_1_1_shortcut" loading="lazy" alt=""/>
 <map name="acme_1_1_shortcut" id="acme_1_1_shortcut">
 <area shape="rect" href="structcme_1_1_shortcut.html" title="Estructurra que maneja los atajos de teclado." alt="" coords="5,5,109,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_16.png" border="0" usemap="#acme_1_1ui_1_1_u_i_manager" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_19.png" border="0" usemap="#acme_1_1_state_changer" loading="lazy" alt=""/>
+<map name="acme_1_1_state_changer" id="acme_1_1_state_changer">
+<area shape="rect" href="structcme_1_1_state_changer.html" title="Estructura que maneja los cambios de estado del motor." alt="" coords="5,5,140,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_20.png" border="0" usemap="#acme_1_1ui_1_1_u_i_manager" loading="lazy" alt=""/>
 <map name="acme_1_1ui_1_1_u_i_manager" id="acme_1_1ui_1_1_u_i_manager">
 <area shape="rect" href="classcme_1_1ui_1_1_u_i_manager.html" title="Se encarga de controlar las centanas y la interfaz de usuario del motor." alt="" coords="5,5,142,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_17.png" border="0" usemap="#acme_1_1ui_1_1_window" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_21.png" border="0" usemap="#acme_1_1ui_1_1_window" loading="lazy" alt=""/>
 <map name="acme_1_1ui_1_1_window" id="acme_1_1ui_1_1_window">
-<area shape="rect" href="classcme_1_1ui_1_1_window.html" title="Interfaz para crear ventanas y añadirlas al render del CoreUI." alt="" coords="5,5,125,32"/>
-<area shape="rect" href="classcme_1_1ui_1_1_viewport_window.html" title="Ventana que se encarga de renderizar el viewport." alt="" coords="173,5,343,32"/>
-<area shape="poly" title=" " alt="" coords="140,16,175,18,170,19,140,21"/>
+<area shape="rect" href="classcme_1_1ui_1_1_window.html" title="Interfaz para crear ventanas y añadirlas al render del CoreUI." alt="" coords="5,81,125,108"/>
+<area shape="rect" href="classcme_1_1ui_1_1_console_window.html" title="Ventana que sirve para mostrar los logs del motor." alt="" coords="176,5,343,32"/>
+<area shape="poly" title=" " alt="" coords="105,72,172,42,208,31,204,34,174,46,107,76"/>
+<area shape="rect" href="classcme_1_1ui_1_1_inspector_window.html" title="Ventana que se encarga de mostrar la información de una entidad seleccionada." alt="" coords="173,56,346,83"/>
+<area shape="poly" title=" " alt="" coords="139,82,175,80,170,82,141,87"/>
+<area shape="rect" href="classcme_1_1ui_1_1_scene_window.html" title="Ventana que se encarga de mostrar la jerarquia de entidades de la escena y permite seleccionar una en..." alt="" coords="181,107,338,133"/>
+<area shape="poly" title=" " alt="" coords="139,102,183,109,178,111,140,107"/>
+<area shape="rect" href="classcme_1_1ui_1_1_viewport_window.html" title="Ventana que se encarga de renderizar el viewport." alt="" coords="174,157,344,184"/>
+<area shape="poly" title=" " alt="" coords="106,113,174,143,209,157,203,157,172,148,105,118"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_18.png" border="0" usemap="#adetail_1_1binary__reader_3_01_basic_json_type_00_01_input_adapter_type_00_01_s_a_x_01_4" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_22.png" border="0" usemap="#adetail_1_1binary__reader_3_01_basic_json_type_00_01_input_adapter_type_00_01_s_a_x_01_4" loading="lazy" alt=""/>
 <map name="adetail_1_1binary__reader_3_01_basic_json_type_00_01_input_adapter_type_00_01_s_a_x_01_4" id="adetail_1_1binary__reader_3_01_basic_json_type_00_01_input_adapter_type_00_01_s_a_x_01_4">
 <area shape="rect" href="classdetail_1_1binary__reader.html" title="deserialization of CBOR, MessagePack, and UBJSON values" alt="" coords="5,5,210,64"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_19.png" border="0" usemap="#adetail_1_1binary__writer_3_01_basic_json_type_00_01_char_type_01_4" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_23.png" border="0" usemap="#adetail_1_1binary__writer_3_01_basic_json_type_00_01_char_type_01_4" loading="lazy" alt=""/>
 <map name="adetail_1_1binary__writer_3_01_basic_json_type_00_01_char_type_01_4" id="adetail_1_1binary__writer_3_01_basic_json_type_00_01_char_type_01_4">
 <area shape="rect" href="classdetail_1_1binary__writer.html" title="serialization to CBOR and MessagePack values" alt="" coords="5,5,204,48"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_20.png" border="0" usemap="#adetail_1_1exception" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_24.png" border="0" usemap="#adetail_1_1exception" loading="lazy" alt=""/>
 <map name="adetail_1_1exception" id="adetail_1_1exception">
 <area shape="rect" href="classdetail_1_1exception.html" title="general exception of the basic_json class" alt="" coords="5,107,122,133"/>
 <area shape="rect" href="classdetail_1_1invalid__iterator.html" title="exception indicating errors with iterators" alt="" coords="170,5,314,32"/>
@@ -228,72 +262,67 @@ $(function(){initNavTree('hierarchy.html','',''); });
 <area shape="poly" title=" " alt="" coords="93,141,130,168,171,194,198,207,193,207,168,198,127,172,92,146"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_21.png" border="0" usemap="#adetail_1_1file__input__adapter" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_25.png" border="0" usemap="#adetail_1_1file__input__adapter" loading="lazy" alt=""/>
 <map name="adetail_1_1file__input__adapter" id="adetail_1_1file__input__adapter">
 <area shape="rect" href="classdetail_1_1file__input__adapter.html" title=" " alt="" coords="5,5,118,48"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_22.png" border="0" usemap="#adetail_1_1input__stream__adapter" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_26.png" border="0" usemap="#adetail_1_1input__stream__adapter" loading="lazy" alt=""/>
 <map name="adetail_1_1input__stream__adapter" id="adetail_1_1input__stream__adapter">
 <area shape="rect" href="classdetail_1_1input__stream__adapter.html" title=" " alt="" coords="5,5,141,48"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_23.png" border="0" usemap="#adetail_1_1internal__iterator_3_01_basic_json_type_01_4" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_27.png" border="0" usemap="#adetail_1_1internal__iterator_3_01_basic_json_type_01_4" loading="lazy" alt=""/>
 <map name="adetail_1_1internal__iterator_3_01_basic_json_type_01_4" id="adetail_1_1internal__iterator_3_01_basic_json_type_01_4">
 <area shape="rect" href="structdetail_1_1internal__iterator.html" title="an iterator value" alt="" coords="5,5,155,48"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_24.png" border="0" usemap="#adetail_1_1iteration__proxy_3_01_iterator_type_01_4" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_28.png" border="0" usemap="#adetail_1_1iteration__proxy_3_01_iterator_type_01_4" loading="lazy" alt=""/>
 <map name="adetail_1_1iteration__proxy_3_01_iterator_type_01_4" id="adetail_1_1iteration__proxy_3_01_iterator_type_01_4">
 <area shape="rect" href="classdetail_1_1iteration__proxy.html" title="proxy class for the items() function" alt="" coords="5,5,151,48"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_25.png" border="0" usemap="#adetail_1_1json__default__base" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_29.png" border="0" usemap="#adetail_1_1json__default__base" loading="lazy" alt=""/>
 <map name="adetail_1_1json__default__base" id="adetail_1_1json__default__base">
 <area shape="rect" href="structdetail_1_1json__default__base.html" title="Default base class of the basic_json class." alt="" coords="5,5,171,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_26.png" border="0" usemap="#adetail_1_1json__sax__dom__parser_3_01_basic_json_type_00_01_input_adapter_type_01_4" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_30.png" border="0" usemap="#adetail_1_1json__sax__dom__parser_3_01_basic_json_type_00_01_input_adapter_type_01_4" loading="lazy" alt=""/>
 <map name="adetail_1_1json__sax__dom__parser_3_01_basic_json_type_00_01_input_adapter_type_01_4" id="adetail_1_1json__sax__dom__parser_3_01_basic_json_type_00_01_input_adapter_type_01_4">
 <area shape="rect" href="classdetail_1_1json__sax__dom__parser.html" title="SAX implementation to create a JSON value from SAX events." alt="" coords="5,5,175,64"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_27.png" border="0" usemap="#adetail_1_1lexer_3_01_basic_json_type_00_01_input_adapter_type_01_4" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_31.png" border="0" usemap="#adetail_1_1lexer_3_01_basic_json_type_00_01_input_adapter_type_01_4" loading="lazy" alt=""/>
 <map name="adetail_1_1lexer_3_01_basic_json_type_00_01_input_adapter_type_01_4" id="adetail_1_1lexer_3_01_basic_json_type_00_01_input_adapter_type_01_4">
 <area shape="rect" href="classdetail_1_1lexer.html" title="lexical analysis" alt="" coords="5,5,177,48"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_28.png" border="0" usemap="#adetail_1_1parser_3_01_basic_json_type_00_01_input_adapter_type_01_4" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_32.png" border="0" usemap="#adetail_1_1parser_3_01_basic_json_type_00_01_input_adapter_type_01_4" loading="lazy" alt=""/>
 <map name="adetail_1_1parser_3_01_basic_json_type_00_01_input_adapter_type_01_4" id="adetail_1_1parser_3_01_basic_json_type_00_01_input_adapter_type_01_4">
 <area shape="rect" href="classdetail_1_1parser.html" title="syntax analysis" alt="" coords="5,5,177,48"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_29.png" border="0" usemap="#adetail_1_1position__t" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_33.png" border="0" usemap="#adetail_1_1position__t" loading="lazy" alt=""/>
 <map name="adetail_1_1position__t" id="adetail_1_1position__t">
 <area shape="rect" href="structdetail_1_1position__t.html" title="struct to capture the start position of the current token" alt="" coords="5,5,122,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_30.png" border="0" usemap="#aec_1_1_render_component" loading="lazy" alt=""/>
-<map name="aec_1_1_render_component" id="aec_1_1_render_component">
-<area shape="rect" href="classec_1_1_render_component.html" title="Componente de render." alt="" coords="5,5,158,32"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_31.png" border="0" usemap="#aec_1_1_update_component" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_34.png" border="0" usemap="#aec_1_1_update_component" loading="lazy" alt=""/>
 <map name="aec_1_1_update_component" id="aec_1_1_update_component">
 <area shape="rect" href="classec_1_1_update_component.html" title="Componente de update." alt="" coords="5,5,158,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_32.png" border="0" usemap="#ajson__pointer_3_01_ref_string_type_01_4" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_35.png" border="0" usemap="#ajson__pointer_3_01_ref_string_type_01_4" loading="lazy" alt=""/>
 <map name="ajson__pointer_3_01_ref_string_type_01_4" id="ajson__pointer_3_01_ref_string_type_01_4">
 <area shape="rect" href="classjson__pointer.html" title="JSON Pointer defines a string syntax for identifying a specific value within a JSON document." alt="" coords="5,5,204,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_33.png" border="0" usemap="#ajson__sax_3_01_basic_json_type_01_4" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_36.png" border="0" usemap="#ajson__sax_3_01_basic_json_type_01_4" loading="lazy" alt=""/>
 <map name="ajson__sax_3_01_basic_json_type_01_4" id="ajson__sax_3_01_basic_json_type_01_4">
 <area shape="rect" href="structjson__sax.html" title="SAX interface." alt="" coords="5,5,192,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_34.png" border="0" usemap="#aordered__map_3_01_key_00_01_t_00_01_ignored_less_00_01_allocator_01_4" loading="lazy" alt=""/>
+<tr><td><img src="inherit_graph_37.png" border="0" usemap="#aordered__map_3_01_key_00_01_t_00_01_ignored_less_00_01_allocator_01_4" loading="lazy" alt=""/>
 <map name="aordered__map_3_01_key_00_01_t_00_01_ignored_less_00_01_allocator_01_4" id="aordered__map_3_01_key_00_01_t_00_01_ignored_less_00_01_allocator_01_4">
 <area shape="rect" href="structordered__map.html" title="a minimal map&#45;like container that preserves insertion order" alt="" coords="5,5,172,48"/>
 </map>

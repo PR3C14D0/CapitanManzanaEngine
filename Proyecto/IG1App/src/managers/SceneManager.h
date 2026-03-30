@@ -4,6 +4,7 @@
 namespace cme {
 	class Scene;
 
+	/// @brief Singleton que se encarga de gestionar la escena activa, permitiendo cargar y guardar escenas, así como actualizar y renderizar la escena activa. Se puede acceder a su instancia con sceneM()
 	class SceneManager : public Singleton<SceneManager>
 	{
 		friend class Singleton<SceneManager>;

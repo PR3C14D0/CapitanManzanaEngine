@@ -1,0 +1,11 @@
+<map id="cme::MeshRenderer" name="cme::MeshRenderer">
+<area shape="rect" id="Node000001" title="Componente que se encarga de renderizar a partir de una malla dada." alt="" coords="146,155,285,181"/>
+<area shape="rect" id="Node000002" href="$classec_1_1_component.html" title="Declaracion adelantada, para evitar dependencia circular." alt="" coords="83,80,193,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,115,205,154,199,154,162,120"/>
+<area shape="rect" id="Node000003" href="$classcme_1_1_serializable.html" title="Interfaz que hace que los objetos se vuelvan serializables." alt="" coords="5,5,127,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,41,128,79,123,80,89,46"/>
+<area shape="rect" id="Node000004" href="$classcme_1_1_inspectable.html" title="Interfaz para que las clases se puedan ver en el inspector." alt="" coords="151,5,272,32"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="190,42,152,82,149,78,186,45"/>
+<area shape="rect" id="Node000005" href="$classec_1_1_render_component.html" title="Componente de render." alt="" coords="218,80,370,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="272,117,230,157,228,152,267,118"/>
+</map>

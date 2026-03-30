@@ -1,0 +1,49 @@
+\doxysection{Referencia de la clase cme::\+Input\+Manager}
+\hypertarget{classcme_1_1_input_manager}{}\label{classcme_1_1_input_manager}\index{cme::InputManager@{cme::InputManager}}
+
+
+Singleton que se encarga de manejar los inputs del motor, desde atajos de teclado hasta eventos del raton. Se puede acceder a su instancia con inp\+M().  
+
+
+
+
+{\ttfamily \+\#include $<$Input\+Manager.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classcme_1_1_input_manager_a39ded45837ad40cdf6c7cc8f9a316e9c}\label{classcme_1_1_input_manager_a39ded45837ad40cdf6c7cc8f9a316e9c} 
+void {\bfseries proccess\+Input} ()
+\begin{DoxyCompactList}\small\item\em Procesa los inputs durante la ejecuci�n. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{classcme_1_1_input_manager_aef44a98b096cba7c3302a108ad8ab387}{mouse\+Callback}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, double xpos, double ypos)
+\begin{DoxyCompactList}\small\item\em Procesa el input del raton, se llama omo callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Singleton que se encarga de manejar los inputs del motor, desde atajos de teclado hasta eventos del raton. Se puede acceder a su instancia con inp\+M(). 
+
+\label{doc-func-members}
+\Hypertarget{classcme_1_1_input_manager_doc-func-members}
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classcme_1_1_input_manager_aef44a98b096cba7c3302a108ad8ab387}\index{cme::InputManager@{cme::InputManager}!mouseCallback@{mouseCallback}}
+\index{mouseCallback@{mouseCallback}!cme::InputManager@{cme::InputManager}}
+\doxysubsubsection{\texorpdfstring{mouseCallback()}{mouseCallback()}}
+{\footnotesize\ttfamily \label{classcme_1_1_input_manager_aef44a98b096cba7c3302a108ad8ab387} 
+void cme::\+\+Input\+Manager::\+mouse\+Callback (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{double}]{xpos}{, }\item[{double}]{ypos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Procesa el input del raton, se llama omo callback. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em window} & LA ventana \\
+\hline
+{\em xpos} & La posicion del raton en el eje X \\
+\hline
+{\em ypos} & La posicion del raton en el eje Y \\
+\hline
+\end{DoxyParams}

@@ -1,3 +1,3 @@
 <map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
-<area shape="rect" id="Node000000" href="$structcme_1_1_shortcut.html" title="Estructurra que maneja los atajos de teclado." alt="" coords="5,5,109,32"/>
+<area shape="rect" id="Node000000" href="$classcme_1_1_scene_manager.html" title="Singleton que se encarga de gestionar la escena activa, permitiendo cargar y guardar escenas,..." alt="" coords="5,5,147,32"/>
 </map>
