@@ -51,8 +51,11 @@ namespace cme {
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
 		glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+
+		/* MSAAx8 */
+		glfwWindowHint(GLFW_SAMPLES, 8);
+
 		_window = glfwCreateWindow(_width, _height, "Capi Engine", NULL, NULL);
 		if (_window == NULL)
 		{
@@ -71,6 +74,9 @@ namespace cme {
 			LOG_ERROR("Failed to initialize GLAD");
 			return false;
 		}
+
+		/* Enable MSAA */
+		glEnable(GL_MULTISAMPLE);
 
 		// Init viewPort
 		glViewport(0, 0, _width, _height);
