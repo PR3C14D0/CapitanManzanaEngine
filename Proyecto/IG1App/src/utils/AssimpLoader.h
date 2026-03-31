@@ -45,11 +45,16 @@ namespace cme {
 				std::vector<glm::vec3> vertices;
 				std::vector<glm::uvec3> indices;
 				std::vector<glm::vec4> colors;
+				std::vector<glm::vec4> normals;
 
 				glm::vec3 minBound(1e10), maxBound(-1e10);
 				glm::vec4 meshColor(dis(gen), dis(gen), dis(gen), 1.0f);
 
 				for (unsigned int j = 0; j < assimpMesh->mNumVertices; j++) {
+					if (assimpMesh->HasNormals()) {
+						aiVector3D vNormals = assimpMesh->mNormals[j];
+						normals.push_back({ vNormals.x, vNormals.y, vNormals.z, 1.f });
+					}
 					glm::vec3 pos(assimpMesh->mVertices[j].x, assimpMesh->mVertices[j].y, assimpMesh->mVertices[j].z);
 					vertices.push_back(pos);
 
@@ -69,9 +74,10 @@ namespace cme {
 						indices.emplace_back(face.mIndices[0], face.mIndices[1], face.mIndices[2]);
 					}
 				}
+				
 
 				auto mesh = std::make_shared<Mesh>();
-				mesh->setMeshData(vertices, indices, colors);
+				mesh->setMeshData(vertices, indices, normals);
 				meshes.push_back(mesh);
 			}
 
