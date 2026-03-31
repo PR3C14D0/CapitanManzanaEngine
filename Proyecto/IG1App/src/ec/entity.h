@@ -260,6 +260,7 @@ namespace ec
 		/// @brief Getter de si el componente esta "vivo"
 		/// @return 
 		bool isAlive() { return _alive; }
+		void die() { _alive = false; }
 
 		/// @brief Getter si el componente esta activo
 		/// @return 
